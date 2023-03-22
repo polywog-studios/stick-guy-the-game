@@ -7,6 +7,7 @@ extends Node2D
 var level:Node2D
 
 func _ready():
+	RenderingServer.set_default_clear_color(Color.WHITE)
 	level = load("res://scenes/levels/Level1.tscn").instantiate()
 	level_container.add_child(level)
 

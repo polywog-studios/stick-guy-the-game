@@ -14,8 +14,7 @@ modulate = Color(0, 0, 0, 1)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_qidy7")
 animation = &"idle"
-frame_progress = 0.353454
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_nn311")
