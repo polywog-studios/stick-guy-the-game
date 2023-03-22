@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://chehdiupteadk"]
+
+[ext_resource type="Script" path="res://characters/base_character.gd" id="1_m8dyn"]
+[ext_resource type="SpriteFrames" uid="uid://c122ndrvy8dxn" path="res://images/stick guy.tres" id="1_qidy7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn311"]
+size = Vector2(20, 78)
+
+[node name="main" type="CharacterBody2D"]
+script = ExtResource("1_m8dyn")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("1_qidy7")
+animation = &"idle"
+frame_progress = 0.353454
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_nn311")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgb71n232avxd"]
+
+[ext_resource type="PackedScene" uid="uid://chehdiupteadk" path="res://characters/main.tscn" id="1_01y7u"]
+[ext_resource type="Script" path="res://scenes/Gameplay.gd" id="1_3vj7d"]
+
+[node name="Gameplay" type="Node2D"]
+script = ExtResource("1_3vj7d")
+
+[node name="LevelContainer" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_01y7u")]
+position = Vector2(176, 309)
+slide_on_ceiling = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
