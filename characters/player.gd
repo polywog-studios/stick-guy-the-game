@@ -34,6 +34,7 @@ func _enter_tree():
 
 func _ready():
 	displayed_name.modulate.a = 0.0
+	
 	position = $"../../Level/StartPos".global_position
 	player_name = Global.player_name
 	player_id = $"../../Players".get_child_count()

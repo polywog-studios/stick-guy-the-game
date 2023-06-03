@@ -1,4 +1,4 @@
-extends Node2D
+class_name Gameplay extends Node2D
 
 # multiplayer handling logic shits
 @onready var main_menu := $MultiplayerGUI/MainMenu
@@ -6,10 +6,10 @@ extends Node2D
 @onready var address_entry := $MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/AddressEntry
 @onready var port_entry := $MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PortEntry
 @onready var players := $Players
+@onready var player_list := $HUD/PlayerList/MarginContainer/ScrollContainer/VBoxContainer
 
 const PLAYER = preload("res://characters/player.tscn")
 
-var MULTIPLAYER_USERNAME:String = "player_invalid"
 var MULTIPLAYER_ADDRESS:String = "localhost"
 var MULTIPLAYER_PORT:int = 9999
 
@@ -44,7 +44,6 @@ func _on_host_button_pressed():
 	multiplayer.peer_disconnected.connect(remove_player)
 	add_player(multiplayer.get_unique_id())
 	
-	upnp_setup()
 	start_checking_invalid_state()
 
 func _on_join_button_pressed():
@@ -65,22 +64,6 @@ func remove_player(peer_id:int):
 	if player != null:
 		print("Player of ID %s (Peer ID: %s) joined!" % [players.get_child_count(), str(peer_id)])
 		player.queue_free()
-		
-func upnp_setup():
-	var upnp := UPNP.new()
-	var discover_result:int = upnp.discover()
-	
-	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Discover Failed! Error %s" % discover_result)
-	
-	assert(upnp.get_gateway() and upnp.get_gateway().is_valid_gateway(), \
-		"UPNP Invalid Gateway!")
-	
-	var map_result:int = upnp.add_port_mapping(MULTIPLAYER_PORT)
-	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Port Mapping Failed! Error %s" % discover_result)
-		
-	print("UPNP Success! Join address: %s" % upnp.query_external_address())
 	
 # local shits
 @onready var level:Node2D = $Level
