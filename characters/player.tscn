@@ -86,10 +86,10 @@ animation = &"player"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 224.0
-offset_top = 112.0
-offset_right = 402.0
-offset_bottom = 376.0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 418.0
+offset_bottom = 392.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2

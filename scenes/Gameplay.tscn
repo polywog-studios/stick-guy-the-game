@@ -77,17 +77,23 @@ theme_override_constants/separation = 15
 alignment = 1
 
 [node name="AddressEntry" type="LineEdit" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(210, 0)
+custom_minimum_size = Vector2(165, 0)
 layout_mode = 2
 placeholder_text = "Address"
 alignment = 1
 
-[node name="PortEntry" type="LineEdit" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="PortEntry" type="SpinBox" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
-placeholder_text = "Port"
+max_value = 65535.0
+value = 9999.0
 alignment = 1
+prefix = "Port"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [connection signal="pressed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="text_changed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/UsernameEntry" to="." method="_on_username_changed"]
+[connection signal="text_changed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/AddressEntry" to="." method="_on_address_changed"]
+[connection signal="value_changed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PortEntry" to="." method="_on_port_changed"]
