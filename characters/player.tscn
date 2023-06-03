@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://chehdiupteadk"]
+
+[ext_resource type="Script" path="res://characters/player.gd" id="1_4vaq2"]
+[ext_resource type="SpriteFrames" uid="uid://c122ndrvy8dxn" path="res://images/stick guy.tres" id="2_mxjx6"]
+[ext_resource type="SpriteFrames" uid="uid://mn5158p3xn54" path="res://images/multiplayer/player_types.tres" id="3_f8u4i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn311"]
+size = Vector2(20, 78)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ar0g1"]
+content_margin_left = 30.0
+content_margin_right = 10.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_l5csg"]
+properties/0/path = NodePath("sprite:animation")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath("sprite:frame")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath("sprite:speed_scale")
+properties/2/spawn = true
+properties/2/sync = true
+properties/3/path = NodePath("sprite:flip_h")
+properties/3/spawn = true
+properties/3/sync = true
+properties/4/path = NodePath("sprite:scale")
+properties/4/spawn = true
+properties/4/sync = true
+properties/5/path = NodePath("sprite:modulate")
+properties/5/spawn = true
+properties/5/sync = true
+properties/6/path = NodePath(".:position")
+properties/6/spawn = true
+properties/6/sync = true
+properties/7/path = NodePath(".:player_name")
+properties/7/spawn = true
+properties/7/sync = true
+properties/8/path = NodePath(".:player_id")
+properties/8/spawn = true
+properties/8/sync = true
+properties/9/path = NodePath(".:is_host")
+properties/9/spawn = true
+properties/9/sync = true
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_4vaq2")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, 50)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_mxjx6")
+animation = &"idle"
+offset = Vector2(0, -25)
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_nn311")
+
+[node name="displayed_name" type="Label" parent="."]
+custom_minimum_size = Vector2(42, 30)
+offset_top = -74.0
+offset_right = 159.0
+offset_bottom = -44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ar0g1")
+text = "swordcube • #1"
+
+[node name="type" type="AnimatedSprite2D" parent="displayed_name"]
+position = Vector2(18, 15)
+scale = Vector2(0.0347656, 0.0347656)
+sprite_frames = ExtResource("3_f8u4i")
+animation = &"player"
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+visible = false
+offset_left = 160.0
+offset_top = 80.0
+offset_right = 370.0
+offset_bottom = 344.0
+scale = Vector2(0.3, 0.3)
+color_mode = 1
+picker_shape = 2
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_l5csg")
+
+[connection signal="color_changed" from="ColorPicker" to="." method="_on_color_picker_color_changed"]

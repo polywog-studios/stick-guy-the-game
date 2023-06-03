@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=24 format=3 uid="uid://c122ndrvy8dxn"]
+[gd_resource type="SpriteFrames" load_steps=25 format=3 uid="uid://c122ndrvy8dxn"]
 
-[ext_resource type="Texture2D" uid="uid://cvlst8fbdi22f" path="res://images/stick guy.png" id="1_1cv62"]
+[ext_resource type="Texture2D" uid="uid://pyrh65hdjf8r" path="res://images/stick guy.png" id="1_1cv62"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xb13"]
 atlas = ExtResource("1_1cv62")
@@ -45,6 +45,10 @@ region = Rect2(248, 186, 62, 62)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jbrgm"]
 atlas = ExtResource("1_1cv62")
 region = Rect2(0, 248, 62, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h451n"]
+atlas = ExtResource("1_1cv62")
+region = Rect2(62, 248, 62, 62)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tbvxc"]
 atlas = ExtResource("1_1cv62")
@@ -144,6 +148,14 @@ animations = [{
 "loop": false,
 "name": &"jump",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h451n")
+}],
+"loop": true,
+"name": &"quick_fall",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
