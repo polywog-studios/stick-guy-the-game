@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgovl8q3y74ax"]
+
+[ext_resource type="Script" path="res://scenes/menus/ErrorScreen.gd" id="1_dm4ih"]
+[ext_resource type="StyleBox" uid="uid://dg4dq0xwlukxk" path="res://resources/generic panel.tres" id="1_ijd44"]
+[ext_resource type="SpriteFrames" uid="uid://dxf5wntbj7jrj" path="res://images/status_icons.tres" id="2_csa74"]
+
+[sub_resource type="Animation" id="Animation_wweb7"]
+resource_name = "pop in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(427, 740), Vector2(427, 266)]
+}
+
+[sub_resource type="Animation" id="Animation_dv7qq"]
+resource_name = "pop out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(427, 266), Vector2(427, -240)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ofqsx"]
+_data = {
+"pop in": SubResource("Animation_wweb7"),
+"pop out": SubResource("Animation_dv7qq")
+}
+
+[node name="ErrorScreen" type="Node2D"]
+script = ExtResource("1_dm4ih")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 427.0
+offset_top = 740.0
+offset_right = 853.0
+offset_bottom = 928.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_ijd44")
+
+[node name="Icon" type="AnimatedSprite2D" parent="Panel"]
+position = Vector2(48, 48)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("2_csa74")
+animation = &"error"
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 30.0
+offset_right = 369.0
+offset_bottom = 67.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Fuck! A bad happened :("
+
+[node name="Description" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 88.0
+offset_right = 409.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "stupid description goes here"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="OKButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 141.0
+offset_right = 411.0
+offset_bottom = 172.0
+text = "OK"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ofqsx")
+}
+
+[connection signal="pressed" from="Panel/OKButton" to="." method="_on_ok_pressed"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pyrh65hdjf8r"
-path="res://.godot/imported/stick guy.png-c4b9040eb043343953ea542a06ca435f.ctex"
+uid="uid://shoqwb2ar4nu"
+path="res://.godot/imported/host.png-c8ef85da4758b7e2f603591fa738c8c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/stick guy.png"
-dest_files=["res://.godot/imported/stick guy.png-c4b9040eb043343953ea542a06ca435f.ctex"]
+source_file="res://images/multiplayer/host.png"
+dest_files=["res://.godot/imported/host.png-c8ef85da4758b7e2f603591fa738c8c5.ctex"]
 
 [params]
 
