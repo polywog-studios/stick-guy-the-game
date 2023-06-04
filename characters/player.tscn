@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgbjp5laf5l2u"]
+[gd_scene load_steps=13 format=3 uid="uid://dgbjp5laf5l2u"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_i0ugv"]
 [ext_resource type="SpriteFrames" uid="uid://c122ndrvy8dxn" path="res://images/stick guy.tres" id="2_mxjx6"]
-[ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://fonts/guy_the_font.png" id="3_2pj5o"]
 [ext_resource type="SpriteFrames" uid="uid://mn5158p3xn54" path="res://images/multiplayer/player_types.tres" id="3_f8u4i"]
 [ext_resource type="Script" path="res://characters/player_trail.gd" id="3_wt21l"]
+[ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://fonts/guy_the_font.png" id="4_orli6"]
+[ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://fonts/guy_the_font_BOLD.png" id="4_q2ess"]
+[ext_resource type="Script" path="res://scripts/bbcodes/Pride.gd" id="5_m52ak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn311"]
 size = Vector2(20, 78)
@@ -14,6 +16,7 @@ size = Vector2(22, 80)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ar0g1"]
 content_margin_left = 30.0
+content_margin_top = 8.0
 content_margin_right = 10.0
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 2
@@ -26,6 +29,9 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 anti_aliasing = false
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_0d84u"]
+script = ExtResource("5_m52ak")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_l5csg"]
 properties/0/path = NodePath("sprite:animation")
@@ -61,13 +67,17 @@ properties/9/sync = true
 properties/10/path = NodePath("nametag:visible")
 properties/10/spawn = true
 properties/10/sync = true
-properties/11/path = NodePath(".:boosting")
-properties/11/spawn = true
-properties/11/sync = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_i0ugv")
+SPEED = null
+BOOST_SPEED = null
+JUMP_VELOCITY = null
+boosting = null
+player_name = null
+player_id = null
+is_host = null
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.219608, 0.580392, 0.929412, 1)
@@ -91,17 +101,23 @@ position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_ro61a")
 debug_color = Color(0.905882, 0.0705882, 0.239216, 0.419608)
 
-[node name="nametag" type="Label" parent="."]
+[node name="nametag" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(42, 30)
 offset_top = -74.0
 offset_right = 159.0
 offset_bottom = -44.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_2pj5o")
-theme_override_font_sizes/font_size = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_orli6")
+theme_override_fonts/bold_font = ExtResource("4_q2ess")
+theme_override_fonts/italics_font = ExtResource("4_orli6")
+theme_override_fonts/bold_italics_font = ExtResource("4_q2ess")
+theme_override_fonts/mono_font = ExtResource("4_orli6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ar0g1")
+bbcode_enabled = true
 text = "swordcube - #1"
-vertical_alignment = 1
+fit_content = true
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_0d84u")]
 
 [node name="type" type="AnimatedSprite2D" parent="nametag"]
 position = Vector2(18, 15)
