@@ -15,9 +15,13 @@ script = ExtResource("1_3vj7d")
 position = Vector2(640, 360)
 position_smoothing_enabled = true
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://characters/player.tscn")
 spawn_path = NodePath("../Players")
+
+[node name="ChatMessageSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scenes/multiplayer/chat_message.tscn")
+spawn_path = NodePath("../HUD/ChatMenu/MarginContainer/VBoxContainer")
 
 [node name="MultiplayerGUI" type="CanvasLayer" parent="."]
 
@@ -92,8 +96,45 @@ prefix = "Port"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+[node name="ChatMenu" type="PanelContainer" parent="HUD"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -625.0
+offset_top = 195.0
+offset_right = -273.0
+offset_bottom = 344.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_73tdc")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/ChatMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 45
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/ChatMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="ChatBox" type="LineEdit" parent="HUD"]
+offset_left = 29.0
+offset_top = 660.0
+offset_right = 352.0
+offset_bottom = 691.0
+size_flags_stretch_ratio = 0.0
+placeholder_text = "Enter chat message here"
+
 [connection signal="pressed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="text_changed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/UsernameEntry" to="." method="_on_username_changed"]
 [connection signal="text_changed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/AddressEntry" to="." method="_on_address_changed"]
 [connection signal="value_changed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PortEntry" to="." method="_on_port_changed"]
+[connection signal="text_submitted" from="HUD/ChatBox" to="." method="_on_chat_message_submitted"]

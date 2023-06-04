@@ -52,6 +52,9 @@ properties/8/sync = true
 properties/9/path = NodePath(".:is_host")
 properties/9/spawn = true
 properties/9/sync = true
+properties/10/path = NodePath("nametag:visible")
+properties/10/spawn = true
+properties/10/sync = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -69,7 +72,7 @@ offset = Vector2(0, -25)
 position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_nn311")
 
-[node name="displayed_name" type="Label" parent="."]
+[node name="nametag" type="Label" parent="."]
 custom_minimum_size = Vector2(42, 30)
 offset_top = -74.0
 offset_right = 159.0
@@ -78,7 +81,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_ar0g1")
 text = "swordcube • #1"
 
-[node name="type" type="AnimatedSprite2D" parent="displayed_name"]
+[node name="type" type="AnimatedSprite2D" parent="nametag"]
 position = Vector2(18, 15)
 scale = Vector2(0.0347656, 0.0347656)
 sprite_frames = ExtResource("3_f8u4i")
@@ -86,10 +89,10 @@ animation = &"player"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 256.0
-offset_top = 128.0
-offset_right = 418.0
-offset_bottom = 392.0
+offset_left = 320.0
+offset_top = 160.0
+offset_right = 450.0
+offset_bottom = 424.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2

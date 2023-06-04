@@ -3,6 +3,10 @@ class_name Gameplay extends Node2D
 # multiplayer handling logic shits
 @onready var main_menu := $MultiplayerGUI/MainMenu
 @onready var players := $Players
+@onready var chat_box := $HUD/ChatBox
+@onready var chat_messages := $HUD/ChatMenu/MarginContainer/VBoxContainer
+
+const PLAYER := preload("res://characters/player.tscn")
 
 var MULTIPLAYER_ADDRESS:String = "localhost"
 var MULTIPLAYER_PORT:int = 9999
@@ -38,9 +42,13 @@ func _on_host_button_pressed():
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(remove_player)
 	
+	show_hud()
 	add_player(multiplayer.get_unique_id())
 	
 	start_checking_invalid_state()
+	
+func show_hud():
+	$HUD/ChatMenu.visible = true
 
 func _on_join_button_pressed():
 	main_menu.hide()
@@ -53,17 +61,17 @@ func _on_join_button_pressed():
 	start_checking_invalid_state()
 
 func add_player(peer_id:int):
-	print("Player of ID %s (Peer ID: %s) joined!" % [players.get_child_count() + 1, str(peer_id)])
-	
-	var player = load("res://characters/player.tscn").instantiate()
+	var player = PLAYER.instantiate()
 	player.name = str(peer_id)
 	players.add_child(player)
+	print("Player #%s joined: %s:%s" % [players.get_child_count(), Global.player_name, str(peer_id)])
+	return player
 	
 func remove_player(peer_id:int):
 	var player:PlayerCharacter = players.get_node_or_null(str(peer_id))
 	
 	if player != null:
-		print("Player of ID %s (Peer ID: %s) left!" % [players.get_child_count(), str(peer_id)])
+		print("Player #%s left: %s:%s" % [players.get_child_count(), Global.player_name, str(peer_id)])
 		player.queue_free()
 
 func set_default_info():
@@ -80,3 +88,14 @@ func _on_port_changed(value: float) -> void:
 
 func _on_username_changed(new_text: String) -> void:
 	MULTIPLAYER_USERNAME = new_text
+
+func _on_chat_message_submitted(new_text:String):
+	print("Submitted chat message: %s" % new_text)
+	
+	var message:Label = load("res://scenes/multiplayer/chat_message.tscn").instantiate()
+	message.text = "%s > %s" % [Global.player_name, new_text]
+	message.modulate = Global.current_player.modulate
+	message.tooltip_text = "Sent by Player #%s" % Global.current_player.player_id
+	chat_messages.add_child(message)
+	
+	chat_box.text = ""

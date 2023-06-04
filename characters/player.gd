@@ -7,8 +7,8 @@ class_name PlayerCharacter extends CharacterBody2D
 
 @onready var sprite := $sprite
 @onready var hitbox := $hitbox
-@onready var displayed_name := $displayed_name
-@onready var type_icon := $displayed_name/type
+@onready var nametag := $nametag
+@onready var type_icon := $nametag/type
 @onready var camera:Camera2D = $"../../Camera2D"
 @onready var color_picker := $ColorPicker
 
@@ -33,7 +33,7 @@ func _enter_tree():
 	set_multiplayer_authority(int(str(name)))
 
 func _ready():
-	displayed_name.modulate.a = 0.0
+	nametag.modulate.a = 0.0
 	
 	position = $"../../Level/StartPos".global_position
 	player_name = Global.player_name
@@ -41,6 +41,7 @@ func _ready():
 	is_host = player_id < 2
 	
 	if not is_multiplayer_authority(): return
+	Global.current_player = self
 	sprite.play("jump" if !is_on_floor() else "idle")
 	camera.enabled = true
 	camera.make_current()
@@ -52,16 +53,19 @@ func _unhandled_key_input(event:InputEvent):
 	
 	if Input.is_action_just_pressed("change_color"):
 		color_picker.visible = not color_picker.visible
+		
+	if Input.is_action_just_pressed("hide_nametag"):
+		nametag.visible = not nametag.visible
 
 func _process(delta):
-	displayed_name.text = "%s • #%s" % [player_name, str(player_id)]
-	displayed_name.size.x = 0
+	nametag.text = "%s • #%s" % [player_name, str(player_id)]
+	nametag.size.x = 0
 	type_icon.play("host" if is_host else "player")
-	displayed_name.position.x = lerpf(displayed_name.position.x, displayed_name.size.x * -0.5, delta * 5.0)
-	displayed_name.modulate.a = lerpf(displayed_name.modulate.a, 1.0, delta * 5.0)
+	nametag.position.x = lerpf(nametag.position.x, nametag.size.x * -0.5, delta * 5.0)
+	nametag.modulate.a = lerpf(nametag.modulate.a, 1.0, delta * 5.0)
 	
-	color_picker.position.x = displayed_name.position.x + 15
-	color_picker.position.y = displayed_name.position.y - 95
+	color_picker.position.x = nametag.position.x + 15
+	color_picker.position.y = nametag.position.y - 95
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
