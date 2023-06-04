@@ -69,8 +69,15 @@ hide_nametag={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Solid"
+2d_physics/layer_2="Character"
+2d_physics/layer_3="Kill Character"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)
 textures/canvas_textures/default_texture_filter=0

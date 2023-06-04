@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgbjp5laf5l2u"]
+[gd_scene load_steps=9 format=3 uid="uid://dgbjp5laf5l2u"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_i0ugv"]
 [ext_resource type="SpriteFrames" uid="uid://c122ndrvy8dxn" path="res://images/stick guy.tres" id="2_mxjx6"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn311"]
 size = Vector2(20, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ro61a"]
+size = Vector2(22, 80)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ar0g1"]
 content_margin_left = 30.0
@@ -21,6 +24,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+anti_aliasing = false
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_l5csg"]
 properties/0/path = NodePath("sprite:animation")
@@ -59,6 +63,7 @@ properties/10/sync = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_i0ugv")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
@@ -72,6 +77,15 @@ offset = Vector2(0, -25)
 [node name="hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_nn311")
+
+[node name="death_detector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death_detector"]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_ro61a")
+debug_color = Color(0.905882, 0.0705882, 0.239216, 0.419608)
 
 [node name="nametag" type="Label" parent="."]
 custom_minimum_size = Vector2(42, 30)
@@ -87,16 +101,15 @@ vertical_alignment = 1
 
 [node name="type" type="AnimatedSprite2D" parent="nametag"]
 position = Vector2(18, 15)
-scale = Vector2(0.0347656, 0.0347656)
 sprite_frames = ExtResource("3_f8u4i")
-animation = &"player"
+animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 688.0
-offset_top = 344.0
-offset_right = 634.0
-offset_bottom = 608.0
+offset_left = 816.0
+offset_top = 408.0
+offset_right = 698.0
+offset_bottom = 672.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2

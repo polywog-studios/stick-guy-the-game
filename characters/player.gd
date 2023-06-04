@@ -42,8 +42,9 @@ var quick_falling:bool = false
 @export var is_host:bool = false
 
 func update_nametag():
-	nametag.text = "%s - #%s" % [player_name, str(player_id)]
-	nametag.size.x = 0
+	if nametag:
+		nametag.text = "%s - #%s" % [player_name, str(player_id)]
+		nametag.size.x = 0
 
 func _enter_tree():
 	set_multiplayer_authority(int(str(name)))

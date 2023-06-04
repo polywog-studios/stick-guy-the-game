@@ -19,8 +19,6 @@ var MULTIPLAYER_USERNAME:String
 var MULTIPLAYER_PEER := ENetMultiplayerPeer.new()
 
 func _ready():
-	RenderingServer.set_default_clear_color(Color.WHITE)
-	
 	MULTIPLAYER_USERNAME = Settings.get_setting("username")
 	MULTIPLAYER_ADDRESS = Settings.get_setting("address")
 	MULTIPLAYER_PORT = int(Settings.get_setting("port"))
