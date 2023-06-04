@@ -4,7 +4,8 @@ class_name Gameplay extends Node2D
 @onready var main_menu := $MultiplayerGUI/MainMenu
 @onready var players := $Players
 @onready var chat_box := $HUD/ChatBox
-@onready var chat_messages := $HUD/ChatMenu/MarginContainer/VBoxContainer
+@onready var chat_messages := $HUD/ChatMenu/MarginContainer/ScrollContainer/VBoxContainer
+@onready var chat_messages_container := $HUD/ChatMenu/MarginContainer/ScrollContainer
 
 const PLAYER := preload("res://characters/player.tscn")
 
@@ -46,9 +47,6 @@ func _on_host_button_pressed():
 	add_player(multiplayer.get_unique_id())
 	
 	start_checking_invalid_state()
-	
-func show_hud():
-	$HUD/ChatMenu.visible = true
 
 func _on_join_button_pressed():
 	main_menu.hide()
@@ -58,7 +56,11 @@ func _on_join_button_pressed():
 	MULTIPLAYER_PEER.create_client(MULTIPLAYER_ADDRESS, MULTIPLAYER_PORT)
 	multiplayer.multiplayer_peer = MULTIPLAYER_PEER
 	
+	show_hud()
 	start_checking_invalid_state()
+	
+func show_hud():
+	$HUD.visible = true
 
 func add_player(peer_id:int):
 	var player = PLAYER.instantiate()
@@ -104,6 +106,9 @@ func _submit_message(player_name:String, text:String):
 	message.name = "message_%s" % chat_messages.get_child_count()
 	message.set_multiplayer_authority(player.name.to_int())
 	chat_messages.add_child(message, true)
+	
+	await get_tree().create_timer(0.01).timeout
+	chat_messages_container.scroll_vertical = chat_messages.size.y
 
 func _on_chat_message_submitted(new_text:String):
 	print("Submitted chat message: %s" % new_text)
