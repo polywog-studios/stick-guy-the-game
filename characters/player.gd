@@ -1,9 +1,9 @@
 class_name PlayerCharacter extends CharacterBody2D
 
-@export var SPEED = 80.0
-@export var BOOST_SPEED = 165.0
+@export var SPEED := 80.0
+@export var BOOST_SPEED := 165.0
 
-@export var JUMP_VELOCITY = -500.0
+@export var JUMP_VELOCITY := -500.0
 
 @onready var sprite := $sprite
 @onready var hitbox := $hitbox
@@ -18,7 +18,7 @@ var on_floor:bool = false
 var ducking:bool = false
 
 var jump_hold:float = 0
-# max is 5
+# max is 8
 var coyote_frames:int = 0
 var quick_falling:bool = false
 
