@@ -1,28 +1,13 @@
 @tool
 class_name PrideBBCode extends RichTextEffect
  
-# [pride flag=gay][/pride]
+# [pride flag=<flag>][/pride]
 var bbcode = "pride"
 
 func _process_custom_fx(char_fx):
 	if char_fx.env.has('flag'):
 		var colors = [Color.WHITE]
 		match (char_fx.env.flag):
-			'trans':
-				colors = [
-					Color.DEEP_SKY_BLUE,
-					Color.HOT_PINK,
-					Color.WHITE, 
-					Color.HOT_PINK,
-				]
-			'bi':
-				colors = [
-					Color.MEDIUM_VIOLET_RED,
-					Color.MEDIUM_VIOLET_RED,
-					Color.MEDIUM_PURPLE, 
-					Color.MEDIUM_BLUE,
-					Color.MEDIUM_BLUE,
-				]
 			'mlm':
 				colors = [
 					Color.AQUA,
@@ -38,6 +23,27 @@ func _process_custom_fx(char_fx):
 					Color.WHITE,
 					Color.ORCHID,
 					Color.DARK_MAGENTA,
+				]
+			'bi':
+				colors = [
+					Color.MEDIUM_VIOLET_RED,
+					Color.MEDIUM_VIOLET_RED,
+					Color.MEDIUM_PURPLE, 
+					Color.MEDIUM_BLUE,
+					Color.MEDIUM_BLUE,
+				]
+			'pan':
+				colors = [
+					Color.DEEP_PINK,
+					Color.GOLD,
+					Color.DEEP_SKY_BLUE
+				]
+			'trans':
+				colors = [
+					Color.DEEP_SKY_BLUE,
+					Color.HOT_PINK,
+					Color.WHITE, 
+					Color.HOT_PINK,
 				]
 		char_fx.color = colors[(int((char_fx.relative_index+char_fx.elapsed_time*10)/2))%colors.size()]
 		return true
