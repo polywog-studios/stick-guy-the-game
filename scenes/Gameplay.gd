@@ -91,6 +91,11 @@ func add_player(peer_id:int):
 	player.name = str(peer_id)
 	players.add_child(player)
 	rpc("_assign_player_ids")
+	
+	# can't figure out a better way to fix this issue
+	# where if someone joins the game, on your end it says you joined
+	# but for everyone else it says they joined, even if they already did
+	await get_tree().create_timer(0.5).timeout
 	rpc("_submit_message", peer_id, "joined the game!")
 	print("Player #%s joined: %s:%s" % [players.get_child_count(), Global.player_name, str(peer_id)])
 	return player
