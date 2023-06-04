@@ -32,13 +32,13 @@ var boost_frames:int = 0
 # if this turns into a full blown game then i'll
 # worry about this later on
 @export var player_name:String = "???":
-    set(value):
-        player_name = value
-        update_nametag()
+	set(value):
+		player_name = value
+		update_nametag()
 @export var player_id:int = -1:
-    set(value):
-        player_id = value
-        update_nametag()
+	set(value):
+		player_id = value
+		update_nametag()
 @export var is_host:bool = false
 
 func update_nametag():
