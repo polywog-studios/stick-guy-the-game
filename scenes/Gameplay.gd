@@ -99,7 +99,7 @@ func _submit_message(player_name:String, text:String):
 	
 	var message:Label = load("res://scenes/multiplayer/chat_message.tscn").instantiate()
 	message.text = "%s > %s" % [player.player_name, text]
-	message.modulate = player.modulate
+	message.modulate = player.sprite.modulate
 	message.tooltip_text = "Sent by Player #%s" % player.player_id
 	message.name = "message_%s" % chat_messages.get_child_count()
 	message.set_multiplayer_authority(player.name.to_int())
