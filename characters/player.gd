@@ -73,10 +73,6 @@ func _unhandled_key_input(_event:InputEvent):
 		nametag.visible = not nametag.visible
 
 func _process(delta):
-	# this is going back here because of a stupid crash i'm
-	# too lazy and tired to fix rn
-	nametag.text = "%s - #%s" % [player_name, str(player_id)]
-	nametag.size.x = 0
 	type_icon.play("host" if is_host else "player")
 	nametag.position.x = lerpf(nametag.position.x, nametag.size.x * -0.5, delta * 5.0)
 	nametag.modulate.a = lerpf(nametag.modulate.a, 1.0, delta * 5.0)

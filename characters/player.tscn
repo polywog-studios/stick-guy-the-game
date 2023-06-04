@@ -61,6 +61,9 @@ properties/9/sync = true
 properties/10/path = NodePath("nametag:visible")
 properties/10/spawn = true
 properties/10/sync = true
+properties/11/path = NodePath(".:boosting")
+properties/11/spawn = true
+properties/11/sync = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -107,10 +110,10 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 912.0
-offset_top = 456.0
-offset_right = 746.0
-offset_bottom = 720.0
+offset_left = 1040.0
+offset_top = 520.0
+offset_right = 810.0
+offset_bottom = 784.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
