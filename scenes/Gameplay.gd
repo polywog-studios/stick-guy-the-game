@@ -91,7 +91,7 @@ func add_player(peer_id:int):
 	player.name = str(peer_id)
 	players.add_child(player)
 	rpc("_assign_player_ids")
-	rpc("_submit_message", player.name.to_int(), "joined the game!")
+	rpc("_submit_message", peer_id, "joined the game!")
 	print("Player #%s joined: %s:%s" % [players.get_child_count(), Global.player_name, str(peer_id)])
 	return player
 	
@@ -99,7 +99,7 @@ func remove_player(peer_id:int):
 	var player:PlayerCharacter = players.get_node_or_null(str(peer_id))
 	if player != null:
 		print("Player #%s left: %s:%s" % [players.get_child_count(), Global.player_name, str(peer_id)])
-		rpc("_submit_message", player.name.to_int(), "left the game!")
+		rpc("_submit_message", peer_id, "left the game!")
 		player.queue_free()
 		players.remove_child(player)
 		rpc("_assign_player_ids")
@@ -142,8 +142,7 @@ func _submit_message(peer_id:int, text:String):
 		return
 	
 	var message:RichTextLabel = load("res://scenes/multiplayer/chat_message.tscn").instantiate()
-	message.text = "%s > %s" % [player.player_name, text]
-	message.add_theme_color_override("default_color",  player.sprite.modulate)
+	message.text = "[color=%s]%s[/color] > %s" % [player.sprite.modulate.to_html(false), player.player_name, text]
 	message.tooltip_text = "Sent by Player #%s" % player.player_id
 	message.name = "message_%s" % chat_messages.get_child_count()
 	message.set_multiplayer_authority(player.name.to_int())
@@ -154,7 +153,7 @@ func _submit_message(peer_id:int, text:String):
 
 func _on_chat_message_submitted(new_text:String):
 	print("Submitted chat message: %s" % new_text)
-	rpc("_submit_message", Global.current_player.name.to_int(), new_text)
+	rpc("_submit_message", get_tree().get_multiplayer().get_unique_id(), new_text)
 	chat_box.text = ""
 
 func _on_settings_button_pressed():
