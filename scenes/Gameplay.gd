@@ -91,13 +91,6 @@ func add_player(peer_id:int):
 	player.name = str(peer_id)
 	players.add_child(player)
 	rpc("_assign_player_ids")
-	
-	# can't figure out a better way to fix this issue
-	# where if someone joins the game, on your end it says you joined
-	# but for everyone else it says they joined, even if they already did
-	await get_tree().create_timer(0.5).timeout
-	rpc("_submit_message", peer_id, "joined the game!")
-	print("Player #%s joined: %s:%s" % [players.get_child_count(), Global.player_name, str(peer_id)])
 	return player
 	
 func remove_player(peer_id:int):
@@ -146,11 +139,14 @@ func _submit_message(peer_id:int, text:String):
 		printerr("Got submitted message with invalid player %s." % str(peer_id))
 		return
 	
+	_submit_raw_message("[color=%s]%s[/color] > %s" % [player.sprite.modulate.to_html(false), player.player_name, text], "Sent by Player #%s" % player.player_id)
+	
+@rpc("any_peer", "call_local", "reliable")
+func _submit_raw_message(text:String, tooltip:String):
 	var message:RichTextLabel = load("res://scenes/multiplayer/chat_message.tscn").instantiate()
-	message.text = "[color=%s]%s[/color] > %s" % [player.sprite.modulate.to_html(false), player.player_name, text]
-	message.tooltip_text = "Sent by Player #%s" % player.player_id
+	message.text = text
+	message.tooltip_text = tooltip
 	message.name = "message_%s" % chat_messages.get_child_count()
-	message.set_multiplayer_authority(player.name.to_int())
 	chat_messages.add_child(message, true)
 	
 	await get_tree().create_timer(0.01).timeout

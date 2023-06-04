@@ -63,6 +63,9 @@ func _ready():
 	
 	color_picker.color = sprite.modulate
 	
+	game.rpc("_submit_raw_message", "[color=%s]%s[/color] joined the game!" % [sprite.modulate.to_html(false), player_name], "Sent by Player #%s" % game.players.get_child_count())
+	print("Player #%s joined: %s:%s" % [game.players.get_child_count(), player_name, name])
+	
 func _unhandled_key_input(_event:InputEvent):
 	if not is_multiplayer_authority(): return
 	
