@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_i0ugv"]
 [ext_resource type="SpriteFrames" uid="uid://c122ndrvy8dxn" path="res://images/stick guy.tres" id="2_mxjx6"]
-[ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://fonts/guy_the_font.png" id="3_2pj5o"]
+[ext_resource type="Script" path="res://characters/player_trail.gd" id="3_cjrp7"]
 [ext_resource type="SpriteFrames" uid="uid://mn5158p3xn54" path="res://images/multiplayer/player_types.tres" id="3_f8u4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn311"]
@@ -56,6 +56,9 @@ properties/9/sync = true
 properties/10/path = NodePath("nametag:visible")
 properties/10/spawn = true
 properties/10/sync = true
+properties/11/path = NodePath(".:boosting")
+properties/11/spawn = true
+properties/11/sync = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -68,6 +71,7 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_mxjx6")
 animation = &"idle"
 offset = Vector2(0, -25)
+script = ExtResource("3_cjrp7")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 15)
@@ -79,7 +83,6 @@ offset_top = -74.0
 offset_right = 159.0
 offset_bottom = -44.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_2pj5o")
 theme_override_font_sizes/font_size = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ar0g1")
 text = "swordcube - #1"
@@ -93,10 +96,10 @@ animation = &"player"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 688.0
-offset_top = 344.0
-offset_right = 634.0
-offset_bottom = 608.0
+offset_left = 816.0
+offset_top = 408.0
+offset_right = 698.0
+offset_bottom = 672.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
