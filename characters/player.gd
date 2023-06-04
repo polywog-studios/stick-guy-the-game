@@ -13,7 +13,6 @@ class_name PlayerCharacter extends CharacterBody2D
 @onready var camera:Camera2D = $"../../Camera2D"
 @onready var color_picker := $ColorPicker
 
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var on_floor:bool = false
@@ -24,21 +23,22 @@ var jump_hold:float = 0
 var coyote_frames:int = 0
 var quick_falling:bool = false
 
+var boost_frames:int = 0
+@export var boosting:bool = false
+
 # this is a shit way of storing player info
 # since it can be exploited
 # but i'm making this for fun anyways
 # if this turns into a full blown game then i'll
 # worry about this later on
 @export var player_name:String = "???":
-	set(value):
-		player_name = value
-		update_nametag()
-		
+    set(value):
+        player_name = value
+        update_nametag()
 @export var player_id:int = -1:
-	set(value):
-		player_id = value
-		update_nametag()
-		
+    set(value):
+        player_id = value
+        update_nametag()
 @export var is_host:bool = false
 
 func update_nametag():
@@ -73,6 +73,10 @@ func _unhandled_key_input(_event:InputEvent):
 		nametag.visible = not nametag.visible
 
 func _process(delta):
+	# this is going back here because of a stupid crash i'm
+	# too lazy and tired to fix rn
+	nametag.text = "%s - #%s" % [player_name, str(player_id)]
+	nametag.size.x = 0
 	type_icon.play("host" if is_host else "player")
 	nametag.position.x = lerpf(nametag.position.x, nametag.size.x * -0.5, delta * 5.0)
 	nametag.modulate.a = lerpf(nametag.modulate.a, 1.0, delta * 5.0)
@@ -81,6 +85,17 @@ func _process(delta):
 	color_picker.position.y = nametag.position.y - 95
 
 func _physics_process(delta):
+	if boosting:
+		boost_frames += 1
+		if boost_frames >= 3:
+			var trail := sprite.duplicate()
+			trail.is_trail = true
+			trail.global_position = sprite.global_position
+			game.add_child(trail)
+			boost_frames = 0
+	else:
+		boost_frames = 0
+		
 	if not is_multiplayer_authority(): return
 	
 	if not is_on_floor():
@@ -140,7 +155,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction:float = Input.get_axis("move_left", "move_right") if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() else 0.0
-	var boosting:bool = Input.is_action_pressed("boost") and not game.chat_box.has_focus() and not game.settings_username_entry.has_focus()
+	boosting = Input.is_action_pressed("boost") and not game.chat_box.has_focus() and not game.settings_username_entry.has_focus()
 	velocity.x += direction * (BOOST_SPEED if boosting == true else SPEED)
 	sprite.speed_scale = (2.0 if boosting and on_floor and play_walk_shit else 1.0)
 	
