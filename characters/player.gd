@@ -18,6 +18,8 @@ var on_floor:bool = false
 var ducking:bool = false
 
 var jump_hold:float = 0
+# max is 5
+var coyote_frames:int = 0
 var quick_falling:bool = false
 
 # this is a shit way of storing player info
@@ -70,13 +72,17 @@ func _process(delta):
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
 	
+	if not is_on_floor():
+		coyote_frames += 1
+	else:
+		coyote_frames = 0
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		if on_floor != is_on_floor():
 			sprite.play("jump")
 			on_floor = is_on_floor()
-			
 	elif on_floor != is_on_floor():
 		if quick_falling:
 			sprite.scale = Vector2(3, 1)
@@ -109,7 +115,7 @@ func _physics_process(delta):
 		sprite.play("quick_fall")
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_frames <= 8):
 		jump_hold = 2.5
 		sprite.play("jump")
 		on_floor = false
