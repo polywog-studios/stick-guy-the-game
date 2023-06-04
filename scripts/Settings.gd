@@ -38,14 +38,14 @@ func _ready():
 func update_settings() -> void:
 	pass
 
-func get_setting(name:String):
-	if name in _settings:
-		return _settings[name]
+func get_setting(_name:String):
+	if _name in _settings:
+		return _settings[_name]
 		
 	return null
 	
-func set_setting(name:String, value:Variant):
-	_settings[name] = value
+func set_setting(_name:String, value:Variant):
+	_settings[_name] = value
 	
 func flush():
 	var file := FileAccess.open(_json_path, FileAccess.WRITE)

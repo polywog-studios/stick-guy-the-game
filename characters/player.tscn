@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://chehdiupteadk"]
+[gd_scene load_steps=8 format=3 uid="uid://dgbjp5laf5l2u"]
 
-[ext_resource type="Script" path="res://characters/player.gd" id="1_4vaq2"]
+[ext_resource type="Script" path="res://characters/player.gd" id="1_i0ugv"]
 [ext_resource type="SpriteFrames" uid="uid://c122ndrvy8dxn" path="res://images/stick guy.tres" id="2_mxjx6"]
+[ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://fonts/guy_the_font.png" id="3_2pj5o"]
 [ext_resource type="SpriteFrames" uid="uid://mn5158p3xn54" path="res://images/multiplayer/player_types.tres" id="3_f8u4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn311"]
@@ -58,7 +59,7 @@ properties/10/sync = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_4vaq2")
+script = ExtResource("1_i0ugv")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.219608, 0.580392, 0.929412, 1)
@@ -78,8 +79,11 @@ offset_top = -74.0
 offset_right = 159.0
 offset_bottom = -44.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_2pj5o")
+theme_override_font_sizes/font_size = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ar0g1")
-text = "swordcube • #1"
+text = "swordcube - #1"
+vertical_alignment = 1
 
 [node name="type" type="AnimatedSprite2D" parent="nametag"]
 position = Vector2(18, 15)
@@ -89,10 +93,10 @@ animation = &"player"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 464.0
-offset_top = 232.0
-offset_right = 522.0
-offset_bottom = 496.0
+offset_left = 688.0
+offset_top = 344.0
+offset_right = 634.0
+offset_bottom = 608.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2

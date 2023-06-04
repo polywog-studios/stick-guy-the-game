@@ -1,11 +1,18 @@
-[gd_scene format=3 uid="uid://dkg6e8nffsb6w"]
+[gd_scene load_steps=3 format=3 uid="uid://bujej4vj6j0c5"]
+
+[ext_resource type="Script" path="res://scripts/bbcodes/Pride.gd" id="1_o5tax"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ioj6v"]
+script = ExtResource("1_o5tax")
 
 [node name="MessageTemplate" type="RichTextLabel"]
 custom_minimum_size = Vector2(310, 0)
 offset_right = 1195.0
 offset_bottom = 23.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
-text = "swordcube > message nhjv jh m k huj "
+text = "swordcube > message nhjv jh m k hu"
 fit_content = true
+custom_effects = [SubResource("RichTextEffect_ioj6v")]

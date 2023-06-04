@@ -29,9 +29,21 @@ var quick_falling:bool = false
 # but i'm making this for fun anyways
 # if this turns into a full blown game then i'll
 # worry about this later on
-@export var player_name:String = "???"
-@export var player_id:int = -1
+@export var player_name:String = "???":
+	set(value):
+		player_name = value
+		update_nametag()
+		
+@export var player_id:int = -1:
+	set(value):
+		player_id = value
+		update_nametag()
+		
 @export var is_host:bool = false
+
+func update_nametag():
+	nametag.text = "%s - #%s" % [player_name, str(player_id)]
+	nametag.size.x = 0
 
 func _enter_tree():
 	set_multiplayer_authority(int(str(name)))
@@ -50,7 +62,7 @@ func _ready():
 	
 	color_picker.color = sprite.modulate
 	
-func _unhandled_key_input(event:InputEvent):
+func _unhandled_key_input(_event:InputEvent):
 	if not is_multiplayer_authority(): return
 	
 	if Input.is_action_just_pressed("change_color"):
@@ -60,13 +72,11 @@ func _unhandled_key_input(event:InputEvent):
 		nametag.visible = not nametag.visible
 
 func _process(delta):
-	nametag.text = "%s • #%s" % [player_name, str(player_id)]
-	nametag.size.x = 0
 	type_icon.play("host" if is_host else "player")
 	nametag.position.x = lerpf(nametag.position.x, nametag.size.x * -0.5, delta * 5.0)
 	nametag.modulate.a = lerpf(nametag.modulate.a, 1.0, delta * 5.0)
 	
-	color_picker.position.x = -40
+	color_picker.position.x = -40 # *rages*
 	color_picker.position.y = nametag.position.y - 95
 
 func _physics_process(delta):
@@ -128,7 +138,7 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction:int = Input.get_axis("move_left", "move_right") if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() else 0
+	var direction:float = Input.get_axis("move_left", "move_right") if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() else 0.0
 	var boosting:bool = Input.is_action_pressed("boost") and not game.chat_box.has_focus() and not game.settings_username_entry.has_focus()
 	velocity.x += direction * (BOOST_SPEED if boosting == true else SPEED)
 	sprite.speed_scale = (2.0 if boosting and on_floor and play_walk_shit else 1.0)

@@ -145,7 +145,7 @@ func _submit_message(peer_id:int, text:String):
 	
 	var message:RichTextLabel = load("res://scenes/multiplayer/chat_message.tscn").instantiate()
 	message.text = "%s > %s" % [player.player_name, text]
-	message.modulate = player.sprite.modulate
+	message.add_theme_color_override("default_color",  player.sprite.modulate)
 	message.tooltip_text = "Sent by Player #%s" % player.player_id
 	message.name = "message_%s" % chat_messages.get_child_count()
 	message.set_multiplayer_authority(player.name.to_int())

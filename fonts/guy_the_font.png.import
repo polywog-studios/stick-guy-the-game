@@ -1,0 +1,21 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://c5a6iw6sab47m"
+path="res://.godot/imported/guy_the_font.png-831a968bfb130fc1f90158f88fddb673.fontdata"
+
+[deps]
+
+source_file="res://fonts/guy_the_font.png"
+dest_files=["res://.godot/imported/guy_the_font.png-831a968bfb130fc1f90158f88fddb673.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-127")
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+fallbacks=[]
+compress=true
