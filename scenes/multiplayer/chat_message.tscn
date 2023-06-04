@@ -13,6 +13,6 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
-text = "[color=#000000]swordcube >[/color] message nhjv jh m k hu"
+text = "[color=ff0000]swordcube >[/color] message nhjv jh m k hu"
 fit_content = true
 custom_effects = [SubResource("RichTextEffect_ioj6v")]
