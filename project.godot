@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Settings="*res://scripts/Settings.gd"
 Global="*res://scripts/Global.gd"
 
 [display]

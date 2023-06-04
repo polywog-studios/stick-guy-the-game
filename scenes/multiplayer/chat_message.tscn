@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dkg6e8nffsb6w"]
 
-[node name="MessageTemplate" type="Label"]
+[node name="MessageTemplate" type="RichTextLabel"]
 custom_minimum_size = Vector2(310, 0)
 offset_right = 1195.0
 offset_bottom = 23.0
 theme_override_colors/font_outline_color = Color(0.196078, 0.196078, 0.196078, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 14
+bbcode_enabled = true
 text = "swordcube > message nhjv jh m k huj "
-autowrap_mode = 3
+fit_content = true

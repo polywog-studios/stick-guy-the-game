@@ -1,0 +1,9 @@
+[X] save server address, port & username
+[X] make a leave game button
+[-] bbcode formatting in chat
+[-] dash mechanic
+[-] breakable blocks (client sided)
+[X] make you not move when inputting shit into chat
+[-] add gal the game DLC addon mania++
+[-] wall jumping
+[-] credits menu (thanks kate for pixel arting!)
