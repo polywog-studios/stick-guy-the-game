@@ -89,13 +89,23 @@ func _on_port_changed(value: float) -> void:
 func _on_username_changed(new_text: String) -> void:
 	MULTIPLAYER_USERNAME = new_text
 
-func _on_chat_message_submitted(new_text:String):
-	print("Submitted chat message: %s" % new_text)
+@rpc("any_peer", "call_local", "reliable")
+func _submit_message(player_name:String, text:String):
+	var player:PlayerCharacter = players.get_node_or_null(player_name)
+	
+	if player == null:
+		printerr("Got submitted message with invalid player %s." % player_name)
+		return
 	
 	var message:Label = load("res://scenes/multiplayer/chat_message.tscn").instantiate()
-	message.text = "%s > %s" % [Global.player_name, new_text]
-	message.modulate = Global.current_player.modulate
-	message.tooltip_text = "Sent by Player #%s" % Global.current_player.player_id
-	chat_messages.add_child(message)
-	
+	message.text = "%s > %s" % [player.player_name, text]
+	message.modulate = player.modulate
+	message.tooltip_text = "Sent by Player #%s" % player.player_id
+	message.name = "message_%s" % chat_messages.get_child_count()
+	message.set_multiplayer_authority(player.name.to_int())
+	chat_messages.add_child(message, true)
+
+func _on_chat_message_submitted(new_text:String):
+	print("Submitted chat message: %s" % new_text)
+	rpc("_submit_message", Global.current_player.name, new_text)
 	chat_box.text = ""
