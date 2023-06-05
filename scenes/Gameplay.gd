@@ -180,6 +180,7 @@ func _on_leave_game_button_pressed():
 	MULTIPLAYER_PEER.close()
 	get_tree().reload_current_scene()
 
+@rpc("any_peer", "call_local", "unreliable")
 func parse_command(command):
 	if command.begins_with('/'):
 		var inputs = command.lstrip('/').split(' ')
