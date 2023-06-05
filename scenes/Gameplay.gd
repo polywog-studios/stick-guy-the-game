@@ -44,8 +44,8 @@ func check_invalid_state():
 
 func _on_host_button_pressed():
 	main_menu.hide()
-	correct_address()
 	set_default_info()
+	correct_address()
 	Global.player_name = MULTIPLAYER_USERNAME
 	
 	print('Creating Server %s@%s:%s' % [Global.player_name, MULTIPLAYER_ADDRESS, MULTIPLAYER_PORT])
@@ -63,8 +63,8 @@ func _on_host_button_pressed():
 
 func _on_join_button_pressed():
 	main_menu.hide()
-	correct_address()
 	set_default_info()
+	correct_address()
 	Global.player_name = MULTIPLAYER_USERNAME
 	
 	MULTIPLAYER_PEER.create_client(MULTIPLAYER_ADDRESS, MULTIPLAYER_PORT)
