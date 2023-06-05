@@ -1,8 +1,10 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://cju0hpp0lgc4k"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cju0hpp0lgc4k"]
 
 [ext_resource type="Texture2D" uid="uid://c3awbdnunt4lb" path="res://images/level tileset.png" id="1_jffpc"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1oxrm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v5sbv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kt2ig"]
 texture = ExtResource("1_jffpc")
@@ -199,7 +201,7 @@ texture_region_size = Vector2i(32, 32)
 12:0/0/physics_layer_0/angular_velocity = 0.0
 12:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 12:0/0/physics_layer_1/angular_velocity = 0.0
-12:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, 0.5, 16, 0.5, 16, 16, -16, 16)
+12:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -5, 16, -5, 16, 5, -16, 5)
 12:2/0 = 0
 12:2/0/terrain_set = 0
 12:2/0/probability = 0.0
@@ -1280,7 +1282,8 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 7
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_1oxrm")
 physics_layer_1/collision_layer = 4
-physics_layer_1/collision_mask = 7
+physics_layer_1/collision_mask = 2
+physics_layer_1/physics_material = SubResource("PhysicsMaterial_v5sbv")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Normal"
 terrain_set_0/terrain_0/color = Color(0, 0, 0, 1)

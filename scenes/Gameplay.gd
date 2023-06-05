@@ -194,12 +194,17 @@ func parse_command(command, peer_id):
 					rpc('remove_player_tag', peer_id, 'gay')
 				else:
 					rpc('add_player_tag', peer_id, 'gay')
+			'hat':
+				if inputs[1] == 'none':
+					rpc('remove_player_tag', peer_id, 'hat')
+				else:
+					rpc('add_player_tag', peer_id, 'hat', inputs[1])
 		return false
 	else:
 		return true
 
 @rpc("any_peer", "call_local", "reliable")
-func add_player_tag(peer_id,tag):
+func add_player_tag(peer_id,tag, value = true):
 	var player:PlayerCharacter = players.get_node_or_null(str(peer_id))
 	
 	if player == null:
@@ -207,7 +212,7 @@ func add_player_tag(peer_id,tag):
 		return
 		
 	if !player.tags.has(tag):
-		player.tags.append(tag)
+		player.tags.tag = value
 	
 @rpc("any_peer", "call_local", "reliable")
 func remove_player_tag(peer_id,tag):
@@ -217,4 +222,4 @@ func remove_player_tag(peer_id,tag):
 		printerr("Got submitted message with invalid player %s." % str(player))
 		return
 	
-	player.tags.remove_at(player.tags.find(tag))
+	player.tags.erase(tag)

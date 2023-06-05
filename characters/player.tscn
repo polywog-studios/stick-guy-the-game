@@ -124,10 +124,10 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 298.0
-offset_bottom = 272.0
+offset_left = 96.0
+offset_top = 48.0
+offset_right = 338.0
+offset_bottom = 312.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
@@ -141,4 +141,6 @@ presets_visible = false
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_l5csg")
 
+[connection signal="area_entered" from="death_detector" to="." method="_on_death_detector_area_entered"]
+[connection signal="body_entered" from="death_detector" to="." method="_on_death_detector_area_entered"]
 [connection signal="color_changed" from="ColorPicker" to="." method="_on_color_picker_color_changed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdlynjyi55u5p"]
+[gd_scene load_steps=6 format=3 uid="uid://cdlynjyi55u5p"]
 
 [ext_resource type="TileSet" uid="uid://cju0hpp0lgc4k" path="res://resources/level tileset.tres" id="1_36f7d"]
 [ext_resource type="Texture2D" uid="uid://d2cn4ds05rxxn" path="res://images/blahaj.png" id="2_x22kb"]
@@ -8,6 +8,8 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tbm2h"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sk1qt"]
 
 [node name="Level1" type="Node2D"]
 
@@ -31,3 +33,12 @@ shape = SubResource("WorldBoundaryShape2D_3b8bs")
 [node name="R" type="CollisionShape2D" parent="Walls"]
 position = Vector2(3136, 0)
 shape = SubResource("WorldBoundaryShape2D_tbm2h")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 672)
+shape = SubResource("WorldBoundaryShape2D_sk1qt")
+debug_color = Color(1, 0, 0, 0.419608)

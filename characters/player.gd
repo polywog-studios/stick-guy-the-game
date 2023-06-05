@@ -41,7 +41,7 @@ var boost_frames:int = 0
 		update_nametag()
 @export var is_host:bool = false
 
-@export var tags := PackedStringArray([])
+@export var tags := {}
 
 func update_nametag():
 	if nametag:
@@ -85,7 +85,7 @@ func _process(delta):
 	color_picker.position.x = -40 # *rages*
 	color_picker.position.y = nametag.position.y - 95
 	
-	if tags.has('gay'):
+	if tags.has('gay') and tags.gay:
 		sprite.modulate.h += delta
 		color_picker.color.h = sprite.modulate.h
 
@@ -189,3 +189,7 @@ func _physics_process(delta):
 
 func _on_color_picker_color_changed(color:Color):
 	sprite.modulate = color
+
+
+func _on_death_detector_area_entered(area):
+	position = game.get_node('Level/StartPos').position
