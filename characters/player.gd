@@ -86,7 +86,8 @@ func _process(delta):
 	color_picker.position.y = nametag.position.y - 95
 	
 	if tags.has('gay'):
-		sprite.modulate = Color.from_hsv(sprite.modulate.h+delta, 1, 1)
+		sprite.modulate.h += delta
+		color_picker.color.h = sprite.modulate.h
 
 func _physics_process(delta):
 	if boosting:
