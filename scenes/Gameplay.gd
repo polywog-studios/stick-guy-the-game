@@ -191,7 +191,7 @@ func parse_command(command):
 				var str = ''
 				for i in strarr:
 					str += i
-				_submit_raw_message(str, '')
+				rpc('_submit_raw_message', str, '')
 		return false
 	else:
 		return true
