@@ -9,6 +9,8 @@ class_name Gameplay extends Node2D
 @onready var chat_messages := $HUD/ChatMenu/MarginContainer/ScrollContainer/VBoxContainer
 @onready var chat_messages_container := $HUD/ChatMenu/MarginContainer/ScrollContainer
 @onready var settings_username_entry := $HUD/SettingsMenu/MarginContainer/VBoxContainer/UsernameEntry
+@onready var address_entry: LineEdit = $MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/AddressEntry
+@onready var port_entry: SpinBox = $MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PortEntry
 
 const PLAYER := preload("res://characters/player.tscn")
 
@@ -83,6 +85,9 @@ func correct_address():
 	MULTIPLAYER_PORT = int(split[1])
 	Settings.set_setting("port", str(MULTIPLAYER_PORT))
 	
+	address_entry.text = MULTIPLAYER_ADDRESS
+	port_entry.value = MULTIPLAYER_PORT
+	
 func show_hud():
 	$HUD.visible = true
 
@@ -122,6 +127,7 @@ func set_default_info():
 
 func _on_address_changed(new_text: String) -> void:
 	MULTIPLAYER_ADDRESS = new_text
+	correct_address()
 
 func _on_port_changed(value: float) -> void:
 	MULTIPLAYER_PORT = int(value)
