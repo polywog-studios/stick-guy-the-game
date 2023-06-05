@@ -9,4 +9,4 @@
 [-] wall jumping
 [-] credits menu (thanks kate for pixel arting!)
 [-] update system
-[-] make settings button unfocus after leaving the menu
+[X] make settings button unfocus after leaving the menu
