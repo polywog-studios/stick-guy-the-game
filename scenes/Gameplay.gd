@@ -189,8 +189,10 @@ func parse_command(command):
 				var strarr = inputs
 				strarr.remove_at(0)
 				var str = ''
-				for i in strarr:
-					str += i
+				for i in strarr.size():
+					if i != 0:
+						str += ' '
+					str += strarr[i]
 				rpc('_submit_raw_message', str, '')
 		return false
 	else:
