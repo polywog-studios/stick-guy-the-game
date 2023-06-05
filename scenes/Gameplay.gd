@@ -102,7 +102,7 @@ func remove_player(peer_id:int):
 	var player:PlayerCharacter = players.get_node_or_null(str(peer_id))
 	if player != null:
 		print("Player #%s left: %s:%s" % [players.get_child_count(), Global.player_name, str(peer_id)])
-		rpc("_submit_message", peer_id, "left the game!")
+		rpc("_submit_raw_message", "[color=%s]%s[/color] left the game!" % [player.sprite.modulate.to_html(false), player.player_name], "Sent by Player #%s" % players.get_child_count())
 		player.queue_free()
 		players.remove_child(player)
 		rpc("_assign_player_ids")
