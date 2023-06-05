@@ -160,7 +160,8 @@ func _submit_raw_message(text:String, tooltip:String):
 
 func _on_chat_message_submitted(new_text:String):
 	print("Submitted chat message: %s" % new_text)
-	rpc("_submit_message", get_tree().get_multiplayer().get_unique_id(), new_text)
+	if parse_command(new_text):
+		rpc("_submit_message", get_tree().get_multiplayer().get_unique_id(), new_text)
 	chat_box.text = ""
 
 func _on_settings_button_pressed():
@@ -178,3 +179,18 @@ func _on_setting_username_changed(new_text:String):
 func _on_leave_game_button_pressed():
 	MULTIPLAYER_PEER.close()
 	get_tree().reload_current_scene()
+
+func parse_command(command):
+	if command.begins_with('/'):
+		var inputs = command.lstrip('/').split(' ')
+		match inputs[0]:
+			'sendraw':
+				var strarr = inputs
+				strarr.remove_at(0)
+				var str = ''
+				for i in strarr:
+					str += i
+				_submit_raw_message(str, '')
+		return false
+	else:
+		return true
