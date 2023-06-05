@@ -6,5 +6,5 @@ func _ready():
 	$AnimationPlayer.play("pop in")
 
 func _on_ok_pressed():
-	$AnimationPlayer.animation_finished.connect(func(n:StringName): get_tree().change_scene_to_file("res://scenes/Gameplay.tscn"))
+	$AnimationPlayer.animation_finished.connect(func(_n:StringName): get_tree().change_scene_to_file("res://scenes/Gameplay.tscn"))
 	$AnimationPlayer.play("pop out")
