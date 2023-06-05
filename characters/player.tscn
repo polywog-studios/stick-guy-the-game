@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgbjp5laf5l2u"]
+[gd_scene load_steps=12 format=3 uid="uid://dgbjp5laf5l2u"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_i0ugv"]
 [ext_resource type="SpriteFrames" uid="uid://c122ndrvy8dxn" path="res://images/stick guy.tres" id="2_mxjx6"]
 [ext_resource type="SpriteFrames" uid="uid://mn5158p3xn54" path="res://images/multiplayer/player_types.tres" id="3_f8u4i"]
 [ext_resource type="Script" path="res://characters/player_trail.gd" id="3_wt21l"]
-[ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://fonts/guy_the_font.png" id="4_4g6ik"]
 [ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://fonts/guy_the_font_BOLD.png" id="4_q2ess"]
 [ext_resource type="Script" path="res://scripts/bbcodes/Pride.gd" id="5_m52ak"]
 
@@ -67,17 +66,13 @@ properties/9/sync = true
 properties/10/path = NodePath("nametag:visible")
 properties/10/spawn = true
 properties/10/sync = true
+properties/11/path = NodePath(".:boosting")
+properties/11/spawn = true
+properties/11/sync = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_i0ugv")
-SPEED = null
-BOOST_SPEED = null
-JUMP_VELOCITY = null
-boosting = null
-player_name = null
-player_id = null
-is_host = null
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.219608, 0.580392, 0.929412, 1)
@@ -107,11 +102,11 @@ offset_top = -74.0
 offset_right = 159.0
 offset_bottom = -44.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("4_4g6ik")
+theme_override_fonts/normal_font = ExtResource("4_q2ess")
 theme_override_fonts/bold_font = ExtResource("4_q2ess")
-theme_override_fonts/italics_font = ExtResource("4_4g6ik")
+theme_override_fonts/italics_font = ExtResource("4_q2ess")
 theme_override_fonts/bold_italics_font = ExtResource("4_q2ess")
-theme_override_fonts/mono_font = ExtResource("4_4g6ik")
+theme_override_fonts/mono_font = ExtResource("4_q2ess")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ar0g1")
 bbcode_enabled = true
 text = "swordcube - #1"
@@ -126,8 +121,10 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_right = 290.0
-offset_bottom = 264.0
+offset_left = 80.0
+offset_top = 40.0
+offset_right = 330.0
+offset_bottom = 304.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2

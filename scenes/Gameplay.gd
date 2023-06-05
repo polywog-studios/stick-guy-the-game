@@ -162,6 +162,7 @@ func _on_settings_button_pressed():
 	menu.visible = not menu.visible
 	if not menu.visible:
 		Settings.flush()
+	$HUD/Settings/Button.release_focus()
 
 func _on_setting_username_changed(new_text:String):
 	MULTIPLAYER_USERNAME = new_text

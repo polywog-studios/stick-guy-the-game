@@ -2,9 +2,11 @@
 [X] make a leave game button
 [X] bbcode formatting in chat
 [X] bbcode formatting in nicknames
+[X] make you not move when inputting shit into chat
 [X] dash mechanic
 [-] breakable blocks (client sided)
-[X] make you not move when inputting shit into chat
 [-] add gal the game DLC addon mania++
 [-] wall jumping
 [-] credits menu (thanks kate for pixel arting!)
+[-] update system
+[-] make settings button unfocus after leaving the menu
