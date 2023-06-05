@@ -41,6 +41,8 @@ var boost_frames:int = 0
 		update_nametag()
 @export var is_host:bool = false
 
+@export var tags := PackedStringArray([])
+
 func update_nametag():
 	if nametag:
 		nametag.text = "%s - #%s" % [player_name, str(player_id)]
@@ -82,6 +84,9 @@ func _process(delta):
 	
 	color_picker.position.x = -40 # *rages*
 	color_picker.position.y = nametag.position.y - 95
+	
+	if tags.has('gay'):
+		sprite.modulate = Color.from_hsv(sprite.modulate.h+delta, 1, 1)
 
 func _physics_process(delta):
 	if boosting:

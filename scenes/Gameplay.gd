@@ -160,7 +160,7 @@ func _submit_raw_message(text:String, tooltip:String):
 
 func _on_chat_message_submitted(new_text:String):
 	print("Submitted chat message: %s" % new_text)
-	if parse_command(new_text):
+	if parse_command(new_text, get_tree().get_multiplayer().get_unique_id()):
 		rpc("_submit_message", get_tree().get_multiplayer().get_unique_id(), new_text)
 	chat_box.text = ""
 
@@ -180,20 +180,41 @@ func _on_leave_game_button_pressed():
 	MULTIPLAYER_PEER.close()
 	get_tree().reload_current_scene()
 
-@rpc("any_peer", "call_local", "unreliable")
-func parse_command(command):
+func parse_command(command, peer_id):
 	if command.begins_with('/'):
 		var inputs = command.lstrip('/').split(' ')
 		match inputs[0]:
 			'sendraw':
 				var strarr = inputs
 				strarr.remove_at(0)
-				var str = ''
-				for i in strarr.size():
-					if i != 0:
-						str += ' '
-					str += strarr[i]
-				rpc('_submit_raw_message', str, '')
+				var out = ' '.join(PackedStringArray(strarr))
+				rpc('_submit_raw_message', out, '')
+			'gay':
+				if players.get_node_or_null(str(peer_id)) != null and players.get_node_or_null(str(peer_id)).tags.has('gay'):
+					rpc('remove_player_tag', peer_id, 'gay')
+				else:
+					rpc('add_player_tag', peer_id, 'gay')
 		return false
 	else:
 		return true
+
+@rpc("any_peer", "call_local", "reliable")
+func add_player_tag(peer_id,tag):
+	var player:PlayerCharacter = players.get_node_or_null(str(peer_id))
+	
+	if player == null:
+		printerr("Got submitted message with invalid player %s." % str(player))
+		return
+		
+	if !player.tags.has(tag):
+		player.tags.append(tag)
+	
+@rpc("any_peer", "call_local", "reliable")
+func remove_player_tag(peer_id,tag):
+	var player:PlayerCharacter = players.get_node_or_null(str(peer_id))
+	
+	if player == null:
+		printerr("Got submitted message with invalid player %s." % str(player))
+		return
+	
+	player.tags.remove_at(player.tags.find(tag))
