@@ -93,8 +93,14 @@ func _process(delta):
 		hat.offset.y = -12
 	else:
 		hat.offset.y = -25
-
-func _physics_process(delta):
+		
+func handle_coyote_frames():
+	if not is_on_floor():
+		coyote_frames += 1
+	else:
+		coyote_frames = 0
+		
+func handle_boosting():
 	if boosting:
 		boost_frames += 1
 		if boost_frames >= 3:
@@ -106,14 +112,7 @@ func _physics_process(delta):
 	else:
 		boost_frames = 0
 		
-	if not is_multiplayer_authority(): return
-	
-	if not is_on_floor():
-		coyote_frames += 1
-	else:
-		coyote_frames = 0
-	
-	# Add the gravity.
+func handle_falling(delta:float):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		if on_floor != is_on_floor():
@@ -131,7 +130,7 @@ func _physics_process(delta):
 		sprite.play("idle")
 		on_floor = is_on_floor()
 		
-	# Handle Duck (quack).
+func handle_ducking():
 	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and not ducking and Input.is_action_just_pressed("duck") and is_on_floor():
 		ducking = true
 		sprite.play("duck")
@@ -144,13 +143,13 @@ func _physics_process(delta):
 		hitbox.shape.size.y = 78
 		hitbox.position.y = 15
 		
-	# Quick Falling
+func handle_quick_falling():
 	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_just_pressed("duck") and not is_on_floor():
 		quick_falling = true
 		velocity.y = 850
 		sprite.play("quick_fall")
-
-	# Handle Jump.
+		
+func handle_jumping():
 	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_frames <= 8 or tags.has('airjump')):
 		jump_hold = 2.5
 		sprite.play("jump")
@@ -160,15 +159,12 @@ func _physics_process(delta):
 		velocity.y += JUMP_VELOCITY * (clampf(jump_hold, 0, 1) * 0.275)
 		jump_hold = lerpf(jump_hold, 0, 0.33)
 		
-	var play_walk_shit:bool = absf(velocity.x) > 50
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction:float = Input.get_axis("move_left", "move_right") if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() else 0.0
+func handle_walking(direction:float, play_walk_shit:bool):
 	boosting = Input.is_action_pressed("boost") and not game.chat_box.has_focus() and not game.settings_username_entry.has_focus()
 	velocity.x += direction * (BOOST_SPEED if boosting == true else SPEED)
 	sprite.speed_scale = (2.0 if boosting and on_floor and play_walk_shit else 1.0)
-	
+
+func handle_animations(direction:float, play_walk_shit:bool):
 	if direction != 0:
 		sprite.flip_h = true if direction < 0 else false
 	
@@ -179,9 +175,11 @@ func _physics_process(delta):
 		elif not ducking:
 			sprite.play("idle")
 			
+func handle_velocity():
 	velocity.x *= 0.85
 	move_and_slide()
-	
+			
+func handle_camera():
 	camera.position = position
 	
 	var limit_x:float = 640
@@ -192,9 +190,26 @@ func _physics_process(delta):
 	if position.y > limit_y:
 		camera.position.y = limit_y
 
+func _physics_process(delta:float):
+	handle_coyote_frames()
+	handle_boosting()
+		
+	if not is_multiplayer_authority(): return
+	
+	handle_falling(delta)
+	handle_ducking()
+	handle_quick_falling()
+	handle_jumping()
+		
+	var direction:float = Input.get_axis("move_left", "move_right") if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() else 0.0
+	var play_walk_shit:bool = absf(velocity.x) > 50
+	handle_walking(direction, play_walk_shit)
+	handle_animations(direction, play_walk_shit)
+	handle_velocity()
+	handle_camera()
+
 func _on_color_picker_color_changed(color:Color):
 	sprite.self_modulate = color
-
 
 func _on_death_detector_area_entered(_area):
 	position = game.get_node('Level/StartPos').position
