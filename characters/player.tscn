@@ -85,7 +85,7 @@ self_modulate = Color(0.219608, 0.580392, 0.929412, 1)
 position = Vector2(0, 50)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_mxjx6")
-animation = &"jump"
+animation = &"idle"
 offset = Vector2(0, -25)
 script = ExtResource("3_wt21l")
 
@@ -130,8 +130,10 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_right = 290.0
-offset_bottom = 264.0
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 314.0
+offset_bottom = 288.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
