@@ -72,6 +72,9 @@ properties/11/sync = true
 properties/12/path = NodePath("sprite:self_modulate")
 properties/12/spawn = true
 properties/12/sync = true
+properties/13/path = NodePath("sprite:modulate")
+properties/13/spawn = true
+properties/13/sync = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -127,10 +130,10 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 208.0
-offset_top = 104.0
-offset_right = 394.0
-offset_bottom = 368.0
+offset_left = 224.0
+offset_top = 112.0
+offset_right = 402.0
+offset_bottom = 376.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
