@@ -113,6 +113,7 @@ func _assign_player_ids():
 		var p = players.get_child(i)
 		p.player_id = i+1
 		p.is_host = p.player_id < 2
+	
 
 func set_default_info():
 	if MULTIPLAYER_ADDRESS.is_empty():
@@ -150,7 +151,7 @@ func _submit_message(peer_id:int, text:String):
 # separated into non rpc shit for help cmd
 func _submit_raw_local_message(text:String, tooltip:String):
 	var message:RichTextLabel = load("res://scenes/multiplayer/chat_message.tscn").instantiate()
-	message.text = text
+	message.text = ' '+text
 	message.tooltip_text = tooltip
 	message.name = "message_%s" % chat_messages.get_child_count()
 	chat_messages.add_child(message, true)
@@ -195,14 +196,16 @@ func parse_command(command:String, peer_id:int):
 		if parameters.size() < 1:
 			parameters = [""]
 		
-		if not ResourceLoader.exists("res://scenes/multiplayer/commands/%s.tscn" % cmd_name):
+		if not ResourceLoader.exists("res://scenes/multiplayer/commands/%s.gd" % cmd_name):
 			printerr("Command called %s doesn't exist!" % cmd_name)
 			return true
-			
-		var command_scene:BaseCommand = load("res://scenes/multiplayer/commands/%s.tscn" % cmd_name).instantiate()
-		command_scene.parameters = parameters
-		command_scene.peer_id = peer_id
-		add_child(command_scene)
+		
+		
+		var command_node = Node.new()
+		command_node.set_script(load("res://scenes/multiplayer/commands/%s.gd" % cmd_name))
+		command_node.parameters = parameters
+		command_node.peer_id = peer_id
+		add_child(command_node)
 		return false
 	
 	return true

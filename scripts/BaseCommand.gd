@@ -5,5 +5,5 @@ var peer_id:int
 @onready var game:Gameplay = $"../"
 @export_multiline var description:String = "No description available"
 	
-func _physics_process(delta:float):
+func _physics_process(_delta:float):
 	queue_free()

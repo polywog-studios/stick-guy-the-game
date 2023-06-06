@@ -1,5 +1,8 @@
 extends BaseCommand
 
+func _init():
+	description = "Change the hat the player has equiped."
+	
 func _ready():
 	match parameters[0]:
 		'help':
