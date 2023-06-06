@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgbjp5laf5l2u"]
+[gd_scene load_steps=13 format=3 uid="uid://dgbjp5laf5l2u"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_i0ugv"]
 [ext_resource type="SpriteFrames" uid="uid://c122ndrvy8dxn" path="res://images/stick guy.tres" id="2_mxjx6"]
 [ext_resource type="SpriteFrames" uid="uid://mn5158p3xn54" path="res://images/multiplayer/player_types.tres" id="3_f8u4i"]
 [ext_resource type="Script" path="res://characters/player_trail.gd" id="3_wt21l"]
 [ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://fonts/guy_the_font_BOLD.png" id="4_q2ess"]
+[ext_resource type="Texture2D" uid="uid://mnu2xs82psa3" path="res://images/hats/bow.png" id="4_usdvj"]
 [ext_resource type="Script" path="res://scripts/bbcodes/Pride.gd" id="5_m52ak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn311"]
@@ -78,13 +79,17 @@ collision_layer = 2
 script = ExtResource("1_i0ugv")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.219608, 0.580392, 0.929412, 1)
+self_modulate = Color(0.219608, 0.580392, 0.929412, 1)
 position = Vector2(0, 50)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_mxjx6")
-animation = &"idle"
+animation = &"jump"
 offset = Vector2(0, -25)
 script = ExtResource("3_wt21l")
+
+[node name="hat" type="Sprite2D" parent="sprite"]
+texture = ExtResource("4_usdvj")
+offset = Vector2(0, -25)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 15)
@@ -124,10 +129,10 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 96.0
-offset_top = 48.0
-offset_right = 338.0
-offset_bottom = 312.0
+offset_left = 160.0
+offset_top = 80.0
+offset_right = 370.0
+offset_bottom = 344.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2

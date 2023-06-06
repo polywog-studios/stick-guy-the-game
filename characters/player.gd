@@ -12,6 +12,7 @@ class_name PlayerCharacter extends CharacterBody2D
 @onready var game:Gameplay = $"../../"
 @onready var camera:Camera2D = $"../../Camera2D"
 @onready var color_picker := $ColorPicker
+@onready var hat := $sprite/hat
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -63,9 +64,9 @@ func _ready():
 	camera.enabled = true
 	camera.make_current()
 	
-	color_picker.color = sprite.modulate
+	color_picker.color = sprite.self_modulate
 	
-	game.rpc("_submit_raw_message", "[color=%s]%s[/color] joined the game!" % [sprite.modulate.to_html(false), player_name], "Sent by Player #%s" % game.players.get_child_count())
+	game.rpc("_submit_raw_message", "[color=%s]%s[/color] joined the game!" % [sprite.self_modulate.to_html(false), player_name], "Sent by Player #%s" % game.players.get_child_count())
 	print("Player #%s joined: %s:%s" % [game.players.get_child_count(), player_name, name])
 	
 func _unhandled_key_input(_event:InputEvent):
@@ -85,9 +86,13 @@ func _process(delta):
 	color_picker.position.x = -40 # *rages*
 	color_picker.position.y = nametag.position.y - 95
 	
-	if tags.has('gay') and tags.gay:
-		sprite.modulate.h += delta
-		color_picker.color.h = sprite.modulate.h
+	if tags.has('gay'):
+		sprite.self_modulate.h += delta
+		color_picker.color.h = sprite.self_modulate.h
+	if sprite.animation == 'duck' or sprite.animation == 'jump':
+		hat.offset.y = -12
+	else:
+		hat.offset.y = -25
 
 func _physics_process(delta):
 	if boosting:
@@ -188,8 +193,13 @@ func _physics_process(delta):
 		camera.position.y = limit_y
 
 func _on_color_picker_color_changed(color:Color):
-	sprite.modulate = color
+	sprite.self_modulate = color
 
 
-func _on_death_detector_area_entered(area):
+func _on_death_detector_area_entered(_area):
 	position = game.get_node('Level/StartPos').position
+
+func tag_changed(tag,value):
+	match tag:
+		"hat":
+			hat.texture = load("res://images/hats/%s.png" % value)

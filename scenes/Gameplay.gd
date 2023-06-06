@@ -102,7 +102,7 @@ func remove_player(peer_id:int):
 	var player:PlayerCharacter = players.get_node_or_null(str(peer_id))
 	if player != null:
 		print("Player #%s left: %s:%s" % [players.get_child_count(), Global.player_name, str(peer_id)])
-		rpc("_submit_raw_message", "[color=%s]%s[/color] left the game!" % [player.sprite.modulate.to_html(false), player.player_name], "Sent by Player #%s" % players.get_child_count())
+		rpc("_submit_raw_message", "[color=%s]%s[/color] left the game!" % [player.sprite.self_modulate.to_html(false), player.player_name], "Sent by Player #%s" % players.get_child_count())
 		player.queue_free()
 		players.remove_child(player)
 		rpc("_assign_player_ids")
@@ -145,7 +145,7 @@ func _submit_message(peer_id:int, text:String):
 		printerr("Got submitted message with invalid player %s." % str(peer_id))
 		return
 	
-	_submit_raw_message("[color=%s]%s[/color] > %s" % [player.sprite.modulate.to_html(false), player.player_name, text], "Sent by Player #%s" % player.player_id)
+	_submit_raw_message("[color=%s]%s[/color] > %s" % [player.sprite.self_modulate.to_html(false), player.player_name, text], "Sent by Player #%s" % player.player_id)
 	
 @rpc("any_peer", "call_local", "reliable")
 func _submit_raw_message(text:String, tooltip:String):
@@ -211,8 +211,8 @@ func add_player_tag(peer_id,tag, value = true):
 		printerr("Got submitted message with invalid player %s." % str(player))
 		return
 		
-	if !player.tags.has(tag):
-		player.tags.tag = value
+	player.tags[tag] = value
+	player.tag_changed(tag,value)
 	
 @rpc("any_peer", "call_local", "reliable")
 func remove_player_tag(peer_id,tag):
