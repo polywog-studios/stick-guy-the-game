@@ -147,8 +147,8 @@ func _submit_message(peer_id:int, text:String):
 	
 	_submit_raw_message("[color=%s]%s[/color] > %s" % [player.sprite.self_modulate.to_html(false), player.player_name, text], "Sent by Player #%s" % player.player_id)
 	
-@rpc("any_peer", "call_local", "reliable")
-func _submit_raw_message(text:String, tooltip:String):
+# separated into non rpc shit for help cmd
+func _submit_raw_local_message(text:String, tooltip:String):
 	var message:RichTextLabel = load("res://scenes/multiplayer/chat_message.tscn").instantiate()
 	message.text = text
 	message.tooltip_text = tooltip
@@ -157,6 +157,10 @@ func _submit_raw_message(text:String, tooltip:String):
 	
 	await get_tree().create_timer(0.01).timeout
 	chat_messages_container.scroll_vertical = chat_messages.size.y
+	
+@rpc("any_peer", "call_local", "reliable")
+func _submit_raw_message(text:String, tooltip:String):
+	_submit_raw_local_message(text, tooltip)
 
 func _on_chat_message_submitted(new_text:String):
 	print("Submitted chat message: %s" % new_text)
@@ -180,36 +184,31 @@ func _on_leave_game_button_pressed():
 	MULTIPLAYER_PEER.close()
 	get_tree().reload_current_scene()
 
-func parse_command(command, peer_id):
+func parse_command(command:String, peer_id:int):
 	if command.begins_with('/'):
-		var inputs = command.lstrip('/').split(' ')
-		match inputs[0]:
-			'sendraw':
-				var strarr = inputs
-				strarr.remove_at(0)
-				var out = ' '.join(PackedStringArray(strarr))
-				rpc('_submit_raw_message', out, '')
-			'gay':
-				if players.get_node_or_null(str(peer_id)) != null and players.get_node_or_null(str(peer_id)).tags.has('gay'):
-					rpc('remove_player_tag', peer_id, 'gay')
-				else:
-					rpc('add_player_tag', peer_id, 'gay')
-			'hat':
-				if inputs[1] == 'none':
-					rpc('remove_player_tag', peer_id, 'hat')
-				else:
-					rpc('add_player_tag', peer_id, 'hat', inputs[1])
-			'airjump':
-				if players.get_node_or_null(str(peer_id)) != null and players.get_node_or_null(str(peer_id)).tags.has('airjump'):
-					rpc('remove_player_tag', peer_id, 'airjump')
-				else:
-					rpc('add_player_tag', peer_id, 'airjump', true)
+		var inputs:PackedStringArray = command.lstrip('/').split(' ')
+		var cmd_name:String = inputs[0]
+		
+		var parameters:PackedStringArray = inputs.duplicate()
+		parameters.remove_at(0)
+		
+		if parameters.size() < 1:
+			parameters = [""]
+		
+		if not ResourceLoader.exists("res://scenes/multiplayer/commands/%s.tscn" % cmd_name):
+			printerr("Command called %s doesn't exist!" % cmd_name)
+			return true
+			
+		var command_scene:BaseCommand = load("res://scenes/multiplayer/commands/%s.tscn" % cmd_name).instantiate()
+		command_scene.parameters = parameters
+		command_scene.peer_id = peer_id
+		add_child(command_scene)
 		return false
-	else:
-		return true
+	
+	return true
 
 @rpc("any_peer", "call_local", "reliable")
-func add_player_tag(peer_id,tag, value = true):
+func add_player_tag(peer_id:int, tag:String, value = true):
 	var player:PlayerCharacter = players.get_node_or_null(str(peer_id))
 	
 	if player == null:
@@ -217,10 +216,10 @@ func add_player_tag(peer_id,tag, value = true):
 		return
 		
 	player.tags[tag] = value
-	player.tag_changed(tag,value)
+	player.tag_changed(tag, value)
 	
 @rpc("any_peer", "call_local", "reliable")
-func remove_player_tag(peer_id,tag):
+func remove_player_tag(peer_id:int, tag:String):
 	var player:PlayerCharacter = players.get_node_or_null(str(peer_id))
 	
 	if player == null:

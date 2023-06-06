@@ -1,5 +1,6 @@
 extends AnimatedSprite2D
 
+@onready var hat = $hat
 var is_trail:bool = false
 
 func _ready():

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2h4i1y324wf3"]
+
+[ext_resource type="Script" path="res://scenes/multiplayer/commands/help.gd" id="1_wlri3"]
+
+[node name="help" type="Node"]
+script = ExtResource("1_wlri3")
+description = "Displays a list of every command available with their descriptions."

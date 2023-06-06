@@ -15,7 +15,7 @@ script = ExtResource("2_e734p")
 
 [node name="MessageTemplate" type="RichTextLabel"]
 clip_contents = false
-custom_minimum_size = Vector2(310, 0)
+custom_minimum_size = Vector2(399, 0)
 offset_right = 1195.0
 offset_bottom = 23.0
 theme_override_colors/default_color = Color(1, 1, 1, 1)

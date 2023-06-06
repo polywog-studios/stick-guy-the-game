@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://hglcn1hhbsd5"]
+
+[ext_resource type="Script" path="res://scenes/multiplayer/commands/sendraw.gd" id="1_j1hl4"]
+
+[node name="SendRaw" type="Node"]
+script = ExtResource("1_j1hl4")
+description = "Sends a message into chat without displaying your name."

@@ -167,6 +167,7 @@ func handle_walking(direction:float, play_walk_shit:bool):
 func handle_animations(direction:float, play_walk_shit:bool):
 	if direction != 0:
 		sprite.flip_h = true if direction < 0 else false
+		sprite.hat.flip_h = sprite.flip_h
 	
 	if on_floor:
 		if play_walk_shit:

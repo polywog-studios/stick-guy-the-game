@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvoxoam4v1to4"]
+
+[ext_resource type="Script" path="res://scenes/multiplayer/commands/hat.gd" id="1_jtgxk"]
+
+[node name="hat" type="Node"]
+script = ExtResource("1_jtgxk")
+description = "Change the hat the player has equiped."
