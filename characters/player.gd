@@ -151,12 +151,12 @@ func _physics_process(delta):
 		sprite.play("quick_fall")
 
 	# Handle Jump.
-	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_frames <= 8):
+	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_frames <= 8 or tags.airjump):
 		jump_hold = 2.5
 		sprite.play("jump")
 		on_floor = false
 		
-	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_pressed("jump") and not on_floor:
+	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_pressed("jump") and not on_floor and tags.has('airjump'):
 		velocity.y += JUMP_VELOCITY * (clampf(jump_hold, 0, 1) * 0.275)
 		jump_hold = lerpf(jump_hold, 0, 0.33)
 		

@@ -199,6 +199,11 @@ func parse_command(command, peer_id):
 					rpc('remove_player_tag', peer_id, 'hat')
 				else:
 					rpc('add_player_tag', peer_id, 'hat', inputs[1])
+			'airjump':
+				if players.get_node_or_null(str(peer_id)) != null and players.get_node_or_null(str(peer_id)).tags.has('airjump'):
+					rpc('remove_player_tag', peer_id, 'airjump')
+				else:
+					rpc('add_player_tag', peer_id, 'airjump', true)
 		return false
 	else:
 		return true
