@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgbjp5laf5l2u"]
+[gd_scene load_steps=12 format=3 uid="uid://dgbjp5laf5l2u"]
 
 [ext_resource type="Script" path="res://characters/player.gd" id="1_i0ugv"]
 [ext_resource type="SpriteFrames" uid="uid://c122ndrvy8dxn" path="res://images/stick guy.tres" id="2_mxjx6"]
 [ext_resource type="SpriteFrames" uid="uid://mn5158p3xn54" path="res://images/multiplayer/player_types.tres" id="3_f8u4i"]
 [ext_resource type="Script" path="res://characters/player_trail.gd" id="3_wt21l"]
 [ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://fonts/guy_the_font_BOLD.png" id="4_q2ess"]
-[ext_resource type="Texture2D" uid="uid://mnu2xs82psa3" path="res://images/hats/bow.png" id="4_usdvj"]
 [ext_resource type="Script" path="res://scripts/bbcodes/Pride.gd" id="5_m52ak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn311"]
@@ -88,7 +87,6 @@ offset = Vector2(0, -25)
 script = ExtResource("3_wt21l")
 
 [node name="hat" type="Sprite2D" parent="sprite"]
-texture = ExtResource("4_usdvj")
 offset = Vector2(0, -25)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
