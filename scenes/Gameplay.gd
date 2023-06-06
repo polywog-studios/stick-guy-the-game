@@ -223,3 +223,4 @@ func remove_player_tag(peer_id,tag):
 		return
 	
 	player.tags.erase(tag)
+	player.tag_changed(tag,null)

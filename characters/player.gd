@@ -202,4 +202,7 @@ func _on_death_detector_area_entered(_area):
 func tag_changed(tag,value):
 	match tag:
 		"hat":
-			hat.texture = load("res://images/hats/%s.png" % value)
+			if value:
+				hat.texture = load("res://images/hats/%s.png" % value)
+			else:
+				hat.texture = null
