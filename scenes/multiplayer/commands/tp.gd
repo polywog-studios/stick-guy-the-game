@@ -6,7 +6,7 @@ func _init():
 func _ready():
 	if Global.current_player.is_admin:
 		var player_id:int = int(parameters[0])
-		var fuck_u_msg:String = "Player #"+str(player_id)+" isn't a valid player to grant to/take from!"
+		var fuck_u_msg:String = "Player #"+str(player_id)+" isn't a valid player to teleport to!"
 		
 		if player_id < 1 or player_id > game.players.get_child_count():
 			game._submit_raw_local_message(fuck_u_msg, ":(")
