@@ -78,7 +78,7 @@ properties/13/sync = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-floor_max_angle = 2.35619
+floor_max_angle = 1.55334
 script = ExtResource("1_i0ugv")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
@@ -131,10 +131,10 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 192.0
-offset_top = 96.0
-offset_right = 386.0
-offset_bottom = 360.0
+offset_left = 224.0
+offset_top = 112.0
+offset_right = 402.0
+offset_bottom = 376.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
