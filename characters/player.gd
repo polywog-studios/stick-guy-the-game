@@ -60,6 +60,7 @@ func _ready():
 	
 	if not is_multiplayer_authority(): return
 	Global.current_player = self
+	nametag.z_index = 1
 	sprite.play("jump" if !is_on_floor() else "idle")
 	camera.enabled = true
 	camera.make_current()

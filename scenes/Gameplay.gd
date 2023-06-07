@@ -150,6 +150,9 @@ func _submit_message(peer_id:int, text:String):
 	
 # separated into non rpc shit for help cmd
 func _submit_raw_local_message(text:String, tooltip:String):
+	while chat_messages.get_child_count() >= 100:
+		chat_messages.get_child(0).queue_free()
+		
 	var message:RichTextLabel = load("res://scenes/multiplayer/chat_message.tscn").instantiate()
 	message.text = ' '+text
 	message.tooltip_text = tooltip
