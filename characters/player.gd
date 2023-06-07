@@ -164,6 +164,7 @@ func handle_jumping(direction:float):
 		if wall_sliding:
 			velocity.x = (1 if sprite.flip_h else -1) * 700
 			sprite.flip_h = not sprite.flip_h
+			sprite.hat.flip_h = sprite.flip_h
 		
 	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_pressed("jump") and not on_floor:
 		velocity.y += JUMP_VELOCITY * (clampf(jump_hold, 0, 1) * 0.275)

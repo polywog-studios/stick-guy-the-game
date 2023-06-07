@@ -42,6 +42,10 @@ func check_invalid_state():
 		Global.last_error = "The server host has disconnected!"
 		get_tree().change_scene_to_file("res://scenes/menus/ErrorScreen.tscn")
 
+func _unhandled_key_input(event:InputEvent):
+	if event.keycode == KEY_ENTER:
+		chat_box.grab_focus()
+
 func _on_host_button_pressed():
 	main_menu.hide()
 	set_default_info()
