@@ -158,7 +158,7 @@ func handle_quick_falling():
 		
 func handle_jumping(direction:float):
 	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_frames <= 8 or wall_sliding or tags.has('airjump')):
-		jump_hold = 2.5 * (1.3 if wall_sliding else 1.0)
+		jump_hold = 2.5 * (1.5 if wall_sliding else 1.0)
 		sprite.play("jump")
 		on_floor = false
 		if wall_sliding:
