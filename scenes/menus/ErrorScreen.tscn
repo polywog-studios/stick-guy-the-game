@@ -79,7 +79,7 @@ offset_right = 409.0
 offset_bottom = 128.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
-text = "stupid description goes here"
+text = "i shit my pants"
 autowrap_mode = 3
 
 [node name="OKButton" type="Button" parent="Panel"]
