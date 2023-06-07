@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://cju0hpp0lgc4k"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://cju0hpp0lgc4k"]
 
 [ext_resource type="Texture2D" uid="uid://c3awbdnunt4lb" path="res://images/level tileset.png" id="1_jffpc"]
+[ext_resource type="PackedScene" uid="uid://dp82ygsbdajol" path="res://scenes/objects/collectables/Coin.tscn" id="2_06b7g"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_p25ji"]
 tile_data = PackedInt32Array(0, 851968, 131073, 65536, 851968, 131075, 1, 851968, 131074, 65537, 589824, 2)
@@ -1299,6 +1300,9 @@ texture_region_size = Vector2i(32, 32)
 12:2/1/physics_layer_1/linear_velocity = Vector2(0, 0)
 12:2/1/physics_layer_1/angular_velocity = 0.0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dwxmo"]
+scenes/1/scene = ExtResource("2_06b7g")
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -1313,4 +1317,5 @@ terrain_set_0/terrain_0/color = Color(0, 0, 0, 1)
 terrain_set_0/terrain_1/name = "Nailed"
 terrain_set_0/terrain_1/color = Color(0, 0, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_kt2ig")
+sources/1 = SubResource("TileSetScenesCollectionSource_dwxmo")
 pattern_0 = SubResource("TileMapPattern_p25ji")

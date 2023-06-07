@@ -156,7 +156,7 @@ func handle_quick_falling():
 		velocity.y = 850
 		sprite.play("quick_fall")
 		
-func handle_jumping(direction:float):
+func handle_jumping(_direction:float):
 	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_frames <= 8 or wall_sliding or tags.has('airjump')):
 		jump_hold = 2.5 * (1.5 if wall_sliding else 1.0)
 		sprite.play("jump")
@@ -238,6 +238,10 @@ func _on_color_picker_color_changed(color:Color):
 
 func _on_death_detector_area_entered(_area):
 	position = game.get_node('Level/StartPos').position
+	
+func _on_collectable_detector_area_entered(area):
+	if area.is_in_group("Coin"):
+		area.get_node('../').queue_free()
 
 func tag_changed(tag:String, value:Variant):
 	match tag:

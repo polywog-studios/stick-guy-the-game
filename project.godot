@@ -75,6 +75,7 @@ hide_nametag={
 2d_physics/layer_1="Solid"
 2d_physics/layer_2="Character"
 2d_physics/layer_3="Kill Character"
+2d_physics/layer_4="Collectable"
 
 [rendering]
 
