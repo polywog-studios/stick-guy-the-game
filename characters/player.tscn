@@ -72,7 +72,7 @@ properties/11/sync = true
 properties/12/path = NodePath("sprite:self_modulate")
 properties/12/spawn = true
 properties/12/sync = true
-properties/13/path = NodePath("sprite:modulate")
+properties/13/path = NodePath("sprite:skew")
 properties/13/spawn = true
 properties/13/sync = true
 
@@ -131,10 +131,10 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 32.0
-offset_top = 16.0
-offset_right = 306.0
-offset_bottom = 280.0
+offset_left = 112.0
+offset_top = 56.0
+offset_right = 346.0
+offset_bottom = 320.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
