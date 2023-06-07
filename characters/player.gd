@@ -107,6 +107,7 @@ func handle_boosting():
 			var trail := sprite.duplicate()
 			trail.is_trail = true
 			trail.global_position = sprite.global_position
+			trail.frame = sprite.frame
 			game.add_child(trail)
 			boost_frames = 0
 	else:

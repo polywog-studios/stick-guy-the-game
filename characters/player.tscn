@@ -131,10 +131,8 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 224.0
-offset_top = 112.0
-offset_right = 402.0
-offset_bottom = 376.0
+offset_right = 290.0
+offset_bottom = 264.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
