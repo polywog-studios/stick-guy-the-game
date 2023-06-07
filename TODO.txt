@@ -10,3 +10,4 @@
 [-] credits menu (thanks kate for pixel arting!)
 [-] update system
 [X] make settings button unfocus after leaving the menu
+[-] press tab to get quick player list
