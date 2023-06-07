@@ -9,5 +9,5 @@ func _process(delta:float):
 	offset.y = sin(shit) * 5
 
 func _on_area_2d_body_entered(body):
-	if body is PlayerCharacter:
+	if body == Global.current_player:
 		queue_free()

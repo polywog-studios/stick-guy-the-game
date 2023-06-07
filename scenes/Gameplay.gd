@@ -39,7 +39,7 @@ func start_checking_invalid_state():
 
 func check_invalid_state():
 	if players.get_child_count() < 1:
-		Global.last_error = "The server host has disconnected!"
+		Global.last_error = "You might've been kicked or the server host has disconnected!"
 		get_tree().change_scene_to_file("res://scenes/menus/ErrorScreen.tscn")
 
 func _input(event:InputEvent):
