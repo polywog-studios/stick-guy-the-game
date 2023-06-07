@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bju05sx26vkon"
-path="res://.godot/imported/hat7.png-4714479c8b7f8bb2e0ccc678da95f310.ctex"
+path="res://.godot/imported/cheese.png-1ead73385f63d418da7db93136e39ce6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/hats/hat7.png"
-dest_files=["res://.godot/imported/hat7.png-4714479c8b7f8bb2e0ccc678da95f310.ctex"]
+source_file="res://images/hats/cheese.png"
+dest_files=["res://.godot/imported/cheese.png-1ead73385f63d418da7db93136e39ce6.ctex"]
 
 [params]
 

@@ -93,20 +93,12 @@ alignment = 1
 prefix = "Port"
 
 [node name="HUD" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ChatMenu" type="PanelContainer" parent="HUD"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -625.0
-offset_top = -349.0
-offset_right = -192.0
-offset_bottom = -100.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 449.0
+offset_bottom = 257.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("2_73tdc")

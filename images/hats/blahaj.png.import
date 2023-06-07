@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvslq6ed3ksjg"
-path="res://.godot/imported/hat3.png-df67745dbab08c9353377bc43a0c7107.ctex"
+path="res://.godot/imported/blahaj.png-d4ec5a1f37ea67c0360deeb34a8335c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/hats/hat3.png"
-dest_files=["res://.godot/imported/hat3.png-df67745dbab08c9353377bc43a0c7107.ctex"]
+source_file="res://images/hats/blahaj.png"
+dest_files=["res://.godot/imported/blahaj.png-d4ec5a1f37ea67c0360deeb34a8335c3.ctex"]
 
 [params]
 
