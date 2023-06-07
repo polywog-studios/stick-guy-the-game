@@ -41,6 +41,7 @@ var boost_frames:int = 0
 		player_id = value
 		update_nametag()
 @export var is_host:bool = false
+@export var is_admin:bool = false
 
 @export var tags := {}
 
@@ -57,6 +58,7 @@ func _ready():
 	
 	position = $"../../Level/StartPos".global_position
 	player_name = Global.player_name
+	game.rpc("add_player_tag", name.to_int(), "hat", tags["hat"] if tags.has("hat") else null)
 	
 	if not is_multiplayer_authority(): return
 	Global.current_player = self
@@ -217,7 +219,7 @@ func _on_color_picker_color_changed(color:Color):
 func _on_death_detector_area_entered(_area):
 	position = game.get_node('Level/StartPos').position
 
-func tag_changed(tag,value):
+func tag_changed(tag:String, value:Variant):
 	match tag:
 		"hat":
 			if value:

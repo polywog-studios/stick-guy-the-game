@@ -113,7 +113,17 @@ func _assign_player_ids():
 		var p = players.get_child(i)
 		p.player_id = i+1
 		p.is_host = p.player_id < 2
-	
+		if p.is_host:
+			p.is_admin = true
+			
+@rpc("any_peer", "call_local", "unreliable")
+func _set_player_property(player_id:int, property:StringName, value:Variant):
+	var p = players.get_child(player_id - 1)
+	p.set(property, value)
+
+func _get_player_property(player_id:int, property:StringName):
+	var p = players.get_child(player_id - 1)
+	return p.get(property)
 
 func set_default_info():
 	if MULTIPLAYER_ADDRESS.is_empty():
@@ -203,7 +213,6 @@ func parse_command(command:String, peer_id:int):
 			printerr("Command called %s doesn't exist!" % cmd_name)
 			return true
 		
-		
 		var command_node = Node.new()
 		command_node.set_script(load("res://scenes/multiplayer/commands/%s.gd" % cmd_name))
 		command_node.parameters = parameters
@@ -214,7 +223,7 @@ func parse_command(command:String, peer_id:int):
 	return true
 
 @rpc("any_peer", "call_local", "reliable")
-func add_player_tag(peer_id:int, tag:String, value = true):
+func add_player_tag(peer_id:int, tag:String, value:Variant = true):
 	var player:PlayerCharacter = players.get_node_or_null(str(peer_id))
 	
 	if player == null:

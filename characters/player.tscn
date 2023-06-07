@@ -75,6 +75,9 @@ properties/12/sync = true
 properties/13/path = NodePath("sprite:modulate")
 properties/13/spawn = true
 properties/13/sync = true
+properties/14/path = NodePath(".:is_admin")
+properties/14/spawn = true
+properties/14/sync = true
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -131,10 +134,8 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 32.0
-offset_top = 16.0
-offset_right = 306.0
-offset_bottom = 280.0
+offset_right = 290.0
+offset_bottom = 264.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
