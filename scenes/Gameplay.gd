@@ -42,9 +42,12 @@ func check_invalid_state():
 		Global.last_error = "The server host has disconnected!"
 		get_tree().change_scene_to_file("res://scenes/menus/ErrorScreen.tscn")
 
-func _unhandled_key_input(event:InputEvent):
-	if event.keycode == KEY_ENTER:
-		chat_box.grab_focus()
+func _input(event:InputEvent):
+	if not event is InputEventKey: return
+	if event.keycode == KEY_ENTER and event.is_pressed():
+		if not chat_box.has_focus():
+			await get_tree().create_timer(0.05).timeout
+			chat_box.grab_focus()
 
 func _on_host_button_pressed():
 	main_menu.hide()
@@ -164,7 +167,7 @@ func _submit_message(peer_id:int, text:String):
 	
 # separated into non rpc shit for help cmd
 func _submit_raw_local_message(text:String, tooltip:String):
-	while chat_messages.get_child_count() >= 100:
+	if chat_messages.get_child_count() >= 100:
 		chat_messages.get_child(0).queue_free()
 		
 	var message:RichTextLabel = load("res://scenes/multiplayer/chat_message.tscn").instantiate()
@@ -185,6 +188,7 @@ func _on_chat_message_submitted(new_text:String):
 	if parse_command(new_text, get_tree().get_multiplayer().get_unique_id()):
 		rpc("_submit_message", get_tree().get_multiplayer().get_unique_id(), new_text)
 	chat_box.text = ""
+	chat_box.release_focus()
 
 func _on_settings_button_pressed():
 	var menu = $HUD/SettingsMenu
