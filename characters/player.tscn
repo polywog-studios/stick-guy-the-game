@@ -134,8 +134,10 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_right = 290.0
-offset_bottom = 264.0
+offset_left = 176.0
+offset_top = 88.0
+offset_right = 378.0
+offset_bottom = 352.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
@@ -148,6 +150,12 @@ presets_visible = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_l5csg")
+
+[node name="LeftWall" type="RayCast2D" parent="."]
+target_position = Vector2(-30, 0)
+
+[node name="RightWall" type="RayCast2D" parent="."]
+target_position = Vector2(30, 0)
 
 [connection signal="area_entered" from="death_detector" to="." method="_on_death_detector_area_entered"]
 [connection signal="body_entered" from="death_detector" to="." method="_on_death_detector_area_entered"]

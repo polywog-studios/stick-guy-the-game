@@ -13,6 +13,8 @@ class_name PlayerCharacter extends CharacterBody2D
 @onready var camera:Camera2D = $"../../Camera2D"
 @onready var color_picker := $ColorPicker
 @onready var hat := $sprite/hat
+@onready var left_wall := $LeftWall
+@onready var right_wall := $RightWall
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -25,6 +27,7 @@ var coyote_frames:int = 0
 var quick_falling:bool = false
 
 var boost_frames:int = 0
+var wall_sliding:bool = false
 @export var boosting:bool = false
 
 # this is a shit way of storing player info
@@ -153,15 +156,27 @@ func handle_quick_falling():
 		velocity.y = 850
 		sprite.play("quick_fall")
 		
-func handle_jumping():
-	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_frames <= 8 or tags.has('airjump')):
-		jump_hold = 2.5
+func handle_jumping(direction:float):
+	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_frames <= 8 or wall_sliding or tags.has('airjump')):
+		jump_hold = 2.5 * (1.3 if wall_sliding else 1.0)
 		sprite.play("jump")
 		on_floor = false
+		if wall_sliding:
+			velocity.x = (1 if sprite.flip_h else -1) * 700
+			sprite.flip_h = not sprite.flip_h
 		
 	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_pressed("jump") and not on_floor:
 		velocity.y += JUMP_VELOCITY * (clampf(jump_hold, 0, 1) * 0.275)
 		jump_hold = lerpf(jump_hold, 0, 0.33)
+		
+func handle_wall_sliding():
+	var old_sliding:bool = wall_sliding
+	wall_sliding = (left_wall.is_colliding() or right_wall.is_colliding()) and not is_on_ceiling() and not on_floor
+	if wall_sliding:
+		velocity.y *= 0.9
+	else:
+		if old_sliding != wall_sliding:
+			sprite.play("jump")
 		
 func handle_walking(direction:float, play_walk_shit:bool):
 	boosting = Input.is_action_pressed("boost") and not game.chat_box.has_focus() and not game.settings_username_entry.has_focus()
@@ -179,6 +194,9 @@ func handle_animations(direction:float, play_walk_shit:bool):
 			sprite.play("walk")
 		elif not ducking:
 			sprite.play("idle")
+	else:
+		if wall_sliding:
+			sprite.play("wall_slide")
 			
 func handle_velocity():
 	velocity.x *= 0.85
@@ -200,13 +218,14 @@ func _physics_process(delta:float):
 	handle_boosting()
 		
 	if not is_multiplayer_authority(): return
+	var direction:float = Input.get_axis("move_left", "move_right") if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() else 0.0
 	
 	handle_falling(delta)
 	handle_ducking()
 	handle_quick_falling()
-	handle_jumping()
-		
-	var direction:float = Input.get_axis("move_left", "move_right") if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() else 0.0
+	handle_jumping(direction)
+	handle_wall_sliding()
+	
 	var play_walk_shit:bool = absf(velocity.x) > 50
 	handle_walking(direction, play_walk_shit)
 	handle_animations(direction, play_walk_shit)
