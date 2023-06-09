@@ -15,6 +15,7 @@ class_name PlayerCharacter extends CharacterBody2D
 @onready var hat := $sprite/hat
 @onready var left_wall := $LeftWall
 @onready var right_wall := $RightWall
+@onready var ceiling := $Ceiling
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -114,6 +115,7 @@ func handle_boosting():
 			trail.is_trail = true
 			trail.global_position = sprite.global_position
 			trail.frame = sprite.frame
+			trail.modulate.a = 0.65
 			game.add_child(trail)
 			boost_frames = 0
 	else:
@@ -141,14 +143,10 @@ func handle_ducking():
 	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and not ducking and Input.is_action_just_pressed("duck") and is_on_floor():
 		ducking = true
 		sprite.play("duck")
-		hitbox.shape.size.y = 39
-		hitbox.position.y = 15 + (hitbox.shape.size.y * 0.5)
 		
 	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and ducking and Input.is_action_just_released("duck") and is_on_floor():
 		ducking = false
 		sprite.play("idle")
-		hitbox.shape.size.y = 78
-		hitbox.position.y = 15
 		
 func handle_quick_falling():
 	if not game.chat_box.has_focus() and not game.settings_username_entry.has_focus() and Input.is_action_just_pressed("duck") and not is_on_floor():
@@ -172,7 +170,7 @@ func handle_jumping(_direction:float):
 		
 func handle_wall_sliding():
 	var old_sliding:bool = wall_sliding
-	wall_sliding = (left_wall.is_colliding() or right_wall.is_colliding()) and not is_on_ceiling() and not on_floor
+	wall_sliding = (left_wall.is_colliding() or right_wall.is_colliding()) and not ceiling.is_colliding() and not on_floor
 	if wall_sliding:
 		velocity.y *= 0.9
 	else:
@@ -192,12 +190,23 @@ func handle_animations(direction:float, play_walk_shit:bool):
 	if on_floor:
 		if play_walk_shit:
 			ducking = false
-			sprite.play("walk")
+			if absf(velocity.x) > BOOST_SPEED * 4.0:
+				sprite.play("run")
+			else:
+				sprite.play("walk")
 		elif not ducking:
 			sprite.play("idle")
 	else:
 		if wall_sliding:
 			sprite.play("wall_slide")
+			
+func handle_hitbox():
+	if ducking or not on_floor:
+		hitbox.shape.size.y = 39
+		hitbox.position.y = 15 + (hitbox.shape.size.y * 0.5)
+	else:
+		hitbox.shape.size.y = 78
+		hitbox.position.y = 15
 			
 func handle_velocity():
 	velocity.x *= 0.85
@@ -230,6 +239,7 @@ func _physics_process(delta:float):
 	var play_walk_shit:bool = absf(velocity.x) > 50
 	handle_walking(direction, play_walk_shit)
 	handle_animations(direction, play_walk_shit)
+	handle_hitbox()
 	handle_velocity()
 	handle_camera()
 

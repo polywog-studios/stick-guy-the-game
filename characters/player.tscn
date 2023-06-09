@@ -86,15 +86,6 @@ properties/15/sync = true
 collision_layer = 2
 floor_max_angle = 1.55334
 script = ExtResource("1_i0ugv")
-SPEED = null
-BOOST_SPEED = null
-JUMP_VELOCITY = null
-boosting = null
-player_name = null
-player_id = null
-is_host = null
-is_admin = null
-tags = null
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.219608, 0.580392, 0.929412, 1)
@@ -155,10 +146,10 @@ animation = &"host"
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 visible = false
-offset_left = 320.0
-offset_top = 160.0
-offset_right = 450.0
-offset_bottom = 424.0
+offset_left = 352.0
+offset_top = 176.0
+offset_right = 466.0
+offset_bottom = 440.0
 scale = Vector2(0.3, 0.3)
 color_mode = 1
 picker_shape = 2
@@ -177,6 +168,9 @@ target_position = Vector2(-30, 0)
 
 [node name="RightWall" type="RayCast2D" parent="."]
 target_position = Vector2(30, 0)
+
+[node name="Ceiling" type="RayCast2D" parent="."]
+target_position = Vector2(0, -50)
 
 [connection signal="area_entered" from="death_detector" to="." method="_on_death_detector_area_entered"]
 [connection signal="body_entered" from="death_detector" to="." method="_on_death_detector_area_entered"]
