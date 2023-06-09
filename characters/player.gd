@@ -96,7 +96,10 @@ func _process(delta):
 	if tags.has('gay'):
 		sprite.self_modulate.h += delta
 		color_picker.color.h = sprite.self_modulate.h
-	if sprite.animation == 'duck' or sprite.animation == 'jump':
+		
+	if sprite.animation == 'run':
+		hat.offset.y = -20
+	elif sprite.animation == 'duck' or sprite.animation == 'jump':
 		hat.offset.y = -12
 	else:
 		hat.offset.y = -25
