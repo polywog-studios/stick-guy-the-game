@@ -7,7 +7,7 @@ const PLAYER_COLORS:Dictionary = {
 	"blue": Color.BLUE
 }
 
-var current_level:PackedScene = load("res://scenes/game/levels/Level1.tscn")
+var current_level:Node2D = load("res://scenes/game/levels/Level1.tscn").instantiate()
 
 func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color.WHITE)

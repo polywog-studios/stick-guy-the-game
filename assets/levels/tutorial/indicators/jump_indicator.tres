@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dpgopye57a2jq"]
+
+[ext_resource type="Texture2D" uid="uid://dm4be2336olrl" path="res://assets/levels/tutorial/indicators/jump_indicator.png" id="1_la77u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx5ba"]
+atlas = ExtResource("1_la77u")
+region = Rect2(0, 0, 124, 124)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g45yb"]
+atlas = ExtResource("1_la77u")
+region = Rect2(124, 0, 124, 124)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx5ba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g45yb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

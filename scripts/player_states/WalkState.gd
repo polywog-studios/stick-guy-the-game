@@ -15,6 +15,7 @@ func running_trail() -> void:
 	
 	var tween:Tween = create_tween()
 	tween.tween_property(trail, "modulate:a", 0.0, 0.7)
+	tween.tween_callback(trail.queue_free)
 
 func update_anim() -> void:
 	character.sprite.play("run" if Input.is_action_pressed("run") else "walk")

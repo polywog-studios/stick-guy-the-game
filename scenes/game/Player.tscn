@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crou1qo48xw1r"]
+[gd_scene load_steps=12 format=3 uid="uid://crou1qo48xw1r"]
 
 [ext_resource type="SpriteFrames" uid="uid://demf0heodnqmv" path="res://assets/players/guy.tres" id="1_mylgw"]
 [ext_resource type="Script" path="res://scenes/game/Player.gd" id="1_ripyv"]
@@ -8,9 +8,15 @@
 [ext_resource type="Script" path="res://scripts/player_states/DuckState.gd" id="5_8l3gh"]
 [ext_resource type="Script" path="res://scripts/player_states/JumpState.gd" id="6_8chk8"]
 [ext_resource type="Script" path="res://scripts/player_states/DropState.gd" id="7_4r2ij"]
+[ext_resource type="Script" path="res://scripts/player_states/FallState.gd" id="8_fvvd5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uldty"]
-size = Vector2(38, 78)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpl0o"]
+radius = 15.0
+height = 78.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_atir3"]
+radius = 17.0
+height = 82.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ripyv")
@@ -19,12 +25,37 @@ script = ExtResource("1_ripyv")
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_mylgw")
-animation = &"idle"
-metadata/_edit_lock_ = true
+animation = &"fall"
+offset = Vector2(0, -31)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -49)
+shape = SubResource("CapsuleShape2D_qpl0o")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -64)
+collision_layer = 128
+collision_mask = 128
+
+[node name="DeathHitbox" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, 15)
-shape = SubResource("RectangleShape2D_uldty")
+shape = SubResource("CapsuleShape2D_atir3")
+debug_color = Color(0.701961, 0, 0, 0.419608)
+
+[node name="UnstuckerUpper" type="Node2D" parent="."]
+position = Vector2(0, -64)
+
+[node name="Up" type="RayCast2D" parent="UnstuckerUpper"]
+target_position = Vector2(0, -20)
+collision_mask = 15
+
+[node name="Down" type="RayCast2D" parent="UnstuckerUpper"]
+
+[node name="Left" type="RayCast2D" parent="UnstuckerUpper"]
+target_position = Vector2(-20, 0)
+
+[node name="Right" type="RayCast2D" parent="UnstuckerUpper"]
+target_position = Vector2(20, 0)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("3_sjukh")
@@ -46,5 +77,11 @@ autostart = true
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_8chk8")
 
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("8_fvvd5")
+
 [node name="Drop" type="Node" parent="StateMachine"]
 script = ExtResource("7_4r2ij")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_death"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_death"]

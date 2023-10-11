@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dogjamtx1lkxe"
-path="res://.godot/imported/jump_2x_indicator.png-cab62ebb5e649022597ffaf02b69a2e9.ctex"
+uid="uid://dm4be2336olrl"
+path="res://.godot/imported/jump_indicator.png-bfc88891c77a64763b31c3bdac8c019d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/jump_2x_indicator.png"
-dest_files=["res://.godot/imported/jump_2x_indicator.png-cab62ebb5e649022597ffaf02b69a2e9.ctex"]
+source_file="res://assets/levels/tutorial/indicators/jump_indicator.png"
+dest_files=["res://.godot/imported/jump_indicator.png-bfc88891c77a64763b31c3bdac8c019d.ctex"]
 
 [params]
 

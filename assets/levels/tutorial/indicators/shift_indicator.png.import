@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2hj0ned3av53"
-path="res://.godot/imported/drop_indicator.png-0bf15dd765a306283ba90b93c21380ae.ctex"
+uid="uid://cq6qkm2jigb4u"
+path="res://.godot/imported/shift_indicator.png-fe0799a07d4102141104db5c50da7064.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/drop_indicator.png"
-dest_files=["res://.godot/imported/drop_indicator.png-0bf15dd765a306283ba90b93c21380ae.ctex"]
+source_file="res://assets/levels/tutorial/indicators/shift_indicator.png"
+dest_files=["res://.godot/imported/shift_indicator.png-fe0799a07d4102141104db5c50da7064.ctex"]
 
 [params]
 
