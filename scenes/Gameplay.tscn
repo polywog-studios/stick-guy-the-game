@@ -1,196 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgb71n232avxd"]
+[gd_scene load_steps=3 format=3 uid="uid://biiui05oknl65"]
 
-[ext_resource type="Script" path="res://scenes/Gameplay.gd" id="1_3vj7d"]
-[ext_resource type="StyleBox" uid="uid://dg4dq0xwlukxk" path="res://resources/generic panel.tres" id="2_73tdc"]
-[ext_resource type="PackedScene" uid="uid://cdlynjyi55u5p" path="res://scenes/levels/TestingLevel.tscn" id="2_u3ete"]
-[ext_resource type="Script" path="res://scenes/deselect_control.gd" id="4_b5oof"]
-[ext_resource type="Texture2D" uid="uid://bbiaa4i31wudi" path="res://images/gameplay/settings.png" id="5_hp8h5"]
+[ext_resource type="PackedScene" uid="uid://crou1qo48xw1r" path="res://scenes/game/Player.tscn" id="1_1swf6"]
+[ext_resource type="Script" path="res://scenes/Gameplay.gd" id="1_2oifm"]
 
 [node name="Gameplay" type="Node2D"]
-script = ExtResource("1_3vj7d")
-
-[node name="Level" parent="." instance=ExtResource("2_u3ete")]
+script = ExtResource("1_2oifm")
 
 [node name="Players" type="Node2D" parent="."]
 
+[node name="Player" parent="Players" instance=ExtResource("1_1swf6")]
+position = Vector2(70, 307)
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 360)
-position_smoothing_enabled = true
 
-[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://characters/player.tscn")
-spawn_path = NodePath("../Players")
+[node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="MultiplayerGUI" type="CanvasLayer" parent="."]
-
-[node name="MainMenu" type="PanelContainer" parent="MultiplayerGUI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -164.0
-offset_top = -99.0
-offset_right = 164.0
-offset_bottom = 99.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/panel = ExtResource("2_73tdc")
-
-[node name="MarginContainer" type="MarginContainer" parent="MultiplayerGUI/MainMenu"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerGUI/MainMenu/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Label" type="Label" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Multiplayer"
-horizontal_alignment = 1
-
-[node name="HostButton" type="Button" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Host"
-
-[node name="JoinButton" type="Button" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Join"
-
-[node name="UsernameEntry" type="LineEdit" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(210, 0)
-layout_mode = 2
-placeholder_text = "Username"
-alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-alignment = 1
-
-[node name="AddressEntry" type="LineEdit" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(165, 0)
-layout_mode = 2
-placeholder_text = "Address"
-alignment = 1
-
-[node name="PortEntry" type="SpinBox" parent="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(110, 0)
-layout_mode = 2
-max_value = 65535.0
-value = 9999.0
-alignment = 1
-prefix = "Port"
-
-[node name="HUD" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="ChatMenu" type="PanelContainer" parent="HUD"]
+[node name="ColorPicker" type="HBoxContainer" parent="UILayer"]
 offset_left = 16.0
-offset_top = 16.0
-offset_right = 449.0
-offset_bottom = 265.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/panel = ExtResource("2_73tdc")
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/ChatMenu"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 45
-
-[node name="ScrollContainer" type="ScrollContainer" parent="HUD/ChatMenu/MarginContainer"]
-layout_mode = 2
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/ChatMenu/MarginContainer/ScrollContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="ChatBox" type="LineEdit" parent="HUD"]
-offset_left = 27.0
-offset_top = 224.0
-offset_right = 437.0
-offset_bottom = 255.0
-size_flags_stretch_ratio = 0.0
-placeholder_text = "Enter chat message here"
-script = ExtResource("4_b5oof")
-
-[node name="SettingsMenu" type="PanelContainer" parent="HUD"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -164.0
-offset_top = -76.0
-offset_right = 164.0
-offset_bottom = 76.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/panel = ExtResource("2_73tdc")
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/SettingsMenu"]
-layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/SettingsMenu/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Label" type="Label" parent="HUD/SettingsMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Settings"
-horizontal_alignment = 1
-
-[node name="LeaveGameButton" type="Button" parent="HUD/SettingsMenu/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Leave Game"
-
-[node name="UsernameEntry" type="LineEdit" parent="HUD/SettingsMenu/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(210, 0)
-layout_mode = 2
-placeholder_text = "Username"
-alignment = 1
-
-[node name="Settings" type="Sprite2D" parent="HUD"]
-position = Vector2(1246, 35)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("5_hp8h5")
-
-[node name="Button" type="Button" parent="HUD/Settings"]
-modulate = Color(1, 1, 1, 0.01)
-offset_left = -70.0
-offset_top = -70.0
-offset_right = 70.0
-offset_bottom = 70.0
-
-[connection signal="pressed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
-[connection signal="text_changed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/UsernameEntry" to="." method="_on_username_changed"]
-[connection signal="text_changed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/AddressEntry" to="." method="_on_address_changed"]
-[connection signal="value_changed" from="MultiplayerGUI/MainMenu/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/PortEntry" to="." method="_on_port_changed"]
-[connection signal="text_submitted" from="HUD/ChatBox" to="." method="_on_chat_message_submitted"]
-[connection signal="pressed" from="HUD/SettingsMenu/MarginContainer/VBoxContainer/LeaveGameButton" to="." method="_on_leave_game_button_pressed"]
-[connection signal="text_changed" from="HUD/SettingsMenu/MarginContainer/VBoxContainer/UsernameEntry" to="." method="_on_setting_username_changed"]
-[connection signal="pressed" from="HUD/Settings/Button" to="." method="_on_settings_button_pressed"]
+offset_top = 416.0
+offset_right = 624.0
+offset_bottom = 464.0
+mouse_filter = 2
+theme_override_constants/separation = 10
