@@ -1,6 +1,6 @@
 class_name JumpState extends CharacterState
 
-@export var JUMP_VELOCITY = -500.0
+@export var JUMP_VELOCITY = -550.0
 
 func on_enter() -> void:
 	character.sprite.frame = 0

@@ -30,9 +30,10 @@ func _physics_process(delta:float) -> void:
 		if velocity.y >= GRAVITY:
 			velocity.y = GRAVITY
 			
-		if not ["Jump", "Fall", "Drop"].has(state_machine.current_state.name) and velocity.y > 0.0:
+		if not ["Jump", "Fall", "Drop"].has(state_machine.current_state.name) and velocity.y > 100.0:
 			state_machine.change_state("Fall")
 	else:
+		velocity.y = 0.0
 		jumps_left = 2
 	
 	if Input.is_action_just_pressed("jump") and jumps_left > 0:
@@ -48,7 +49,7 @@ func _physics_process(delta:float) -> void:
 	velocity.x += ((SPEED * ((RUNNING_SPEED * 0.001) if Input.is_action_pressed("run") else 1.0)) * axis) * delta
 	velocity.x *= 0.9
 	
-	if up_cast.is_colliding() or down_cast.is_colliding() or left_cast.is_colliding() or right_cast.is_colliding():
+	if up_cast.is_colliding() and down_cast.is_colliding() and left_cast.is_colliding() and right_cast.is_colliding():
 		wall_stucks += 1
 		if wall_stucks >= 250: # if we're stuck for 250 frames kill the player
 			on_death.emit()

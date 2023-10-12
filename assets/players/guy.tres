@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=25 format=3 uid="uid://demf0heodnqmv"]
+[gd_resource type="SpriteFrames" load_steps=26 format=3 uid="uid://demf0heodnqmv"]
 
 [ext_resource type="Texture2D" uid="uid://dpt23ocnnp2ga" path="res://assets/players/guy.png" id="1_ivm0g"]
 
@@ -93,6 +93,10 @@ region = Rect2(186, 62, 62, 62)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ed6ti"]
 atlas = ExtResource("1_ivm0g")
 region = Rect2(248, 62, 62, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rmm6"]
+atlas = ExtResource("1_ivm0g")
+region = Rect2(248, 248, 62, 62)
 
 [resource]
 animations = [{
@@ -198,5 +202,13 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rmm6")
+}],
+"loop": false,
+"name": &"wall_slide",
 "speed": 10.0
 }]
