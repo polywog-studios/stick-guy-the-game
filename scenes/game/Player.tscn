@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crou1qo48xw1r"]
+[gd_scene load_steps=18 format=3 uid="uid://crou1qo48xw1r"]
 
 [ext_resource type="SpriteFrames" uid="uid://demf0heodnqmv" path="res://assets/players/guy.tres" id="1_mylgw"]
 [ext_resource type="Script" path="res://scenes/game/Player.gd" id="1_ripyv"]
@@ -10,9 +10,9 @@
 [ext_resource type="Script" path="res://scripts/player_states/DropState.gd" id="7_4r2ij"]
 [ext_resource type="Script" path="res://scripts/player_states/FallState.gd" id="8_fvvd5"]
 [ext_resource type="Shader" path="res://assets/shaders/ColorReplace.gdshader" id="10_h3s03"]
+[ext_resource type="Script" path="res://scripts/player_states/WallSlideState.gd" id="10_hyl1o"]
 [ext_resource type="Texture2D" uid="uid://dma0x57mdxfl4" path="res://assets/nametag_bg.png" id="10_klbhy"]
 [ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://assets/fonts/guy_the_font_BOLD.png" id="11_v0nxe"]
-[ext_resource type="Script" path="res://scripts/player_states/WallSlideState.gd" id="10_hyl1o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpl0o"]
 radius = 15.0
@@ -101,6 +101,9 @@ script = ExtResource("8_fvvd5")
 [node name="Drop" type="Node" parent="StateMachine"]
 script = ExtResource("7_4r2ij")
 
+[node name="WallSlide" type="Node" parent="StateMachine"]
+script = ExtResource("10_hyl1o")
+
 [node name="NameTag" type="NinePatchRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_cfet8")
@@ -124,8 +127,6 @@ scale = Vector2(0.8, 0.8)
 text = "player"
 label_settings = SubResource("LabelSettings_63583")
 horizontal_alignment = 1
-[node name="WallSlide" type="Node" parent="StateMachine"]
-script = ExtResource("10_hyl1o")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_death"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_death"]
