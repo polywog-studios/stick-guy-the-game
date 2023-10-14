@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crou1qo48xw1r"]
+[gd_scene load_steps=17 format=3 uid="uid://crou1qo48xw1r"]
 
 [ext_resource type="SpriteFrames" uid="uid://demf0heodnqmv" path="res://assets/players/guy.tres" id="1_mylgw"]
 [ext_resource type="Script" path="res://scenes/game/Player.gd" id="1_ripyv"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://scripts/player_states/JumpState.gd" id="6_8chk8"]
 [ext_resource type="Script" path="res://scripts/player_states/DropState.gd" id="7_4r2ij"]
 [ext_resource type="Script" path="res://scripts/player_states/FallState.gd" id="8_fvvd5"]
+[ext_resource type="Shader" path="res://assets/shaders/ColorReplace.gdshader" id="10_h3s03"]
+[ext_resource type="Texture2D" uid="uid://dma0x57mdxfl4" path="res://assets/nametag_bg.png" id="10_klbhy"]
+[ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://assets/fonts/guy_the_font_BOLD.png" id="11_v0nxe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpl0o"]
 radius = 15.0
@@ -17,6 +20,15 @@ height = 78.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_atir3"]
 radius = 17.0
 height = 82.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfet8"]
+shader = ExtResource("10_h3s03")
+shader_parameter/from = Color(0, 0, 1, 1)
+shader_parameter/to = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_63583"]
+font = ExtResource("11_v0nxe")
+font_color = Color(1, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 8)
@@ -87,6 +99,30 @@ script = ExtResource("8_fvvd5")
 
 [node name="Drop" type="Node" parent="StateMachine"]
 script = ExtResource("7_4r2ij")
+
+[node name="NameTag" type="NinePatchRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_cfet8")
+offset_top = -140.0
+offset_right = 139.0
+offset_bottom = -108.0
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("10_klbhy")
+patch_margin_left = 32
+patch_margin_top = 16
+patch_margin_right = 32
+patch_margin_bottom = 16
+
+[node name="Label" type="Label" parent="NameTag"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 112.0
+offset_bottom = 29.0
+scale = Vector2(0.8, 0.8)
+text = "player"
+label_settings = SubResource("LabelSettings_63583")
+horizontal_alignment = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_death"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_death"]

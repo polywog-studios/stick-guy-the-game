@@ -51,6 +51,11 @@ func update_color_picker():
 	
 	player.color = Tools.PLAYER_COLORS.keys()[cur_color]
 	player.sprite.modulate = Tools.PLAYER_COLORS[player.color]
+	
+	var shader:ShaderMaterial = player.nametag_bg.material as ShaderMaterial
+	shader.set_shader_parameter("to", player.sprite.modulate)
+	player.nametag_label.label_settings.font_color = player.sprite.modulate
+	
 	Tools.change_window_icon(window_icons[player.color])
 
 func reset_player():

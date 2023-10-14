@@ -8,6 +8,9 @@ class_name Player extends CharacterBody2D
 @onready var left_cast:RayCast2D = $UnstuckerUpper/Left
 @onready var right_cast:RayCast2D = $UnstuckerUpper/Right
 
+@onready var nametag_bg:NinePatchRect = $NameTag
+@onready var nametag_label:Label = $NameTag/Label
+
 @export var color:String = "red"
 
 signal on_death
@@ -20,8 +23,9 @@ var jumps_left:int = 0
 var wall_stucks:int = 0
 
 var boink_tween:Tween
+var nametag_visible:bool = true
 
-func _ready():
+func _ready() -> void:
 	sprite.modulate = Tools.PLAYER_COLORS[color]
 
 func _physics_process(delta:float) -> void:
@@ -55,8 +59,16 @@ func _physics_process(delta:float) -> void:
 			on_death.emit()
 	else:
 		wall_stucks = 0
+		
+	if Input.is_action_just_pressed("nametag_toggle"):
+		nametag_visible = not nametag_visible
 	
 	move_and_slide()
+	
+func _process(delta:float):
+	nametag_bg.size.x = (nametag_label.size.x * nametag_label.scale.x) + 15.0
+	nametag_bg.position.x = (nametag_bg.size.x * nametag_bg.scale.x) * -0.5
+	nametag_bg.modulate.a = lerpf(nametag_bg.modulate.a, 1.0 if nametag_visible else 0.0, delta * 10.0)
 
 func _on_death(_area):
 	on_death.emit()
