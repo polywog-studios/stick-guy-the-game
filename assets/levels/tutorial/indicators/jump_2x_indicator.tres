@@ -2,24 +2,24 @@
 
 [ext_resource type="Texture2D" uid="uid://dogjamtx1lkxe" path="res://assets/levels/tutorial/indicators/jump_2x_indicator.png" id="1_lmy8e"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8m4d3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngx2d"]
 atlas = ExtResource("1_lmy8e")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ri5i5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ai1e"]
 atlas = ExtResource("1_lmy8e")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(32, 0, 32, 32)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8m4d3")
+"texture": SubResource("AtlasTexture_ngx2d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ri5i5")
+"texture": SubResource("AtlasTexture_5ai1e")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 5.0
 }]

@@ -2,22 +2,22 @@
 
 [ext_resource type="Texture2D" uid="uid://c2hj0ned3av53" path="res://assets/levels/tutorial/indicators/drop_indicator.png" id="1_uao5x"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dv2c0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pumxk"]
 atlas = ExtResource("1_uao5x")
-region = Rect2(0, 0, 124, 124)
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ero1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1rs6"]
 atlas = ExtResource("1_uao5x")
-region = Rect2(124, 0, 124, 124)
+region = Rect2(64, 0, 64, 64)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dv2c0")
+"texture": SubResource("AtlasTexture_pumxk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7ero1")
+"texture": SubResource("AtlasTexture_p1rs6")
 }],
 "loop": true,
 "name": &"default",

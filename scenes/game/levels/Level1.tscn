@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://assets/shaders/Coin.gdshader" id="2_y437b"]
 [ext_resource type="Texture2D" uid="uid://dd7fmo71kckh8" path="res://assets/collectables/coin.png" id="3_lni7a"]
 [ext_resource type="Texture2D" uid="uid://cq6qkm2jigb4u" path="res://assets/levels/tutorial/indicators/shift_indicator.png" id="3_tvk55"]
-[ext_resource type="SpriteFrames" uid="uid://751upy8l7kvs" path="res://assets/levels/tutorial/indicators/jump_2x_indicator.tres" id="4_3kh0g"]
 [ext_resource type="Texture2D" uid="uid://0jdchxofg8ha" path="res://assets/tilesets/red.png" id="5_boqs2"]
 [ext_resource type="Texture2D" uid="uid://bjmxhioehsfdu" path="res://assets/tilesets/white.png" id="5_fvrlr"]
 [ext_resource type="SpriteFrames" uid="uid://cqjinvo3fmldn" path="res://assets/levels/tutorial/indicators/drop_indicator.tres" id="5_jo0er"]
@@ -15,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bt401jrslk1nr" path="res://assets/tilesets/green.png" id="8_rvs3y"]
 [ext_resource type="Texture2D" uid="uid://brsedgixupmq1" path="res://assets/levels/tutorial/indicators/color_swap_indicator.png" id="9_d3e10"]
 [ext_resource type="Texture2D" uid="uid://c5ve435kqutfn" path="res://assets/tilesets/blue.png" id="9_k1cpv"]
+[ext_resource type="Texture2D" uid="uid://dogjamtx1lkxe" path="res://assets/levels/tutorial/indicators/jump_2x_indicator.png" id="12_iayk3"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_473vi"]
 tile_data = PackedInt32Array(0, 851968, 131073, 65536, 851968, 131075, 1, 851968, 131074, 65537, 589824, 2)
@@ -5784,59 +5784,50 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(393446, 786437, 0, 458982, 786437, 1, 524518, 786437, 1, 590054, 786437, 1, 590053, 786433, 65536, 524517, 786433, 65537, 458981, 786433, 65537, 393445, 786433, 65537)
 
 [node name="Indicators" type="Node2D" parent="."]
-position = Vector2(0, 136)
-scale = Vector2(0.333, 0.333)
 
-[node name="Jump2x" type="AnimatedSprite2D" parent="Indicators"]
-modulate = Color(0.901961, 0.270588, 0.223529, 1)
-position = Vector2(2370, 309)
-scale = Vector2(1.5, 1.5)
-sprite_frames = ExtResource("4_3kh0g")
-frame_progress = 0.207489
-
-[node name="Drop" type="AnimatedSprite2D" parent="Indicators"]
-modulate = Color(0.388235, 0.670588, 0.247059, 1)
-position = Vector2(7564.5, -333.5)
-scale = Vector2(2.25, 2.25)
-sprite_frames = ExtResource("5_jo0er")
-
-[node name="Down" type="Sprite2D" parent="Indicators"]
-modulate = Color(0.388235, 0.670588, 0.247059, 1)
-position = Vector2(7683, -286)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("6_8w06a")
-
-[node name="ColorSwapIndicator" type="Sprite2D" parent="Indicators"]
-modulate = Color(0.901961, 0.270588, 0.223529, 1)
-position = Vector2(3758, -56)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("9_d3e10")
-
-[node name="Indicators2" type="Node2D" parent="."]
-
-[node name="Jump" type="AnimatedSprite2D" parent="Indicators2"]
+[node name="Jump" type="AnimatedSprite2D" parent="Indicators"]
 modulate = Color(0.901961, 0.270588, 0.223529, 1)
 position = Vector2(237, 197)
 sprite_frames = ExtResource("1_jeht2")
 frame_progress = 0.16094
 centered = false
 
-[node name="Jump2" type="AnimatedSprite2D" parent="Indicators2"]
+[node name="Jump2" type="AnimatedSprite2D" parent="Indicators"]
 modulate = Color(0.901961, 0.270588, 0.223529, 1)
 position = Vector2(751, 230)
 sprite_frames = ExtResource("1_jeht2")
-frame_progress = 0.4992
+frame_progress = 0.736171
 
-[node name="Run" type="AnimatedSprite2D" parent="Indicators2"]
+[node name="Run" type="AnimatedSprite2D" parent="Indicators"]
 modulate = Color(0.901961, 0.270588, 0.223529, 1)
 position = Vector2(407, 230)
 sprite_frames = ExtResource("2_ej01f")
 frame_progress = 0.214131
 
-[node name="Shift" type="Sprite2D" parent="Indicators2"]
+[node name="Shift" type="Sprite2D" parent="Indicators"]
 modulate = Color(0.901961, 0.270588, 0.223529, 1)
 position = Vector2(448, 201)
 texture = ExtResource("3_tvk55")
+
+[node name="Jump2x" type="Sprite2D" parent="Indicators"]
+modulate = Color(0.901961, 0.270588, 0.223529, 1)
+position = Vector2(792, 231)
+texture = ExtResource("12_iayk3")
+
+[node name="ColorSwapIndicator" type="Sprite2D" parent="Indicators"]
+modulate = Color(0.901961, 0.270588, 0.223529, 1)
+position = Vector2(1259, 86)
+texture = ExtResource("9_d3e10")
+
+[node name="Drop" type="AnimatedSprite2D" parent="Indicators"]
+modulate = Color(0.388235, 0.670588, 0.247059, 1)
+position = Vector2(2501, 23)
+sprite_frames = ExtResource("5_jo0er")
+
+[node name="Down" type="Sprite2D" parent="Indicators"]
+modulate = Color(0.388235, 0.670588, 0.247059, 1)
+position = Vector2(2548, 41)
+texture = ExtResource("6_8w06a")
 
 [node name="SpawnPos" type="Node2D" parent="."]
 position = Vector2(50, 183)
