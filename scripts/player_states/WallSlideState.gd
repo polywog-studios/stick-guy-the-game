@@ -12,7 +12,8 @@ func on_process(delta:float) -> void:
 		change_state("Walk")
 
 func on_physics_process(delta:float) -> void:
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_pressed("jump") and absf(character.velocity.x) > 10:
 		change_state("Jump")
+		character.velocity.y *= 1.5
 	else:
 		character.velocity.y = Player.GRAVITY * 0.05
