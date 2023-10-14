@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://crou1qo48xw1r"]
+[gd_scene load_steps=19 format=3 uid="uid://crou1qo48xw1r"]
 
 [ext_resource type="SpriteFrames" uid="uid://demf0heodnqmv" path="res://assets/players/guy.tres" id="1_mylgw"]
 [ext_resource type="Script" path="res://scenes/game/Player.gd" id="1_ripyv"]
@@ -17,6 +17,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qoh87"]
 radius = 7.0
 height = 39.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0a1bu"]
+size = Vector2(20, 6)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1he8p"]
 radius = 8.0
@@ -47,6 +50,14 @@ offset = Vector2(0, -31)
 position = Vector2(0, -25)
 shape = SubResource("CapsuleShape2D_qoh87")
 
+[node name="WallCheck" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCheck"]
+position = Vector2(0, -25)
+shape = SubResource("RectangleShape2D_0a1bu")
+
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, -40)
 
@@ -54,25 +65,6 @@ position = Vector2(0, -40)
 position = Vector2(0, 15)
 shape = SubResource("CapsuleShape2D_1he8p")
 debug_color = Color(0.701961, 0, 0, 0.419608)
-
-[node name="UnstuckerUpper" type="Node2D" parent="."]
-position = Vector2(0, -40)
-
-[node name="Up" type="RayCast2D" parent="UnstuckerUpper"]
-target_position = Vector2(0, -12)
-collision_mask = 30
-
-[node name="Down" type="RayCast2D" parent="UnstuckerUpper"]
-target_position = Vector2(0, 27)
-collision_mask = 30
-
-[node name="Left" type="RayCast2D" parent="UnstuckerUpper"]
-target_position = Vector2(-12, 0)
-collision_mask = 30
-
-[node name="Right" type="RayCast2D" parent="UnstuckerUpper"]
-target_position = Vector2(12, 0)
-collision_mask = 30
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("3_sjukh")

@@ -3,15 +3,28 @@ class_name Player extends CharacterBody2D
 @onready var sprite:AnimatedSprite2D = $Sprite
 @onready var state_machine:FiniteStateMachine = $StateMachine
 
-@onready var up_cast:RayCast2D = $UnstuckerUpper/Up
-@onready var down_cast:RayCast2D = $UnstuckerUpper/Down
-@onready var left_cast:RayCast2D = $UnstuckerUpper/Left
-@onready var right_cast:RayCast2D = $UnstuckerUpper/Right
+@onready var wall_check:Area2D = $WallCheck
 
 @onready var nametag_bg:NinePatchRect = $NameTag
 @onready var nametag_label:Label = $NameTag/Label
 
-@export var color:String = "red"
+@export var color:String = "red":
+	set(v):
+		# Only temporary, ya can change how this works later
+		
+		set_collision_layer_value(Tools.PLAYER_COLORS.keys().find(color) + 2, false)
+		set_collision_mask_value(Tools.PLAYER_COLORS.keys().find(color) + 2, false)
+		
+		wall_check.set_collision_layer_value(Tools.PLAYER_COLORS.keys().find(color) + 2, false)
+		wall_check.set_collision_mask_value(Tools.PLAYER_COLORS.keys().find(color) + 2, false)
+		
+		color = v
+		
+		set_collision_layer_value(Tools.PLAYER_COLORS.keys().find(color) + 2, true)
+		set_collision_mask_value(Tools.PLAYER_COLORS.keys().find(color) + 2, true)
+		
+		wall_check.set_collision_layer_value(Tools.PLAYER_COLORS.keys().find(color) + 2, true)
+		wall_check.set_collision_mask_value(Tools.PLAYER_COLORS.keys().find(color) + 2, true)
 
 signal on_death
 
@@ -26,13 +39,13 @@ var boink_tween:Tween
 var nametag_visible:bool = true
 
 func _ready() -> void:
-	sprite.modulate = Tools.COLORS['D_'+color]
+	sprite.modulate = Tools.COLORS[color]
 
 func _physics_process(delta:float) -> void:
-	var not_sliding:bool = not (left_cast.is_colliding() or right_cast.is_colliding())
+	var not_sliding:bool = wall_check.get_overlapping_bodies().size() < 2
 	
 	if not is_on_floor():
-		if left_cast.is_colliding() or right_cast.is_colliding():
+		if wall_check.get_overlapping_bodies().size() > 1:
 			if state_machine.current_state.name != "WallSlide" and velocity.y < 0:
 				state_machine.change_state("WallSlide")
 		else:
@@ -64,12 +77,13 @@ func _physics_process(delta:float) -> void:
 		
 		sprite.flip_h = velocity.x < 0.0
 	
-	if up_cast.is_colliding() and down_cast.is_colliding() and left_cast.is_colliding() and right_cast.is_colliding():
-		wall_stucks += 1
-		if wall_stucks >= 250: # if we're stuck for 250 frames kill the player
-			on_death.emit()
-	else:
-		wall_stucks = 0
+	# Gonna replace this for a button in the menu for level restarting
+#	if up_cast.is_colliding() and down_cast.is_colliding() and left_cast.is_colliding() and right_cast.is_colliding():
+#		wall_stucks += 1
+#		if wall_stucks >= 250: # if we're stuck for 250 frames kill the player
+#			on_death.emit()
+#	else:
+#		wall_stucks = 0
 		
 	if Input.is_action_just_pressed("nametag_toggle"):
 		nametag_visible = not nametag_visible
