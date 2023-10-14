@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crou1qo48xw1r"]
+[gd_scene load_steps=13 format=3 uid="uid://crou1qo48xw1r"]
 
 [ext_resource type="SpriteFrames" uid="uid://demf0heodnqmv" path="res://assets/players/guy.tres" id="1_mylgw"]
 [ext_resource type="Script" path="res://scenes/game/Player.gd" id="1_ripyv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/player_states/JumpState.gd" id="6_8chk8"]
 [ext_resource type="Script" path="res://scripts/player_states/DropState.gd" id="7_4r2ij"]
 [ext_resource type="Script" path="res://scripts/player_states/FallState.gd" id="8_fvvd5"]
+[ext_resource type="Script" path="res://scripts/player_states/WallSlideState.gd" id="10_hyl1o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpl0o"]
 radius = 15.0
@@ -56,11 +57,11 @@ target_position = Vector2(0, 55)
 
 [node name="Left" type="RayCast2D" parent="UnstuckerUpper"]
 position = Vector2(-1, 0)
-target_position = Vector2(-15, 0)
+target_position = Vector2(-25, 0)
 
 [node name="Right" type="RayCast2D" parent="UnstuckerUpper"]
 position = Vector2(-1, 0)
-target_position = Vector2(15, 0)
+target_position = Vector2(25, 0)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("3_sjukh")
@@ -87,6 +88,9 @@ script = ExtResource("8_fvvd5")
 
 [node name="Drop" type="Node" parent="StateMachine"]
 script = ExtResource("7_4r2ij")
+
+[node name="WallSlide" type="Node" parent="StateMachine"]
+script = ExtResource("10_hyl1o")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_death"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_death"]

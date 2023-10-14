@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://biiui05oknl65"]
+[gd_scene load_steps=4 format=3 uid="uid://biiui05oknl65"]
 
 [ext_resource type="PackedScene" uid="uid://crou1qo48xw1r" path="res://scenes/game/Player.tscn" id="1_1swf6"]
 [ext_resource type="Script" path="res://scenes/Gameplay.gd" id="1_2oifm"]
+[ext_resource type="PackedScene" uid="uid://d1xiyj3lf4xj5" path="res://scenes/debug/DebugInfo.tscn" id="3_ufmmj"]
 
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_2oifm")
@@ -21,3 +22,5 @@ offset_right = 624.0
 offset_bottom = 464.0
 mouse_filter = 2
 theme_override_constants/separation = 10
+
+[node name="DebugInfo" parent="UILayer" instance=ExtResource("3_ufmmj")]

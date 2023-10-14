@@ -5,6 +5,6 @@ func on_enter() -> void:
 	sprite.play("idle")
 	sprite.speed_scale = 1.0
 	
-func on_physics_process(_delta:float) -> void:
+func on_input(event:InputEvent) -> void:
 	if Input.is_action_just_pressed("duck"):
 		change_state("Duck")
