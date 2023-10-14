@@ -4721,7 +4721,6 @@ texture = ExtResource("9_k1cpv")
 1:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_1/angular_velocity = 0.0
-1:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_2/angular_velocity = 0.0
 1:1/0/physics_layer_3/linear_velocity = Vector2(0, 0)
@@ -5416,7 +5415,6 @@ texture = ExtResource("9_k1cpv")
 1:2/0/physics_layer_0/angular_velocity = 0.0
 1:2/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 1:2/0/physics_layer_1/angular_velocity = 0.0
-1:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:2/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 1:2/0/physics_layer_2/angular_velocity = 0.0
 1:2/0/physics_layer_3/linear_velocity = Vector2(0, 0)
@@ -5820,7 +5818,7 @@ texture = ExtResource("9_d3e10")
 modulate = Color(0.901961, 0.270588, 0.223529, 1)
 position = Vector2(237, 197)
 sprite_frames = ExtResource("1_jeht2")
-frame_progress = 0.208878
+frame_progress = 0.16094
 centered = false
 
 [node name="Jump2" type="AnimatedSprite2D" parent="Indicators2"]
@@ -5833,7 +5831,7 @@ frame_progress = 0.4992
 modulate = Color(0.901961, 0.270588, 0.223529, 1)
 position = Vector2(407, 230)
 sprite_frames = ExtResource("2_ej01f")
-frame_progress = 0.262074
+frame_progress = 0.214131
 
 [node name="Shift" type="Sprite2D" parent="Indicators2"]
 modulate = Color(0.901961, 0.270588, 0.223529, 1)
