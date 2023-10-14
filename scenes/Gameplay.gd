@@ -25,10 +25,10 @@ func _ready():
 	reset_player()
 	
 func _process(delta:float):
-	camera.position = camera.position.lerp(player.position - Vector2(0.0, 50.0), delta * 5)
+	camera.position = camera.position.lerp(player.position - Vector2(0.0, 25.0), delta * 5)
 	
-	if camera.position.x < 320.0: camera.position.x = 320.0
-	if camera.position.y > 330.0: camera.position.y = 330.0
+	if camera.position.x < 160.0: camera.position.x = 160.0
+	if camera.position.y > 160.0: camera.position.y = 160.0
 		
 	if Input.is_action_just_pressed("color_left"):
 		cur_color = wrapi(cur_color - 1, 0, Tools.PLAYER_COLORS.keys().size())
@@ -45,8 +45,8 @@ func update_color_picker():
 		var square:ColorPickerSquare = color_picker.get_child(i)
 		square.selected = (cur_color == i)
 	
-	player.set_collision_layer_value(cur_color + 1, true)
-	player.set_collision_mask_value(cur_color + 1, true)
+	player.set_collision_layer_value(cur_color + 2, true)
+	player.set_collision_mask_value(cur_color + 2, true)
 	
 	player.color = Tools.PLAYER_COLORS.keys()[cur_color]
 	player.sprite.modulate = Tools.PLAYER_COLORS[player.color]

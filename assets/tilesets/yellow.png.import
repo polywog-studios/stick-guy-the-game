@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyx7hgh31pwpg"
-path="res://.godot/imported/lime.png-cd81268e656359751e65bec3c8ed656f.ctex"
+uid="uid://c6cls8yom3f0b"
+path="res://.godot/imported/yellow.png-234731d7c7c06ccbb478d89e9726ae51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game_icons/lime.png"
-dest_files=["res://.godot/imported/lime.png-cd81268e656359751e65bec3c8ed656f.ctex"]
+source_file="res://assets/tilesets/yellow.png"
+dest_files=["res://.godot/imported/yellow.png-234731d7c7c06ccbb478d89e9726ae51.ctex"]
 
 [params]
 

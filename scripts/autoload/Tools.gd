@@ -1,10 +1,10 @@
 extends Node
 
 const PLAYER_COLORS:Dictionary = {
-	"red": Color.RED,
-	"orange": Color.DARK_ORANGE,
-	"lime": Color.LIME,
-	"blue": Color.BLUE
+	"red": Color('e64539'),
+	"yellow": Color('ffee83'),
+	"green": Color('63ab3f'),
+	"blue": Color('4fa4b8')
 }
 
 var current_level:Node2D = load("res://scenes/game/levels/Level1.tscn").instantiate()
