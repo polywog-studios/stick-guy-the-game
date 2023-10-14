@@ -12,5 +12,7 @@ func on_process(delta:float) -> void:
 		change_state("Walk")
 
 func on_physics_process(delta:float) -> void:
-	if character.velocity.y > 0.0:
-		character.velocity.y = lerpf(character.velocity.y, Player.GRAVITY * 0.005, delta * 3.0)
+	if Input.is_action_pressed("jump"):
+		change_state("Jump")
+	else:
+		character.velocity.y = Player.GRAVITY * 0.05
