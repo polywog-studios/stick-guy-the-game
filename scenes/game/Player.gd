@@ -15,9 +15,9 @@ class_name Player extends CharacterBody2D
 
 signal on_death
 
-const SPEED = 1800.0
-const RUNNING_SPEED = 2500.0
-const GRAVITY = 2250.0
+const SPEED = 900.0
+const RUNNING_SPEED = 2250.0
+const GRAVITY = 1125.0
 
 var jumps_left:int = 0
 var wall_stucks:int = 0
