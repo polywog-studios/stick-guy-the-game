@@ -25,8 +25,7 @@ func _ready():
 	reset_player()
 	
 func _process(delta:float):
-	camera.position = camera.position.lerp(player.position, delta * 5)
-	camera.position.y -= 5.0
+	camera.position = camera.position.lerp(player.position - Vector2(0.0, 50.0), delta * 5)
 	
 	if camera.position.x < 320.0: camera.position.x = 320.0
 	if camera.position.y > 330.0: camera.position.y = 330.0
