@@ -37,6 +37,8 @@ func _process(delta:float):
 	if Input.is_action_just_pressed("color_right"):
 		cur_color = wrapi(cur_color + 1, 0, Tools.PLAYER_COLORS.keys().size())
 		update_color_picker()
+		
+	RenderingServer.set_default_clear_color(lerp(RenderingServer.get_default_clear_color(), Tools.COLORS['L_'+player.color], 5*delta))
 
 func update_color_picker():
 	for i in color_picker.get_child_count():
@@ -49,7 +51,7 @@ func update_color_picker():
 	player.set_collision_mask_value(cur_color + 2, true)
 	
 	player.color = Tools.PLAYER_COLORS.keys()[cur_color]
-	player.sprite.modulate = Tools.PLAYER_COLORS[str(player.color)]
+	player.sprite.modulate = Tools.PLAYER_COLORS[player.color]
 	
 	var shader:ShaderMaterial = player.nametag_bg.material as ShaderMaterial
 	shader.set_shader_parameter("red", Tools.COLORS['D_'+player.color])

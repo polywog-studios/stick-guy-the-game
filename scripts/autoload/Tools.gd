@@ -21,13 +21,20 @@ const COLORS:Dictionary = {
 	"D_red": Color('ad2f45'),
 	"D_yellow": Color('cf752b'),
 	"D_green": Color('3b7d4f'),
-	"D_blue": Color('4c6885')
+	"D_blue": Color('4c6885'),
+	
+	"L_white": Color('f5ffe8'),
+	"white": Color('dfe0e8'),
+	"D_white": Color('a3a7c2'),
+	
+	"black": Color('14182e'),
+	"L_black": Color('2c354d')
 }
 
 var current_level:Node2D = load("res://scenes/game/levels/Level1.tscn").instantiate()
 
 func _ready() -> void:
-	RenderingServer.set_default_clear_color(Color.WHITE)
+	RenderingServer.set_default_clear_color(COLORS.L_red)
 
 func change_window_icon(texture:Texture2D) -> void:
 	DisplayServer.set_icon(texture.get_image())

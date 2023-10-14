@@ -5796,7 +5796,6 @@ centered = false
 modulate = Color(0.901961, 0.270588, 0.223529, 1)
 position = Vector2(751, 230)
 sprite_frames = ExtResource("1_jeht2")
-frame_progress = 0.736171
 
 [node name="Run" type="AnimatedSprite2D" parent="Indicators"]
 modulate = Color(0.901961, 0.270588, 0.223529, 1)
