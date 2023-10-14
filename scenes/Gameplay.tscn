@@ -14,14 +14,12 @@ script = ExtResource("1_2oifm")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="UILayer" type="CanvasLayer" parent="."]
-scale = Vector2(0.5, 0.5)
-transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 
 [node name="ColorPicker" type="HBoxContainer" parent="UILayer"]
-offset_left = 16.0
-offset_top = 416.0
-offset_right = 624.0
-offset_bottom = 464.0
+offset_left = 8.0
+offset_top = 216.0
+offset_right = 312.0
+offset_bottom = 240.0
 mouse_filter = 2
 theme_override_constants/separation = 10
 

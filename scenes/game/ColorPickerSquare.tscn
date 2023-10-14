@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://62s668kigqls" path="res://assets/color_picker.png" id="1_w137h"]
 
 [node name="ColorPickerSquare" type="Control"]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 16.0
+offset_bottom = 16.0
 script = ExtResource("1_per56")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(24, 24)
-scale = Vector2(1.5, 1.5)
+position = Vector2(8, 8)
 texture = ExtResource("1_w137h")
 hframes = 2

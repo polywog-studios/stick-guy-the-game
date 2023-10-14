@@ -2,24 +2,24 @@
 
 [ext_resource type="Texture2D" uid="uid://dh811qs44ujmr" path="res://assets/levels/tutorial/indicators/run_indicator.png" id="1_efcfq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jqebb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v6v3"]
 atlas = ExtResource("1_efcfq")
-region = Rect2(0, 0, 124, 124)
+region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m5ca5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkrkm"]
 atlas = ExtResource("1_efcfq")
-region = Rect2(124, 0, 124, 124)
+region = Rect2(48, 0, 48, 48)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jqebb")
+"texture": SubResource("AtlasTexture_4v6v3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m5ca5")
+"texture": SubResource("AtlasTexture_hkrkm")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 5.0
 }]

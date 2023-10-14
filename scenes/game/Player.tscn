@@ -24,8 +24,9 @@ height = 41.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cfet8"]
 shader = ExtResource("10_h3s03")
-shader_parameter/from = Color(0, 0, 1, 1)
-shader_parameter/to = Color(1, 0, 0, 1)
+shader_parameter/red = Color(0, 0, 0, 1)
+shader_parameter/green = Color(0, 0, 0, 1)
+shader_parameter/blue = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_63583"]
 font = ExtResource("11_v0nxe")
@@ -59,19 +60,19 @@ position = Vector2(0, -40)
 
 [node name="Up" type="RayCast2D" parent="UnstuckerUpper"]
 target_position = Vector2(0, -12)
-collision_mask = 15
+collision_mask = 30
 
 [node name="Down" type="RayCast2D" parent="UnstuckerUpper"]
 target_position = Vector2(0, 27)
-collision_mask = 15
+collision_mask = 30
 
 [node name="Left" type="RayCast2D" parent="UnstuckerUpper"]
 target_position = Vector2(-12, 0)
-collision_mask = 15
+collision_mask = 30
 
 [node name="Right" type="RayCast2D" parent="UnstuckerUpper"]
 target_position = Vector2(12, 0)
-collision_mask = 15
+collision_mask = 30
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("3_sjukh")
@@ -105,9 +106,9 @@ script = ExtResource("10_hyl1o")
 [node name="NameTag" type="NinePatchRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_cfet8")
-offset_top = -76.0
-offset_right = 64.0
-offset_bottom = -60.0
+offset_top = -75.0
+offset_right = 50.0
+offset_bottom = -49.0
 texture = ExtResource("10_klbhy")
 patch_margin_left = 16
 patch_margin_top = 8
@@ -116,11 +117,10 @@ patch_margin_bottom = 8
 
 [node name="Label" type="Label" parent="NameTag"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 112.0
-offset_bottom = 29.0
-scale = Vector2(0.8, 0.8)
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 118.0
+offset_bottom = 25.0
 text = "player"
 label_settings = SubResource("LabelSettings_63583")
 horizontal_alignment = 1

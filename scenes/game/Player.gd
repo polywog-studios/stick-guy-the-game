@@ -26,14 +26,14 @@ var boink_tween:Tween
 var nametag_visible:bool = true
 
 func _ready() -> void:
-	sprite.modulate = Tools.PLAYER_COLORS[color]
+	sprite.modulate = Tools.COLORS['D_'+color]
 
 func _physics_process(delta:float) -> void:
 	var not_sliding:bool = not (left_cast.is_colliding() or right_cast.is_colliding())
 	
 	if not is_on_floor():
 		if left_cast.is_colliding() or right_cast.is_colliding():
-			if state_machine.current_state.name != "WallSlide":
+			if state_machine.current_state.name != "WallSlide" and velocity.y < 0:
 				state_machine.change_state("WallSlide")
 		else:
 			velocity.y += (GRAVITY * (0.6 if velocity.y < 0.0 else 1.0)) * delta
@@ -77,7 +77,7 @@ func _physics_process(delta:float) -> void:
 	move_and_slide()
 	
 func _process(delta:float):
-	nametag_bg.size.x = (nametag_label.size.x * nametag_label.scale.x) + 15.0
+	nametag_bg.size.x = (nametag_label.size.x * nametag_label.scale.x)+7
 	nametag_bg.position.x = (nametag_bg.size.x * nametag_bg.scale.x) * -0.5
 	nametag_bg.modulate.a = lerpf(nametag_bg.modulate.a, 1.0 if nametag_visible else 0.0, delta * 10.0)
 

@@ -1,8 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://d1etttd8vi52e"]
+[gd_scene load_steps=27 format=3 uid="uid://d1etttd8vi52e"]
 
 [ext_resource type="Script" path="res://scripts/levels/Level1.gd" id="1_hig5c"]
 [ext_resource type="SpriteFrames" uid="uid://dpgopye57a2jq" path="res://assets/levels/tutorial/indicators/jump_indicator.tres" id="1_jeht2"]
-[ext_resource type="Shader" path="res://assets/shaders/ColorReplace.gdshader" id="1_wi4ya"]
 [ext_resource type="SpriteFrames" uid="uid://v7nsqi3mxuod" path="res://assets/levels/tutorial/indicators/run_indicator.tres" id="2_ej01f"]
 [ext_resource type="Shader" path="res://assets/shaders/Coin.gdshader" id="2_y437b"]
 [ext_resource type="Texture2D" uid="uid://dd7fmo71kckh8" path="res://assets/collectables/coin.png" id="3_lni7a"]
@@ -16,11 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://bt401jrslk1nr" path="res://assets/tilesets/green.png" id="8_rvs3y"]
 [ext_resource type="Texture2D" uid="uid://brsedgixupmq1" path="res://assets/levels/tutorial/indicators/color_swap_indicator.png" id="9_d3e10"]
 [ext_resource type="Texture2D" uid="uid://c5ve435kqutfn" path="res://assets/tilesets/blue.png" id="9_k1cpv"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ks58q"]
-shader = ExtResource("1_wi4ya")
-shader_parameter/from = Color(0, 0, 1, 1)
-shader_parameter/to = Color(1, 0, 0, 1)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_473vi"]
 tile_data = PackedInt32Array(0, 851968, 131073, 65536, 851968, 131075, 1, 851968, 131074, 65537, 589824, 2)
@@ -4554,14 +4548,13 @@ sources/1 = SubResource("TileSetAtlasSource_1wdvx")
 pattern_0 = SubResource("TileMapPattern_473vi")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dah8e"]
-distance = -780.0
+distance = -320.0
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_hig5c")
 
 [node name="Tiles" type="TileMap" parent="."]
-material = SubResource("ShaderMaterial_ks58q")
-position = Vector2(0, 163)
+position = Vector2(0, 160)
 tile_set = SubResource("TileSet_kqh7n")
 format = 2
 layer_0/name = "Tiles"
@@ -4578,30 +4571,9 @@ layer_1/tile_data = PackedInt32Array(393446, 786437, 0, 458982, 786437, 1, 52451
 position = Vector2(0, 136)
 scale = Vector2(0.333, 0.333)
 
-[node name="Jump" type="AnimatedSprite2D" parent="Indicators"]
-modulate = Color(0.901961, 0.270588, 0.223529, 1)
-position = Vector2(740, 266)
-scale = Vector2(1.5, 1.5)
-sprite_frames = ExtResource("1_jeht2")
-frame_progress = 0.02191
-
-[node name="Jump2" type="AnimatedSprite2D" parent="Indicators"]
-modulate = Color(0.901961, 0.270588, 0.223529, 1)
-position = Vector2(2240, 270)
-scale = Vector2(1.5, 1.5)
-sprite_frames = ExtResource("1_jeht2")
-frame_progress = 0.4992
-
-[node name="Run" type="AnimatedSprite2D" parent="Indicators"]
-modulate = Color(0.901961, 0.270588, 0.223529, 1)
-position = Vector2(1203, 250)
-scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_ej01f")
-frame_progress = 0.510293
-
 [node name="Shift" type="Sprite2D" parent="Indicators"]
 modulate = Color(0.901961, 0.270588, 0.223529, 1)
-position = Vector2(1389, 235)
+position = Vector2(1390.39, 207.207)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_tvk55")
 
@@ -4629,6 +4601,27 @@ modulate = Color(0.901961, 0.270588, 0.223529, 1)
 position = Vector2(3758, -56)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("9_d3e10")
+
+[node name="Indicators2" type="Node2D" parent="."]
+
+[node name="Jump" type="AnimatedSprite2D" parent="Indicators2"]
+modulate = Color(0.901961, 0.270588, 0.223529, 1)
+position = Vector2(237, 197)
+sprite_frames = ExtResource("1_jeht2")
+frame_progress = 0.341243
+centered = false
+
+[node name="Jump2" type="AnimatedSprite2D" parent="Indicators2"]
+modulate = Color(0.901961, 0.270588, 0.223529, 1)
+position = Vector2(751, 230)
+sprite_frames = ExtResource("1_jeht2")
+frame_progress = 0.4992
+
+[node name="Run" type="AnimatedSprite2D" parent="Indicators2"]
+modulate = Color(0.901961, 0.270588, 0.223529, 1)
+position = Vector2(407, 230)
+sprite_frames = ExtResource("2_ej01f")
+frame_progress = 0.394441
 
 [node name="SpawnPos" type="Node2D" parent="."]
 position = Vector2(50, 183)

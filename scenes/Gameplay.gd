@@ -49,11 +49,12 @@ func update_color_picker():
 	player.set_collision_mask_value(cur_color + 2, true)
 	
 	player.color = Tools.PLAYER_COLORS.keys()[cur_color]
-	player.sprite.modulate = Tools.PLAYER_COLORS[player.color]
+	player.sprite.modulate = Tools.PLAYER_COLORS[str(player.color)]
 	
 	var shader:ShaderMaterial = player.nametag_bg.material as ShaderMaterial
-	shader.set_shader_parameter("to", player.sprite.modulate)
-	player.nametag_label.label_settings.font_color = player.sprite.modulate
+	shader.set_shader_parameter("red", Tools.COLORS['D_'+player.color])
+	shader.set_shader_parameter("blue", Tools.COLORS['L_'+player.color])
+	player.nametag_label.label_settings.font_color = Tools.COLORS[player.color]
 	
 	Tools.change_window_icon(window_icons[player.color])
 
