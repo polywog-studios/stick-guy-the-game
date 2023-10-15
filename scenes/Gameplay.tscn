@@ -12,6 +12,10 @@ script = ExtResource("1_2oifm")
 [node name="Player" parent="Players" instance=ExtResource("1_1swf6")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_bottom = 320
+limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 

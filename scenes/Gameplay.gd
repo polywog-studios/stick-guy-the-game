@@ -25,11 +25,8 @@ func _ready():
 	reset_player()
 	
 func _process(delta:float):
-	camera.position = camera.position.lerp(player.position - Vector2(0.0, 25.0), delta * 5)
+	camera.position = player.position + Vector2(player.velocity.x / 2.0, -25.0)
 	
-	if camera.position.x < 160.0: camera.position.x = 160.0
-	if camera.position.y > 160.0: camera.position.y = 160.0
-		
 	if Input.is_action_just_pressed("color_left"):
 		cur_color = wrapi(cur_color - 1, 0, Tools.PLAYER_COLORS.keys().size())
 		update_color_picker()
@@ -53,10 +50,9 @@ func update_color_picker():
 	player.color = Tools.PLAYER_COLORS.keys()[cur_color]
 	player.sprite.modulate = Tools.PLAYER_COLORS[player.color]
 	
-	var shader:ShaderMaterial = player.nametag_bg.material as ShaderMaterial
-	shader.set_shader_parameter("red", Tools.COLORS['D_'+player.color])
-	shader.set_shader_parameter("blue", Tools.COLORS['L_'+player.color])
-	player.nametag_label.label_settings.font_color = Tools.COLORS[player.color]
+	player.nametag_arrow.modulate = Tools.COLORS['D_'+player.color]
+	player.nametag.add_theme_color_override('font_color', Tools.COLORS['D_'+player.color])
+	player.nametag.add_theme_color_override('font_outline_color', Tools.COLORS['L_'+player.color])
 	
 	Tools.change_window_icon(window_icons[player.color])
 

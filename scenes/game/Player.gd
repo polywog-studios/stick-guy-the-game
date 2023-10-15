@@ -5,8 +5,8 @@ class_name Player extends CharacterBody2D
 
 @onready var wall_check:Area2D = $WallCheck
 
-@onready var nametag_bg:NinePatchRect = $NameTag
-@onready var nametag_label:Label = $NameTag/Label
+@onready var nametag_arrow:Sprite2D = $NameTagArrow
+@onready var nametag:Label = $NameTag
 
 @export var color:String = "red":
 	set(v):
@@ -89,11 +89,6 @@ func _physics_process(delta:float) -> void:
 		nametag_visible = not nametag_visible
 	
 	move_and_slide()
-	
-func _process(delta:float):
-	nametag_bg.size.x = (nametag_label.size.x * nametag_label.scale.x)+7
-	nametag_bg.position.x = (nametag_bg.size.x * nametag_bg.scale.x) * -0.5
-	nametag_bg.modulate.a = lerpf(nametag_bg.modulate.a, 1.0 if nametag_visible else 0.0, delta * 10.0)
 
 func _on_death(_area):
 	on_death.emit()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://crou1qo48xw1r"]
+[gd_scene load_steps=16 format=3 uid="uid://crou1qo48xw1r"]
 
 [ext_resource type="SpriteFrames" uid="uid://demf0heodnqmv" path="res://assets/players/guy.tres" id="1_mylgw"]
 [ext_resource type="Script" path="res://scenes/game/Player.gd" id="1_ripyv"]
@@ -9,10 +9,9 @@
 [ext_resource type="Script" path="res://scripts/player_states/JumpState.gd" id="6_8chk8"]
 [ext_resource type="Script" path="res://scripts/player_states/DropState.gd" id="7_4r2ij"]
 [ext_resource type="Script" path="res://scripts/player_states/FallState.gd" id="8_fvvd5"]
-[ext_resource type="Shader" path="res://assets/shaders/ColorReplace.gdshader" id="10_h3s03"]
 [ext_resource type="Script" path="res://scripts/player_states/WallSlideState.gd" id="10_hyl1o"]
-[ext_resource type="Texture2D" uid="uid://dma0x57mdxfl4" path="res://assets/nametag_bg.png" id="10_klbhy"]
-[ext_resource type="FontFile" uid="uid://c5a6iw6sab47m" path="res://assets/fonts/guy_the_font_BOLD.png" id="11_v0nxe"]
+[ext_resource type="Texture2D" uid="uid://dma0x57mdxfl4" path="res://assets/nametag_indicator.png" id="12_qeapu"]
+[ext_resource type="FontFile" uid="uid://bgvf3km0pfg7x" path="res://assets/fonts/Mitochondria.ttf" id="13_iklh4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qoh87"]
 radius = 7.0
@@ -24,16 +23,6 @@ size = Vector2(20, 6)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1he8p"]
 radius = 8.0
 height = 41.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfet8"]
-shader = ExtResource("10_h3s03")
-shader_parameter/red = Color(0, 0, 0, 1)
-shader_parameter/green = Color(0, 0, 0, 1)
-shader_parameter/blue = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_63583"]
-font = ExtResource("11_v0nxe")
-font_color = Color(1, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 8)
@@ -95,27 +84,22 @@ script = ExtResource("7_4r2ij")
 [node name="WallSlide" type="Node" parent="StateMachine"]
 script = ExtResource("10_hyl1o")
 
-[node name="NameTag" type="NinePatchRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-material = SubResource("ShaderMaterial_cfet8")
-offset_top = -75.0
-offset_right = 50.0
-offset_bottom = -49.0
-texture = ExtResource("10_klbhy")
-patch_margin_left = 16
-patch_margin_top = 8
-patch_margin_right = 16
-patch_margin_bottom = 8
-
-[node name="Label" type="Label" parent="NameTag"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 5.0
-offset_right = 118.0
-offset_bottom = 25.0
-text = "player"
-label_settings = SubResource("LabelSettings_63583")
+[node name="NameTag" type="Label" parent="."]
+offset_left = -38.0
+offset_top = -71.0
+offset_right = 38.0
+offset_bottom = -56.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("13_iklh4")
+theme_override_font_sizes/font_size = 8
+text = "Player"
 horizontal_alignment = 1
+
+[node name="NameTagArrow" type="Sprite2D" parent="."]
+position = Vector2(0, -53)
+texture = ExtResource("12_qeapu")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_death"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_death"]

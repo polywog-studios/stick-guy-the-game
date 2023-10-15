@@ -26,7 +26,7 @@ window/size/viewport_width=320
 window/size/viewport_height=240
 window/size/window_width_override=640
 window/size/window_height_override=480
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
 [editor_plugins]

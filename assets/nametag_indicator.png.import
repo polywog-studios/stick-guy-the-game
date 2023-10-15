@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dma0x57mdxfl4"
-path="res://.godot/imported/nametag_bg.png-5f696c37e9892290edca72bc9862d587.ctex"
+path="res://.godot/imported/nametag_indicator.png-4a691bae91bab160a90099bbe981de26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/nametag_bg.png"
-dest_files=["res://.godot/imported/nametag_bg.png-5f696c37e9892290edca72bc9862d587.ctex"]
+source_file="res://assets/nametag_indicator.png"
+dest_files=["res://.godot/imported/nametag_indicator.png-4a691bae91bab160a90099bbe981de26.ctex"]
 
 [params]
 
