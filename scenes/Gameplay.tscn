@@ -25,6 +25,5 @@ offset_top = 216.0
 offset_right = 312.0
 offset_bottom = 240.0
 mouse_filter = 2
-theme_override_constants/separation = 10
 
 [node name="DebugInfo" parent="UILayer" instance=ExtResource("3_ufmmj")]

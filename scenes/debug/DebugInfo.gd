@@ -8,4 +8,4 @@ func _ready() -> void:
 		return
 
 func _update() -> void:
-	balls.text = '%s FPS' % [Engine.get_frames_per_second()]
+	balls.text = '%s fps' % [Engine.get_frames_per_second()]
