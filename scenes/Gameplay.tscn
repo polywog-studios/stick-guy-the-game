@@ -13,7 +13,7 @@ script = ExtResource("1_2oifm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
-limit_bottom = 320
+limit_bottom = 240
 limit_smoothed = true
 position_smoothing_enabled = true
 

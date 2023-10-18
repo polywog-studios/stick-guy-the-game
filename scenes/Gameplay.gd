@@ -10,8 +10,10 @@ var window_icons:Dictionary = {}
 func _ready():
 	camera.position = player.position
 	if is_instance_valid(Tools.current_level):
-		add_child(Tools.current_level)
-		move_child(Tools.current_level, 0)
+		var cool = Tools.current_level.duplicate()
+		cool.name = 'Level'
+		add_child(cool)
+		move_child(cool, 0)
 	
 	player.on_death.connect(reset_player)
 	
@@ -39,8 +41,8 @@ func _process(delta:float):
 
 func update_color_picker():
 	for i in color_picker.get_child_count():
-		player.set_collision_layer_value(i + 1, false)
-		player.set_collision_mask_value(i + 1, false)
+		player.set_collision_layer_value(i + 2, false)
+		player.set_collision_mask_value(i + 2, false)
 		var square:ColorPickerSquare = color_picker.get_child(i)
 		square.selected = (cur_color == i)
 	

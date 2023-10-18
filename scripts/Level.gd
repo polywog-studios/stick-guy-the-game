@@ -9,5 +9,5 @@ func _on_death_plane_body_entered(body):
 		
 	game.reset_player()
 
-func _process(_delta:float):
-	death_plane.position.x = game.player.position.x
+func _process(_d):
+	game.camera.set_limit(Side.SIDE_BOTTOM, int(death_plane.position.y))
