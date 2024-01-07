@@ -20,10 +20,6 @@ boot_splash/use_filter=false
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1000
 
-[aseprite]
-
-import/import_plugin/default_automatic_importer="SpriteFrames"
-
 [autoload]
 
 Tools="*res://autoload/Tools.gd"
@@ -35,10 +31,7 @@ window/size/viewport_width=380
 window/size/viewport_height=252
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+window/vsync/vsync_mode=0
 
 [importer_defaults]
 

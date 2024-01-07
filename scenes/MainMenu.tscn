@@ -1,3 +1,12 @@
-[gd_scene format=3 uid="uid://bropjl5gs2i8s"]
+[gd_scene load_steps=2 format=3 uid="uid://bropjl5gs2i8s"]
+
+[ext_resource type="SpriteFrames" uid="uid://brlnw6e51tjb1" path="res://assets/menus/title.tres" id="1_7glnc"]
 
 [node name="MainMenu" type="Node2D"]
+
+[node name="Logo" type="AnimatedSprite2D" parent="."]
+position = Vector2(190, 80)
+sprite_frames = ExtResource("1_7glnc")
+autoplay = "default"
+frame_progress = 0.618752
+offset = Vector2(0.5, 0)
