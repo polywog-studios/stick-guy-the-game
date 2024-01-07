@@ -29,7 +29,9 @@ Settings="*res://autoload/Settings.gd"
 
 window/size/viewport_width=380
 window/size/viewport_height=252
-window/stretch/mode="canvas_items"
+window/size/resizable=false
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
 

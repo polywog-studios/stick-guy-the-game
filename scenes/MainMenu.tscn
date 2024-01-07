@@ -8,5 +8,4 @@
 position = Vector2(190, 80)
 sprite_frames = ExtResource("1_7glnc")
 autoplay = "default"
-frame_progress = 0.618752
 offset = Vector2(0.5, 0)

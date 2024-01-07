@@ -19,7 +19,7 @@ func select_option():
 	pass
 	
 func input_check():
-	var axis:int = floor(Input.get_axis("ui_up", "ui_down"))
+	var axis:int = round(Input.get_axis("ui_up", "ui_down"))
 	if axis != 0:
 		change_selection(axis)
 	
