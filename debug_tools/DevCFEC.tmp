@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://d36v1kgdj0256"]
+
+[ext_resource type="FontFile" uid="uid://btxm1nh87w73q" path="res://assets/fonts/Mitochondria.ttf" id="1_0rjaf"]
+[ext_resource type="Script" path="res://debug_tools/DevMenu.gd" id="1_71yth"]
+[ext_resource type="Script" path="res://debug_tools/dev_menu/InitialScreen.gd" id="2_b5hrf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7g5dl"]
+font = ExtResource("1_0rjaf")
+font_size = 8
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vharx"]
+font = ExtResource("1_0rjaf")
+font_size = 8
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uxeow"]
+font = ExtResource("1_0rjaf")
+font_size = 8
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fpksf"]
+font = ExtResource("1_0rjaf")
+font_size = 8
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qts3b"]
+font = ExtResource("1_0rjaf")
+font_size = 8
+font_color = Color(1, 0, 0, 1)
+
+[node name="DevMenu" type="Control" node_paths=PackedStringArray("current_screen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_71yth")
+current_screen = NodePath("InitialScreen")
+
+[node name="InitialScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_b5hrf")
+maximum_selection = 4
+
+[node name="Title" type="Label" parent="InitialScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_top = 80.0
+offset_right = 70.0
+offset_bottom = 92.0
+grow_horizontal = 2
+text = "< Guy - The Dev Menu >"
+label_settings = SubResource("LabelSettings_7g5dl")
+horizontal_alignment = 1
+
+[node name="Options" type="VBoxContainer" parent="InitialScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -21.0
+offset_right = 70.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gameplay" type="Label" parent="InitialScreen/Options"]
+layout_mode = 2
+text = "Gameplay"
+label_settings = SubResource("LabelSettings_vharx")
+horizontal_alignment = 1
+
+[node name="Main Menu" type="Label" parent="InitialScreen/Options"]
+layout_mode = 2
+text = "Main Menu"
+label_settings = SubResource("LabelSettings_uxeow")
+horizontal_alignment = 1
+
+[node name="Settings" type="Label" parent="InitialScreen/Options"]
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_fpksf")
+horizontal_alignment = 1
+
+[node name="Exit" type="Label" parent="InitialScreen/Options"]
+layout_mode = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_qts3b")
+horizontal_alignment = 1

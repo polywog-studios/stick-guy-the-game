@@ -1,29 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://biiui05oknl65"]
+[gd_scene load_steps=4 format=3 uid="uid://dfsvm6saqytbs"]
 
-[ext_resource type="PackedScene" uid="uid://crou1qo48xw1r" path="res://scenes/game/Player.tscn" id="1_1swf6"]
-[ext_resource type="Script" path="res://scenes/Gameplay.gd" id="1_2oifm"]
-[ext_resource type="PackedScene" uid="uid://d1xiyj3lf4xj5" path="res://scenes/debug/DebugInfo.tscn" id="3_ufmmj"]
+[ext_resource type="PackedScene" uid="uid://d4dooe3isfkpu" path="res://components/game/Player.tscn" id="1_0q5n0"]
+[ext_resource type="Script" path="res://scenes/Gameplay.gd" id="1_r8k57"]
+[ext_resource type="PackedScene" uid="uid://bte4tevaj4l4x" path="res://components/levels/SampleBlock.tscn" id="2_f4d64"]
 
 [node name="Gameplay" type="Node2D"]
-script = ExtResource("1_2oifm")
+script = ExtResource("1_r8k57")
 
-[node name="Players" type="Node2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("1_0q5n0")]
+position = Vector2(48, 149)
 
-[node name="Player" parent="Players" instance=ExtResource("1_1swf6")]
+[node name="Camera" type="Camera2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_bottom = 240
-limit_smoothed = true
-position_smoothing_enabled = true
-
-[node name="UILayer" type="CanvasLayer" parent="."]
-
-[node name="ColorPicker" type="HBoxContainer" parent="UILayer"]
-offset_left = 8.0
-offset_top = 216.0
-offset_right = 312.0
-offset_bottom = 240.0
-mouse_filter = 2
-
-[node name="DebugInfo" parent="UILayer" instance=ExtResource("3_ufmmj")]
+[node name="ColorRect" parent="." instance=ExtResource("2_f4d64")]
+offset_left = -9.0
+offset_top = 185.0
+offset_right = 31.0
+offset_bottom = 225.0
+scale = Vector2(50, 1)

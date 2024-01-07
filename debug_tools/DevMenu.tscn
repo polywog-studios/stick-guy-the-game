@@ -1,0 +1,163 @@
+[gd_scene load_steps=9 format=3 uid="uid://d36v1kgdj0256"]
+
+[ext_resource type="FontFile" uid="uid://btxm1nh87w73q" path="res://assets/fonts/Mitochondria.ttf" id="1_0rjaf"]
+[ext_resource type="Script" path="res://debug_tools/DevMenu.gd" id="1_71yth"]
+[ext_resource type="Script" path="res://debug_tools/dev_menu/InitialScreen.gd" id="2_b5hrf"]
+[ext_resource type="Script" path="res://debug_tools/dev_menu/SettingsScreen.gd" id="4_jt8yi"]
+[ext_resource type="Script" path="res://debug_tools/dev_menu/settings/DevBooleanSetting.gd" id="5_aouqo"]
+[ext_resource type="Script" path="res://debug_tools/dev_menu/settings/DevIntegerSetting.gd" id="6_4ln3w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7g5dl"]
+font = ExtResource("1_0rjaf")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_vharx"]
+font = ExtResource("1_0rjaf")
+font_size = 8
+
+[node name="DevMenu" type="Control" node_paths=PackedStringArray("current_screen")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_71yth")
+current_screen = NodePath("InitialScreen")
+
+[node name="InitialScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_b5hrf")
+
+[node name="Title" type="Label" parent="InitialScreen"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.0
+offset_top = 80.0
+offset_right = 70.0
+offset_bottom = 92.0
+grow_horizontal = 2
+text = "< Guy: The Dev Menu >"
+label_settings = SubResource("LabelSettings_7g5dl")
+horizontal_alignment = 1
+
+[node name="Options" type="VBoxContainer" parent="InitialScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -21.0
+offset_right = 70.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gameplay" type="Label" parent="InitialScreen/Options"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "Gameplay"
+label_settings = SubResource("LabelSettings_vharx")
+horizontal_alignment = 1
+
+[node name="Main Menu" type="Label" parent="InitialScreen/Options"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "Main Menu"
+label_settings = SubResource("LabelSettings_vharx")
+horizontal_alignment = 1
+
+[node name="Settings" type="Label" parent="InitialScreen/Options"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_vharx")
+horizontal_alignment = 1
+
+[node name="Exit" type="Label" parent="InitialScreen/Options"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_vharx")
+horizontal_alignment = 1
+
+[node name="SettingsScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_jt8yi")
+
+[node name="Title" type="Label" parent="SettingsScreen"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.5
+offset_top = 16.0
+offset_right = 96.5
+offset_bottom = 28.0
+grow_horizontal = 2
+text = "< Guy: The Dev Settings Menu >"
+label_settings = SubResource("LabelSettings_7g5dl")
+horizontal_alignment = 1
+
+[node name="Disclaimer" type="Label" parent="SettingsScreen"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.5
+offset_top = 32.0
+offset_right = 96.5
+offset_bottom = 44.0
+grow_horizontal = 2
+text = "Press [ui_cancel] to go back to dev menu"
+label_settings = SubResource("LabelSettings_7g5dl")
+horizontal_alignment = 1
+
+[node name="SettingsList" type="VBoxContainer" parent="SettingsScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -65.0
+offset_right = 180.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="fullscreen" type="Label" parent="SettingsScreen/SettingsList"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "fullscreen: false"
+label_settings = SubResource("LabelSettings_vharx")
+script = ExtResource("5_aouqo")
+
+[node name="window_size" type="Label" parent="SettingsScreen/SettingsList"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "window_size: 2x (min: 1x - max: 4x - inc: 1x)"
+label_settings = SubResource("LabelSettings_vharx")
+script = ExtResource("6_4ln3w")
+minimum_value = 1
+maximum_value = 4
+suffix = "x"

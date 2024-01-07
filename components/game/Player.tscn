@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4dooe3isfkpu"]
+
+[ext_resource type="SpriteFrames" uid="uid://bywvh0f3u1dax" path="res://assets/game/player.aseprite" id="1_d041r"]
+[ext_resource type="Script" path="res://components/game/Player.gd" id="1_fse2k"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33hnr"]
+radius = 7.0
+height = 38.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_fse2k")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+sprite_frames = ExtResource("1_d041r")
+animation = &"Idle"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "res://assets/game",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"source": "res://assets/game/player.aseprite"
+}
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_33hnr")
