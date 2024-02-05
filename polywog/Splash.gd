@@ -42,6 +42,9 @@ func _ready():
 	tween.set_ease(Tween.EASE_IN)
 	tween.tween_property(transition, "scale", Vector2.ONE * 1.75, 0.5)
 	tween.tween_callback(func(): Engine.max_fps = 0)
+	
+	await get_tree().create_timer(0.75).timeout
+	get_tree().change_scene_to_file.call_deferred("res://scenes/MainMenu.tscn")
 
 func _process(delta:float):
 	if lilypads.visible:
