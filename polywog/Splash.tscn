@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0o7nalyvuysx"]
+
+[ext_resource type="Script" path="res://polywog/Splash.gd" id="1_8w6ov"]
+[ext_resource type="AudioStream" uid="uid://b0kuv53a88n6q" path="res://polywog/sfx/jingle.wav" id="1_e86nh"]
+[ext_resource type="Texture2D" uid="uid://c3js8a64b67s8" path="res://polywog/imgs/lilypad.png" id="3_bsaln"]
+[ext_resource type="Texture2D" uid="uid://cqk1m4qda1xhh" path="res://polywog/imgs/frog.png" id="3_u12yj"]
+[ext_resource type="Texture2D" uid="uid://cfkcsaj2inym8" path="res://polywog/imgs/polywog_text.png" id="4_rp24s"]
+[ext_resource type="Texture2D" uid="uid://cj8gignda35ms" path="res://polywog/imgs/studios_text.png" id="5_qtt7r"]
+[ext_resource type="Texture2D" uid="uid://cobe7cf4fnagk" path="res://polywog/imgs/transition.png" id="7_8sc11"]
+
+[node name="PolywogStudios" type="ColorRect"]
+texture_filter = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.490196, 0.894118, 0.482353, 1)
+script = ExtResource("1_8w6ov")
+
+[node name="Jingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_e86nh")
+
+[node name="Lilypads" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.117647)
+layout_mode = 0
+offset_left = -8.00002
+offset_top = -37.0
+offset_right = 15883.0
+offset_bottom = 8775.0
+rotation = 0.0872665
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_bsaln")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Frog" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(190, 94)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_u12yj")
+
+[node name="Shadow" type="Sprite2D" parent="Frog"]
+modulate = Color(0, 0, 0, 0.117647)
+z_index = -1
+position = Vector2(10, 10)
+texture = ExtResource("3_u12yj")
+
+[node name="PolywogText" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(192, 166)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_rp24s")
+
+[node name="Shadow" type="Sprite2D" parent="PolywogText"]
+modulate = Color(0, 0, 0, 0.117647)
+z_index = -1
+position = Vector2(5.33334, 4)
+texture = ExtResource("4_rp24s")
+
+[node name="StudiosText" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(192, 186)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_qtt7r")
+
+[node name="Shadow" type="Sprite2D" parent="StudiosText"]
+modulate = Color(0, 0, 0, 0.117647)
+z_index = -1
+position = Vector2(5.33334, 4)
+texture = ExtResource("5_qtt7r")
+
+[node name="Flash" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.733333, 1, 0.827451, 1)
+
+[node name="Transition" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(190, 126)
+texture = ExtResource("7_8sc11")

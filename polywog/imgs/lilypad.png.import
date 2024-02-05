@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2hqtubh7rr64"
-path.bptc="res://.godot/imported/splash.png-929ed8a00b89ba36c51789452f874c77.bptc.ctex"
+uid="uid://c3js8a64b67s8"
+path.bptc="res://.godot/imported/lilypad.png-a62ad6d554bd0d32b3275a9cdc106153.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://splash.png"
-dest_files=["res://.godot/imported/splash.png-929ed8a00b89ba36c51789452f874c77.bptc.ctex"]
+source_file="res://polywog/imgs/lilypad.png"
+dest_files=["res://.godot/imported/lilypad.png-a62ad6d554bd0d32b3275a9cdc106153.bptc.ctex"]
 
 [params]
 

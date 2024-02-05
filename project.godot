@@ -13,11 +13,11 @@ config_version=5
 config/name="Guy - The Game"
 run/main_scene="res://Init.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-boot_splash/bg_color=Color(1, 1, 1, 1)
-boot_splash/image="res://splash.png"
+boot_splash/bg_color=Color(0.490196, 0.894118, 0.482353, 1)
+boot_splash/image="res://polywog/imgs/godot_splash.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 boot_splash/minimum_display_time=1000
 
 [autoload]
