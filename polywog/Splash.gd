@@ -12,8 +12,6 @@ class_name PolywogSplash extends ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Engine.max_fps = 18
-	
 	await get_tree().create_timer(0.5).timeout
 	jingle.play()
 	
@@ -34,17 +32,7 @@ func _ready():
 	tween.tween_property(flash, "modulate:a", 0.0, 0.5)
 	
 	await get_tree().create_timer(2.0).timeout
-	transition.visible = true
-	transition.scale = Vector2.ZERO
-	
-	tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.set_ease(Tween.EASE_IN)
-	tween.tween_property(transition, "scale", Vector2.ONE * 1.75, 0.5)
-	tween.tween_callback(func(): Engine.max_fps = 0)
-	
-	await get_tree().create_timer(0.75).timeout
-	get_tree().change_scene_to_file.call_deferred("res://scenes/MainMenu.tscn")
+	Tools.change_scene_to_file("res://scenes/MainMenu.tscn")
 
 func _process(delta:float):
 	if lilypads.visible:

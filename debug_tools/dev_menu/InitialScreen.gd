@@ -29,6 +29,9 @@ func select_option():
 			print("Loading into Main Menu...")
 			get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 		
+		&"Polywog Splash":
+			get_tree().change_scene_to_file("res://polywog/Splash.tscn")
+		
 		&"Settings":
 			print("Showing settings screen...")
 			dev_menu.switch_screen("SettingsScreen")

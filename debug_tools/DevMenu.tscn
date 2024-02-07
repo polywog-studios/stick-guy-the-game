@@ -41,9 +41,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -70.0
-offset_top = 80.0
+offset_top = 78.0
 offset_right = 70.0
-offset_bottom = 92.0
+offset_bottom = 90.0
 grow_horizontal = 2
 text = "< Guy: The Dev Menu >"
 label_settings = SubResource("LabelSettings_7g5dl")
@@ -57,9 +57,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -70.0
-offset_top = -21.0
+offset_top = -23.0
 offset_right = 70.0
-offset_bottom = 39.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -74,6 +74,13 @@ horizontal_alignment = 1
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 text = "Main Menu"
+label_settings = SubResource("LabelSettings_vharx")
+horizontal_alignment = 1
+
+[node name="Polywog Splash" type="Label" parent="InitialScreen/Options"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "Polywog Splash"
 label_settings = SubResource("LabelSettings_vharx")
 horizontal_alignment = 1
 

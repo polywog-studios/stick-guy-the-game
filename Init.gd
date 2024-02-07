@@ -1,11 +1,10 @@
 extends Node
 
 func _ready():
-	#if OS.is_debug_build():
-		#dev_menu()
-	#else:
-		#polywog_splash()
-	polywog_splash()
+	if OS.is_debug_build():
+		dev_menu()
+	else:
+		polywog_splash()
 
 func dev_menu():
 	print("Entering dev menu...")
