@@ -1,0 +1,45 @@
+{ "frames": {
+   "hud 0.aseprite": {
+    "frame": { "x": 150, "y": 0, "w": 129, "h": 36 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 2, "w": 129, "h": 36 },
+    "sourceSize": { "w": 172, "h": 40 },
+    "duration": 100
+   },
+   "hud 1.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 150, "h": 33 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 2, "y": 3, "w": 150, "h": 33 },
+    "sourceSize": { "w": 172, "h": 40 },
+    "duration": 100
+   },
+   "hud 2.aseprite": {
+    "frame": { "x": 0, "y": 33, "w": 41, "h": 29 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 9, "y": 6, "w": 41, "h": 29 },
+    "sourceSize": { "w": 172, "h": 40 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.2-dev",
+  "image": "hud.png",
+  "format": "RGBA8888",
+  "size": { "w": 279, "h": 62 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Time", "from": 0, "to": 0, "direction": "forward", "color": "#000000ff" },
+   { "name": "Score", "from": 1, "to": 1, "direction": "forward", "color": "#000000ff" },
+   { "name": "Lives", "from": 2, "to": 2, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Flattened", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}

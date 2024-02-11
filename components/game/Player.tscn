@@ -17,7 +17,7 @@ script = ExtResource("1_fse2k")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 texture_filter = 1
-sprite_frames = ExtResource("2_bf6sr")
+sprite_frames = ExtResource("2_4gcy3")
 animation = &"Idle"
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
