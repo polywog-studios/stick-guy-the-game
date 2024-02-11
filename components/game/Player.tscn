@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d4dooe3isfkpu"]
 
 [ext_resource type="Script" path="res://components/game/Player.gd" id="1_fse2k"]
-[ext_resource type="SpriteFrames" uid="uid://caqvo2hr0otdq" path="res://assets/game/player.tres" id="2_bf6sr"]
+[ext_resource type="SpriteFrames" path="res://assets/game/player.res" id="2_642nh"]
 [ext_resource type="Script" path="res://addons/finite_state_machine/scripts/finite_state_machine.gd" id="3_oftao"]
 [ext_resource type="Script" path="res://components/game/player_states/PlayerIdleState.gd" id="4_jl5ry"]
 [ext_resource type="Script" path="res://components/game/player_states/PlayerWalkState.gd" id="5_ck4nt"]
@@ -17,7 +17,7 @@ script = ExtResource("1_fse2k")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 texture_filter = 1
-sprite_frames = ExtResource("2_4gcy3")
+sprite_frames = ExtResource("2_642nh")
 animation = &"Idle"
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
