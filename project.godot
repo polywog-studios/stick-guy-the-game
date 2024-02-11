@@ -37,6 +37,10 @@ window/stretch/aspect="ignore"
 window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/aseprite_spritesheet/plugin.cfg")
+
 [importer_defaults]
 
 aseprite_wizard.plugin={
