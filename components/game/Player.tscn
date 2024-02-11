@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://d4dooe3isfkpu"]
 
 [ext_resource type="Script" path="res://components/game/Player.gd" id="1_fse2k"]
-[ext_resource type="SpriteFrames" path="res://assets/game/player.res" id="2_642nh"]
+[ext_resource type="SpriteFrames" uid="uid://cn08njbs16bx1" path="res://assets/game/player.res" id="2_642nh"]
 [ext_resource type="Script" path="res://addons/finite_state_machine/scripts/finite_state_machine.gd" id="3_oftao"]
 [ext_resource type="Script" path="res://components/game/player_states/PlayerIdleState.gd" id="4_jl5ry"]
 [ext_resource type="Script" path="res://components/game/player_states/PlayerWalkState.gd" id="5_ck4nt"]

@@ -1,11 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://bropjl5gs2i8s"]
+[gd_scene load_steps=9 format=3 uid="uid://bropjl5gs2i8s"]
 
-[ext_resource type="SpriteFrames" uid="uid://brlnw6e51tjb1" path="res://assets/menus/title.tres" id="1_7glnc"]
+[ext_resource type="Texture2D" uid="uid://dppqepngcyexf" path="res://assets/menus/main/overlay.png" id="1_frq4f"]
+[ext_resource type="Script" path="res://scenes/MainMenu.gd" id="1_qf72y"]
+[ext_resource type="SpriteFrames" uid="uid://djbyfugamhmcg" path="res://assets/menus/title.res" id="2_8dnkh"]
+[ext_resource type="SpriteFrames" uid="uid://8t70i8c0fcs7" path="res://assets/menus/main/icons.res" id="3_hevwg"]
+[ext_resource type="FontFile" uid="uid://btxm1nh87w73q" path="res://assets/fonts/Mitochondria.ttf" id="4_el8fy"]
+[ext_resource type="SpriteFrames" uid="uid://clrha4vhmysto" path="res://assets/menus/main/point.res" id="6_6b8gk"]
+[ext_resource type="Texture2D" uid="uid://d3fg7k7fovcrs" path="res://assets/menus/main/play-as-luigi.png" id="7_d5pxp"]
 
-[node name="MainMenu" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_c8b6d"]
+line_spacing = 12.0
+font = ExtResource("4_el8fy")
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qf72y")
+
+[node name="Overlay" type="Sprite2D" parent="."]
+texture = ExtResource("1_frq4f")
+centered = false
 
 [node name="Logo" type="AnimatedSprite2D" parent="."]
-position = Vector2(190, 80)
-sprite_frames = ExtResource("1_7glnc")
+position = Vector2(14, 22)
+sprite_frames = ExtResource("2_8dnkh")
 autoplay = "default"
-offset = Vector2(0.5, 0)
+frame_progress = 0.338297
+centered = false
+
+[node name="Icons" type="AnimatedSprite2D" parent="."]
+position = Vector2(63, 183)
+sprite_frames = ExtResource("3_hevwg")
+autoplay = "default"
+frame_progress = 0.383135
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 142.0
+offset_right = 156.0
+offset_bottom = 226.0
+text = "Play
+Multiplayer
+Mods
+Settings"
+label_settings = SubResource("LabelSettings_c8b6d")
+
+[node name="Point" type="AnimatedSprite2D" parent="."]
+position = Vector2(36, 148)
+sprite_frames = ExtResource("6_6b8gk")
+autoplay = "default"
+frame_progress = 0.188713
+offset = Vector2(-0.5, 0)
+
+[node name="Luigi" type="Sprite2D" parent="."]
+position = Vector2(268, 283)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_d5pxp")
