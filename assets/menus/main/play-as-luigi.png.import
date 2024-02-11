@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8jqjs01pjxdr"
-path.bptc="res://.godot/imported/title.png-32fccd5872cc100850948cfde35ac1b1.bptc.ctex"
+uid="uid://d3fg7k7fovcrs"
+path.bptc="res://.godot/imported/play-as-luigi.png-0d575cea25ef5b62936b45e6dc092ffa.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/menus/title.png"
-dest_files=["res://.godot/imported/title.png-32fccd5872cc100850948cfde35ac1b1.bptc.ctex"]
+source_file="res://assets/menus/main/play-as-luigi.png"
+dest_files=["res://.godot/imported/play-as-luigi.png-0d575cea25ef5b62936b45e6dc092ffa.bptc.ctex"]
 
 [params]
 

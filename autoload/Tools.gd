@@ -12,7 +12,7 @@ func color_from_bool(boolean:bool) -> Color:
 ## a given file path, optionally with a transition.
 func change_scene_to_file(file_path:String, transition:bool = true):
 	if transition:
-		Transition.transitioned.connect(func(inwards:bool):
+		Transition.transitioned.connect(func(_inwards:bool):
 			get_tree().change_scene_to_file(file_path)
 			Transition.trans_out.call_deferred()
 		, Object.CONNECT_ONE_SHOT)
