@@ -8,9 +8,17 @@
 script = ExtResource("1_r8k57")
 
 [node name="Player" parent="." instance=ExtResource("1_0q5n0")]
+z_index = 1
 position = Vector2(48, 149)
 
 [node name="Camera" type="Camera2D" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 159.0
+offset_top = 108.0
+offset_right = 209.0
+offset_bottom = 203.0
+color = Color(1, 0.505882, 0.505882, 1)
 
 [node name="ColorRect" parent="." instance=ExtResource("2_f4d64")]
 offset_left = -9.0

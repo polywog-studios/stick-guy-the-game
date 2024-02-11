@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4dooe3isfkpu"]
+[gd_scene load_steps=8 format=3 uid="uid://d4dooe3isfkpu"]
 
 [ext_resource type="Script" path="res://components/game/Player.gd" id="1_fse2k"]
 [ext_resource type="SpriteFrames" uid="uid://caqvo2hr0otdq" path="res://assets/game/player.tres" id="2_bf6sr"]
+[ext_resource type="Script" path="res://addons/finite_state_machine/scripts/finite_state_machine.gd" id="3_oftao"]
+[ext_resource type="Script" path="res://components/game/player_states/PlayerIdleState.gd" id="4_jl5ry"]
+[ext_resource type="Script" path="res://components/game/player_states/PlayerWalkState.gd" id="5_ck4nt"]
+[ext_resource type="Script" path="res://components/game/player_states/PlayerJumpState.gd" id="6_cw2qj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33hnr"]
 radius = 7.0
@@ -28,3 +32,19 @@ metadata/_aseprite_wizard_config_ = {
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_33hnr")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
+script = ExtResource("3_oftao")
+current_state = NodePath("PlayerIdleState")
+
+[node name="PlayerIdleState" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_jl5ry")
+
+[node name="PlayerWalkState" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_ck4nt")
+is_moving = true
+
+[node name="PlayerJumpState" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("6_cw2qj")
+is_moving = true
+is_mid_air = true
