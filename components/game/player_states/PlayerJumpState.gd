@@ -16,9 +16,12 @@ func on_enter():
 
 func on_physics_process(delta:float):
 	super(delta)
-	if Input.is_action_pressed("jump") and jump_hold < 0.2:
-		player.velocity.y = JUMP_VELOCITY
+	if jump_hold < 0.2:
 		jump_hold += delta
+		if Input.is_action_pressed("jump"):
+			player.velocity.y = JUMP_VELOCITY
+		else:
+			jump_hold = 0.3
 		
 	if player.velocity.y > 0.0 and not falling:
 		falling = true
