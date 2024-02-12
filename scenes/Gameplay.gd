@@ -4,4 +4,4 @@ extends Node2D
 @onready var camera:Camera2D = $Camera
 
 func _physics_process(delta:float):
-	camera.position = camera.position.lerp(player.position+player.velocity/4.0, delta * 5.0)
+	camera.position = camera.position.lerp(player.position+player.velocity/4.0-Vector2(0,12), delta * 5.0)
