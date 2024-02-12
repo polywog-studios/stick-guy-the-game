@@ -5,7 +5,7 @@
 [ext_resource type="SpriteFrames" uid="uid://djbyfugamhmcg" path="res://assets/menus/title.res" id="2_8dnkh"]
 [ext_resource type="SpriteFrames" uid="uid://8t70i8c0fcs7" path="res://assets/menus/main/icons.res" id="3_hevwg"]
 [ext_resource type="FontFile" uid="uid://btxm1nh87w73q" path="res://assets/fonts/Mitochondria.ttf" id="4_el8fy"]
-[ext_resource type="SpriteFrames" uid="uid://clrha4vhmysto" path="res://assets/menus/main/point.res" id="6_6b8gk"]
+[ext_resource type="Texture2D" uid="uid://bmhabbno3m02a" path="res://assets/menus/main/point.png" id="5_ek0jb"]
 [ext_resource type="Texture2D" uid="uid://d3fg7k7fovcrs" path="res://assets/menus/main/play-as-luigi.png" id="7_d5pxp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c8b6d"]
@@ -48,12 +48,9 @@ Mods
 Settings"
 label_settings = SubResource("LabelSettings_c8b6d")
 
-[node name="Point" type="AnimatedSprite2D" parent="."]
+[node name="Point" type="Sprite2D" parent="."]
 position = Vector2(36, 148)
-sprite_frames = ExtResource("6_6b8gk")
-autoplay = "default"
-frame_progress = 0.188713
-offset = Vector2(-0.5, 0)
+texture = ExtResource("5_ek0jb")
 
 [node name="Luigi" type="Sprite2D" parent="."]
 position = Vector2(268, 283)

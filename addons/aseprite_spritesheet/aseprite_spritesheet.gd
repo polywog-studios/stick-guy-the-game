@@ -22,8 +22,26 @@ func convert_json(path:String):
 	var frame_array = json.frames if (json.frames is Array) else json.frames.values()
 	
 	var frames = SpriteFrames.new()
-	frames.remove_animation("default")
+	frames.remove_animation('default')
 	
+	if json.meta.frameTags.size() == 0:
+		frames.add_animation('default')
+		frames.set_animation_loop('default', true)
+		frames.set_animation_speed('default', 1 / (frame_array[0].duration * 0.001))
+		for i in range(0, frame_array.size()):
+			var frame = AtlasTexture.new()
+			frame.atlas = image
+			frame.region = Rect2(
+				frame_array[i].frame.x, frame_array[i].frame.y,
+				frame_array[i].frame.w, frame_array[i].frame.h
+			)
+			frame.margin = Rect2(
+				frame_array[i].spriteSourceSize.x, frame_array[i].spriteSourceSize.y,
+				frame_array[i].sourceSize.w-frame_array[i].frame.w, frame_array[i].sourceSize.h-frame_array[i].frame.h
+			)
+			
+			frames.add_frame('default', frame)
+			
 	for anim in json.meta.frameTags:
 		for i in range(anim.from, anim.to + 1):
 			var frame = AtlasTexture.new()
