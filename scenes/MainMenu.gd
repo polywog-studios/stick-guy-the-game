@@ -26,9 +26,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed('ui_accept'):
 		functions[selected].call()
 
-
-
-var secret_code = 'L IS REAL 2401'
+var secret_code = 'luigi'
 var secret_state = 0
 
 func _unhandled_input(event):
