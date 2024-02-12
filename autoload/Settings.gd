@@ -5,6 +5,7 @@ const SAVE_CFG_PATH:String = "user://settings.cfg"
 var data:Dictionary = {
 	"fullscreen": false,
 	"window_size": 3, # this is a multiplier
+	"master_volume": 1.0, # multiplier from 0 to 1
 }
 var _cfg:ConfigFile = ConfigFile.new()
 
@@ -25,6 +26,10 @@ func apply_setting(setting:String):
 			var window:Window = get_window()
 			window.size = Vector2i(380 * size_mult, 252 * size_mult)
 			window.position = (screen_rect.size - window.size) * 0.5
+			
+		"master_volume":
+			var master_bus:int = AudioServer.get_bus_index("Master")
+			AudioServer.set_bus_volume_db(master_bus, linear_to_db(data.master_volume))
 	
 func create():
 	print("Making new save data...")

@@ -168,6 +168,7 @@ label_settings = SubResource("LabelSettings_vharx")
 script = ExtResource("6_4ln3w")
 minimum_value = 1
 maximum_value = 4
+suffix = "x"
 
 [node name="master_volume" type="Label" parent="SettingsScreen/SettingsList"]
 modulate = Color(1, 0, 0, 1)
@@ -175,6 +176,5 @@ layout_mode = 2
 text = "master_volume: 1x (min: 0x - max: 1x - inc: 0.05x)"
 label_settings = SubResource("LabelSettings_vharx")
 script = ExtResource("7_6tssk")
-maximum_value = 1.0
 increment_value = 0.05
 suffix = "x"

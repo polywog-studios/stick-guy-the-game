@@ -18,9 +18,13 @@ func input_check():
 		(settings_list.get_child(current_selection) as DevBooleanSetting).toggle()
 		change_selection(0, true)
 		
-	var int_axis:int = floor(Input.get_axis("ui_left", "ui_right"))
+	var int_axis:int = int(signf(Input.get_axis("ui_left", "ui_right")))
 	if settings_list.get_child(current_selection) is DevIntegerSetting and int_axis != 0:
 		(settings_list.get_child(current_selection) as DevIntegerSetting).change(int_axis)
+		change_selection(0, true)
+		
+	if settings_list.get_child(current_selection) is DevFloatSetting and int_axis != 0:
+		(settings_list.get_child(current_selection) as DevFloatSetting).change(int_axis)
 		change_selection(0, true)
 
 func change_selection(by:int = 0, force:bool = false):

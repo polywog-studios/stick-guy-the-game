@@ -39,7 +39,6 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/finite_state_machine/plugin.cfg")
 enabled=PackedStringArray("res://addons/aseprite_spritesheet/plugin.cfg")
 
 [importer_defaults]

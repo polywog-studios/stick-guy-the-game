@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4dooe3isfkpu"]
+[gd_scene load_steps=9 format=3 uid="uid://d4dooe3isfkpu"]
 
 [ext_resource type="Script" path="res://components/game/Player.gd" id="1_fse2k"]
 [ext_resource type="SpriteFrames" path="res://assets/game/player.res" id="2_642nh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://components/game/player_states/PlayerIdleState.gd" id="4_jl5ry"]
 [ext_resource type="Script" path="res://components/game/player_states/PlayerWalkState.gd" id="5_ck4nt"]
 [ext_resource type="Script" path="res://components/game/player_states/PlayerJumpState.gd" id="6_cw2qj"]
+[ext_resource type="Script" path="res://components/game/player_states/PlayerFallState.gd" id="7_sww18"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33hnr"]
 radius = 7.0
@@ -46,5 +47,10 @@ is_moving = true
 
 [node name="PlayerJumpState" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("6_cw2qj")
+is_moving = true
+is_mid_air = true
+
+[node name="PlayerFallState" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("7_sww18")
 is_moving = true
 is_mid_air = true
