@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://qmiq41gn3vyv"]
+[gd_scene load_steps=5 format=3 uid="uid://dwvxrwhws3hfl"]
 
 [ext_resource type="Script" path="res://autoload/Transition.gd" id="1_7pl41"]
 [ext_resource type="Texture2D" uid="uid://cobe7cf4fnagk" path="res://polywog/imgs/transition.png" id="2_rbwtr"]
@@ -28,4 +28,5 @@ offset_bottom = 63.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.505, 1.505)
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
