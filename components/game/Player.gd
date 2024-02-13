@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 const GRAVITY:float = 1000.0
 
 @onready var sm:FiniteStateMachine = $FiniteStateMachine
+@onready var sprite:AnimatedSprite2D = $Sprite
 
 var cs:PlayerState:
 	get: return sm.current_state as PlayerState

@@ -8,9 +8,8 @@
 [ext_resource type="Script" path="res://components/game/player_states/PlayerJumpState.gd" id="6_cw2qj"]
 [ext_resource type="Script" path="res://components/game/player_states/PlayerFallState.gd" id="7_sww18"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33hnr"]
-radius = 7.0
-height = 38.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8viv"]
+size = Vector2(14, 38)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fse2k")
@@ -32,7 +31,7 @@ metadata/_aseprite_wizard_config_ = {
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
-shape = SubResource("CapsuleShape2D_33hnr")
+shape = SubResource("RectangleShape2D_v8viv")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
 script = ExtResource("3_oftao")

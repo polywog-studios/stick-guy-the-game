@@ -1,10 +1,9 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bovvk7qayk1ow"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://buw18ey1sto23"]
 
-[ext_resource type="Texture2D" uid="uid://b6h0l0kar5sf3" path="res://assets/game/tiles/grass.png" id="1_uj706"]
-[ext_resource type="Texture2D" uid="uid://cpkqojjqv7wjf" path="res://assets/game/tiles/grass_decor.png" id="2_w0ux0"]
+[ext_resource type="Texture2D" uid="uid://gpoxrc8x6cl2" path="res://assets/game/tiles/red/Rgrass.png" id="1_7p173"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_unqgo"]
-texture = ExtResource("1_uj706")
+texture = ExtResource("1_7p173")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -462,16 +461,12 @@ texture_region_size = Vector2i(24, 24)
 10:0/0/terrains_peering_bit/bottom_side = 0
 10:0/0/terrains_peering_bit/bottom_left_corner = 0
 10:0/0/terrains_peering_bit/left_side = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eikph"]
-texture = ExtResource("2_w0ux0")
-texture_region_size = Vector2i(24, 24)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
 
 [resource]
 tile_size = Vector2i(24, 24)
@@ -480,4 +475,3 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain"
 terrain_set_0/terrain_0/color = Color(1, 0, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_unqgo")
-sources/1 = SubResource("TileSetAtlasSource_eikph")

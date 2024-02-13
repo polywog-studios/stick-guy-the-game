@@ -3,20 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b6h0l0kar5sf3"
-path="res://.godot/imported/grass.png-c5adbe0f0b15f6c01c12d2a672e6cc13.ctex"
+path="res://.godot/imported/Bgrass.png-04228baf50e1b3af9feb7c59836bbf70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/game/tiles/grass.png"
-dest_files=["res://.godot/imported/grass.png-c5adbe0f0b15f6c01c12d2a672e6cc13.ctex"]
+source_file="res://assets/game/tiles/blue/Bgrass.png"
+dest_files=["res://.godot/imported/Bgrass.png-04228baf50e1b3af9feb7c59836bbf70.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
