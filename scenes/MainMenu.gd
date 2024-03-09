@@ -6,7 +6,7 @@ var selected := 0:
 		$Point.position.y = 148+v*24
 
 var functions = [
-	func(): Tools.change_scene_to_file('res://scenes/Gameplay.tscn'),
+	func(): Tools.change_scene_to_file('res://scenes/level/TestingArea.tscn'),
 	func(): print('not implemented'),
 	func(): print('not implemented'),
 	func(): print('not implemented')

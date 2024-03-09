@@ -23,7 +23,7 @@ func select_option():
 	match options.get_child(current_selection).name:
 		&"Gameplay":
 			print("Loading into Gameplay [LV1]...")
-			get_tree().change_scene_to_file("res://scenes/Gameplay.tscn")
+			get_tree().change_scene_to_file("res://scenes/levels/TestingArea.tscn")
 		
 		&"Main Menu":
 			print("Loading into Main Menu...")

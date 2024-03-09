@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://6vjnf2vo2582"]
+
+[ext_resource type="TileSet" uid="uid://buw18ey1sto23" path="res://assets/game/tiles/red/Rgrass.tres" id="1_eyxb6"]
+[ext_resource type="Script" path="res://scenes/levels/TestingArea.gd" id="1_pgo5b"]
+[ext_resource type="TileSet" uid="uid://csykyd0kv5ng2" path="res://assets/game/tiles/blue/Bgrass.tres" id="2_gik3e"]
+[ext_resource type="PackedScene" uid="uid://dfsvm6saqytbs" path="res://scenes/Gameplay.tscn" id="3_kocs1"]
+[ext_resource type="Texture2D" uid="uid://dcyf34b0t8sgo" path="res://assets/game/level-specific/the_watcher.png" id="5_y6xo3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmtn7"]
+shading_mode = 0
+albedo_texture = ExtResource("5_y6xo3")
+uv1_offset = Vector3(0.5, 0, 0)
+texture_filter = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_1do6v"]
+material = SubResource("StandardMaterial3D_pmtn7")
+
+[sub_resource type="Environment" id="Environment_mwoya"]
+
+[node name="TestingArea" type="Node2D"]
+script = ExtResource("1_pgo5b")
+
+[node name="Red" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Red"]
+tile_set = ExtResource("1_eyxb6")
+format = 2
+layer_0/tile_data = PackedInt32Array(524288, 655360, 0, 524289, 655360, 0, 524290, 655360, 0, 524291, 655360, 0, 524292, 655360, 0, 524293, 655360, 0, 524294, 655360, 0, 524295, 655360, 0, 524296, 655360, 0, 524297, 655360, 0, 524298, 655360, 0, 524299, 655360, 0, 524300, 655360, 0, 524301, 655360, 0, 524302, 655360, 0, 524303, 655360, 0, 589824, 589824, 2, 655360, 589824, 2, 589825, 589824, 2, 655361, 589824, 2, 589826, 589824, 2, 655362, 589824, 2, 589827, 589824, 2, 655363, 589824, 2, 589828, 589824, 2, 655364, 589824, 2, 589829, 589824, 2, 655365, 589824, 2, 589830, 589824, 2, 655366, 589824, 2, 589831, 589824, 2, 655367, 589824, 2, 589832, 589824, 2, 655368, 589824, 2, 589833, 589824, 2, 655369, 589824, 2, 589834, 589824, 2, 655370, 589824, 2, 589835, 589824, 2, 655371, 589824, 2, 589836, 589824, 2, 655372, 589824, 2, 589837, 589824, 2, 655373, 589824, 2, 589838, 589824, 2, 655374, 589824, 2, 589839, 589824, 2, 655375, 589824, 2, 720896, 589824, 2, 786432, 589824, 2, 851968, 589824, 2, 720897, 589824, 2, 786433, 589824, 2, 851969, 589824, 2, 720898, 589824, 2, 786434, 589824, 2, 851970, 589824, 2, 720899, 589824, 2, 786435, 589824, 2, 851971, 589824, 2, 720900, 589824, 2, 786436, 589824, 2, 851972, 589824, 2, 720901, 589824, 2, 786437, 589824, 2, 851973, 589824, 2, 720902, 589824, 2, 786438, 589824, 2, 851974, 589824, 2, 720903, 589824, 2, 786439, 589824, 2, 851975, 589824, 2, 720904, 589824, 2, 786440, 589824, 2, 851976, 589824, 2, 720905, 589824, 2, 786441, 589824, 2, 851977, 589824, 2, 720906, 589824, 2, 786442, 589824, 2, 851978, 589824, 2, 720907, 589824, 2, 786443, 589824, 2, 851979, 589824, 2, 720908, 589824, 2, 786444, 589824, 2, 851980, 589824, 2, 720909, 589824, 2, 786445, 589824, 2, 851981, 589824, 2, 720910, 589824, 2, 786446, 589824, 2, 851982, 589824, 2, 720911, 589824, 2, 786447, 589824, 2, 851983, 589824, 2, 589820, 655360, 0, 589821, 655360, 0, 589822, 655360, 0, 589823, 655360, 0, 524304, 655360, 0, 524305, 655360, 0, 524306, 655360, 0, 589819, 655360, 0, 524307, 655360, 0, 524308, 655360, 0, 655355, 589824, 2, 720891, 589824, 2, 786427, 589824, 2, 851963, 589824, 2, 917499, 589824, 2, 655356, 589824, 2, 720892, 589824, 2, 786428, 589824, 2, 851964, 589824, 2, 917500, 589824, 2, 655357, 589824, 2, 720893, 589824, 2, 786429, 589824, 2, 851965, 589824, 2, 917501, 589824, 2, 655358, 589824, 2, 720894, 589824, 2, 786430, 589824, 2, 851966, 589824, 2, 917502, 589824, 2, 655359, 589824, 2, 720895, 589824, 2, 786431, 589824, 2, 851967, 589824, 2, 917503, 589824, 2, 589840, 589824, 2, 655376, 589824, 2, 720912, 589824, 2, 786448, 589824, 2, 851984, 589824, 2, 589841, 589824, 2, 655377, 589824, 2, 720913, 589824, 2, 786449, 589824, 2, 851985, 589824, 2, 589842, 589824, 2, 655378, 589824, 2, 720914, 589824, 2, 786450, 589824, 2, 851986, 589824, 2, 589843, 589824, 2, 655379, 589824, 2, 720915, 589824, 2, 786451, 589824, 2, 851987, 589824, 2, 589844, 589824, 2, 655380, 589824, 2, 720916, 589824, 2, 786452, 589824, 2, 851988, 589824, 2)
+
+[node name="Blue" type="Node2D" parent="."]
+visible = false
+position = Vector2(41, 40)
+
+[node name="TileMap" type="TileMap" parent="Blue"]
+position = Vector2(-41, -40)
+tile_set = ExtResource("2_gik3e")
+format = 2
+
+[node name="Gameplay" parent="." instance=ExtResource("3_kocs1")]
+_red = NodePath("../Red")
+_blue = NodePath("../Blue")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 380.0
+offset_bottom = 252.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(380, 252)
+render_target_update_mode = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+mesh = SubResource("SphereMesh_1do6v")
+skeleton = NodePath("../../..")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 41)
+projection = 1
+size = 3.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_mwoya")
