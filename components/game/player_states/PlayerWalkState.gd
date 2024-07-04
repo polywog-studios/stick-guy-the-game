@@ -18,7 +18,7 @@ func on_physics_process(delta:float):
 		sprite.flip_h = axis < 0.0
 		
 		player.velocity.x += SPEED * delta * axis
-		player.velocity.x *= 0.96 if skidding and sprite.frame == 0 else 1.0 
+		player.velocity.x *= 57.6 * delta if skidding and sprite.frame == 0 else 1.0 
 		
 		var running:bool = Input.is_action_pressed(&"run")
 		if not is_mid_air:
@@ -39,7 +39,7 @@ func on_physics_process(delta:float):
 		if absf(player.velocity.x) > max_spd:
 			player.velocity.x = max_spd * signf(player.velocity.x)
 	else:
-		player.velocity.x *= 0.935
+		player.velocity.x *= 56.1 * delta
 		if absf(player.velocity.x) < 20.0:
 			player.velocity.x = 0.0
 			if go_idle_at_no_xvel:
