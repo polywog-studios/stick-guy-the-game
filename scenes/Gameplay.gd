@@ -1,11 +1,15 @@
-extends Node2D
+class_name Gameplay extends Node2D
 
 @onready var player:Player = $Player
 @onready var camera:Camera2D = $Camera
 
 @export var _red:NodePath
 @export var _blue:NodePath
-@export var bg_color:Color
+
+@export var bg_color:Color:
+	set(value):
+		bg_color = value
+		RenderingServer.set_default_clear_color(bg_color)
 
 @onready var red:Node2D = get_node(_red)
 @onready var blue:Node2D = get_node(_blue)
@@ -20,10 +24,10 @@ var color:bool = false:
 		color = v
 
 func _ready():
-	RenderingServer.set_default_clear_color(bg_color)
+	bg_color = Color.WHITE
 
 func _physics_process(delta:float):
-	camera.position = camera.position.lerp(player.position + (player.velocity / 4.0) - Vector2(0.0, 52.0), delta * 5.0)
+	camera.position = camera.position.lerp(player.position + (player.velocity / 4.0) - Vector2(0.0, 32.0), delta * 5.0)
 
 func _process(delta:float):
 	if Input.is_action_just_pressed("color_swap"):

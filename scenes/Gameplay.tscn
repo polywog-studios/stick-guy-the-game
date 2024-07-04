@@ -11,3 +11,5 @@ z_index = 1
 position = Vector2(48, 149)
 
 [node name="Camera" type="Camera2D" parent="."]
+limit_left = 0
+limit_bottom = 250

@@ -1,6 +1,6 @@
 class_name PlayerJumpState extends PlayerWalkState
 
-const JUMP_VELOCITY:float = -240.0
+const JUMP_VELOCITY:float = -250.0
 const MAX_FALL_VELOCITY:float = 2000.0
 
 var jump_hold:float = 0.0

@@ -3,8 +3,11 @@ class_name PlayerStompState extends PlayerWalkState
 const STOMP_VELOCITY: float = 300.0
 
 func on_enter():
+	go_idle_at_no_xvel = false
+	
 	sprite.speed_scale = 1.0
 	sprite.play(&"Stomp")
+	
 	player.velocity.y = STOMP_VELOCITY
 	
 func on_physics_process(delta: float):
