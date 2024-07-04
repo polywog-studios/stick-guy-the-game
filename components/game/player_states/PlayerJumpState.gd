@@ -12,6 +12,8 @@ func on_enter():
 	sprite.speed_scale = 1.0
 	sprite.play(&"Jump")
 	player.velocity.y = JUMP_VELOCITY
+	
+	PlayerFallState.coyote_jumped = true
 
 func on_physics_process(delta:float):
 	super(delta)
@@ -21,9 +23,12 @@ func on_physics_process(delta:float):
 			player.velocity.y = JUMP_VELOCITY
 		else:
 			jump_hold = 0.3
-		
+	
 	if player.velocity.y > 0.0:
 		change_state("PlayerFallState")
-		
+	
+	if Input.is_action_just_pressed(&"duck"):
+		change_state("PlayerStompState")
+	
 	if player.is_on_floor():
 		change_state("PlayerWalkState")

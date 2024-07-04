@@ -14,3 +14,4 @@ class_name PlayerState extends StateMachineState
 # Reference to the character node.
 @onready var player: Player = get_node(_player)
 @onready var sprite: AnimatedSprite2D = get_node(_player).get_node("Sprite")
+@onready var coyote_timer: Timer = get_node(_player).get_node("CoyoteTimer")

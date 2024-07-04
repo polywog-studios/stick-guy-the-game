@@ -23,7 +23,7 @@ func _ready():
 	RenderingServer.set_default_clear_color(bg_color)
 
 func _physics_process(delta:float):
-	camera.position = camera.position.lerp(player.position+player.velocity/4.0-Vector2(0,12), delta * 5.0)
+	camera.position = camera.position.lerp(player.position + (player.velocity / 4.0) - Vector2(0.0, 52.0), delta * 5.0)
 
 func _process(delta:float):
 	if Input.is_action_just_pressed("color_swap"):

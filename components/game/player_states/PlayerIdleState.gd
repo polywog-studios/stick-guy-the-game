@@ -11,6 +11,7 @@ func on_physics_process(_delta:float):
 	if Input.is_action_pressed(&"duck") and not ducking:
 		ducking = true
 		sprite.play(&"Duck")
+	
 	elif Input.is_action_just_released(&"duck"):
 		ducking = false
 		sprite.play(&"Idle")

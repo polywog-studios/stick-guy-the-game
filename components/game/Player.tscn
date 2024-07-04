@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4dooe3isfkpu"]
+[gd_scene load_steps=10 format=3 uid="uid://d4dooe3isfkpu"]
 
 [ext_resource type="Script" path="res://components/game/Player.gd" id="1_fse2k"]
 [ext_resource type="SpriteFrames" uid="uid://cn08njbs16bx1" path="res://assets/game/player.res" id="2_642nh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://components/game/player_states/PlayerWalkState.gd" id="5_ck4nt"]
 [ext_resource type="Script" path="res://components/game/player_states/PlayerJumpState.gd" id="6_cw2qj"]
 [ext_resource type="Script" path="res://components/game/player_states/PlayerFallState.gd" id="7_sww18"]
+[ext_resource type="Script" path="res://components/game/player_states/PlayerStompState.gd" id="8_1748s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8viv"]
 size = Vector2(14, 38)
@@ -19,6 +20,7 @@ modulate = Color(1, 0, 0, 1)
 texture_filter = 1
 sprite_frames = ExtResource("2_642nh")
 animation = &"Idle"
+offset = Vector2(0, -28)
 metadata/_aseprite_wizard_config_ = {
 "layer": "",
 "o_ex_p": "",
@@ -30,7 +32,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, -19)
 shape = SubResource("RectangleShape2D_v8viv")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
@@ -53,3 +55,11 @@ is_mid_air = true
 script = ExtResource("7_sww18")
 is_moving = true
 is_mid_air = true
+
+[node name="PlayerStompState" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("8_1748s")
+is_moving = true
+is_mid_air = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true
